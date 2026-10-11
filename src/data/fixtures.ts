@@ -12,14 +12,14 @@ export const SOURCE = {
 } as const;
 
 export const TEAMS: Record<TeamId, Team> = {
-  'FDM A': { official: 'ASD Pallacanestro Forte dei Marmi “A”', crest: '/logos/fdm.png', isClubLogo: true, town: 'Forte dei Marmi' },
-  'FDM B': { official: 'ASD Pallacanestro Forte dei Marmi “B”', crest: '/logos/fdm.png', isClubLogo: true, town: 'Forte dei Marmi' },
-  Perignano: { official: 'ASD Perignano', crest: '/logos/perignano-casciana-terme-lari.png', isClubLogo: false, town: 'Casciana Terme Lari' },
-  'CEFA Castelnuovo': { official: 'CEFA Basket Amatori Castelnuovo G.', crest: '/logos/cefa-castelnuovo.jpg', isClubLogo: true, town: 'Castelnuovo di Garfagnana' },
-  'San Miniato': { official: 'Casa Culturale San Miniato', crest: '/logos/san-miniato.png', isClubLogo: false, town: 'San Miniato' },
-  Valdera: { official: 'Amatori Basket Valdera', crest: '/logos/valdera.jpg', isClubLogo: true, town: 'Capannoli' },
-  'Pisces Lucca': { official: 'Pisces Lucca', crest: '/logos/pisces-lucca.jpg', isClubLogo: true, town: 'Lucca' },
-  'La Perla': { official: 'Polisportiva La Perla Santa Maria a Monte', crest: '/logos/la-perla-santa-maria-a-monte.png', isClubLogo: false, town: 'Santa Maria a Monte' },
+  'FDM A': { bulletinName: 'Pall. FDM “A”', official: 'ASD Pallacanestro Forte dei Marmi “A”', crest: '/logos/fdm.png', isClubLogo: true, town: 'Forte dei Marmi' },
+  'FDM B': { bulletinName: 'Pall. FDM “B”', official: 'ASD Pallacanestro Forte dei Marmi “B”', crest: '/logos/fdm.png', isClubLogo: true, town: 'Forte dei Marmi' },
+  Perignano: { bulletinName: 'ASD Perignano', official: 'ASD Perignano', crest: '/logos/perignano-casciana-terme-lari.png', isClubLogo: false, town: 'Casciana Terme Lari' },
+  'CEFA Castelnuovo': { bulletinName: 'CEFA Castelnuovo', official: 'CEFA Basket Amatori Castelnuovo G.', crest: '/logos/cefa-castelnuovo.jpg', isClubLogo: true, town: 'Castelnuovo di Garfagnana' },
+  'San Miniato': { bulletinName: 'Casa Cult. S. Miniato', official: 'Casa Culturale San Miniato', crest: '/logos/san-miniato.png', isClubLogo: false, town: 'San Miniato' },
+  Valdera: { bulletinName: 'AB Valdera', official: 'Amatori Basket Valdera', crest: '/logos/valdera.jpg', isClubLogo: true, town: 'Capannoli' },
+  'Pisces Lucca': { bulletinName: 'Pisces Lucca', official: 'Pisces Lucca', crest: '/logos/pisces-lucca.jpg', isClubLogo: true, town: 'Lucca' },
+  'La Perla': { bulletinName: 'Pol. La Perla SMM', official: 'Polisportiva La Perla Santa Maria a Monte', crest: '/logos/la-perla-santa-maria-a-monte.png', isClubLogo: false, town: 'Santa Maria a Monte' },
 };
 
 export const FALLBACK_CREST = '/logos/italy.png';
@@ -64,9 +64,9 @@ export const MATCHES: Match[] = [
 ];
 
 export const MONTH_THEMES: Record<string, MonthTheme> = {
-  '2026-10': { theme: 'oct', emoji: '🍂', tagline: 'Season tip-off · autumn in Versilia' },
-  '2026-11': { theme: 'nov', emoji: '🍁', tagline: 'Late autumn · the busiest stretch' },
-  '2026-12': { theme: 'dec', emoji: '🎄', tagline: 'Festive games before the winter break' },
-  '2027-01': { theme: 'jan', emoji: '❄️', tagline: 'Back on court after the holidays' },
-  '2027-02': { theme: 'feb', emoji: '🎭', tagline: 'Carnival season · regular-season finale' },
+  '2026-10': { theme: 'oct', emoji: '🍂' },
+  '2026-11': { theme: 'nov', emoji: '🍁' },
+  '2026-12': { theme: 'dec', emoji: '🎄' },
+  '2027-01': { theme: 'jan', emoji: '❄️' },
+  '2027-02': { theme: 'feb', emoji: '🎭' },
 };

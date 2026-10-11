@@ -14,8 +14,10 @@ export type VenueId = 'fdm' | 'cefa' | 'valdera' | 'laperla' | 'perignano' | 'sa
 export type Side = 'a' | 'b';
 
 export interface Team {
-  /** Name as registered in the UISP bulletin. */
+  /** Name as registered in the UISP bulletin ("Anagrafica Società"). */
   official: string;
+  /** Short name as printed in the bulletin's fixture tables, used on the Italian page. */
+  bulletinName: string;
   /** Path under /public. */
   crest: string;
   /** true for a club logo, false for the home town's coat of arms. */
@@ -56,5 +58,4 @@ export interface Match {
 export interface MonthTheme {
   theme: 'oct' | 'nov' | 'dec' | 'jan' | 'feb';
   emoji: string;
-  tagline: string;
 }

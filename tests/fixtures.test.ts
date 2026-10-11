@@ -108,6 +108,10 @@ describe('fixtures are internally consistent', () => {
     }
   });
 
+  it('stores team names exactly as printed in the bulletin', () => {
+    for (const [bulletin, id] of BULLETIN_NAMES) expect(TEAMS[id].bulletinName).toBe(bulletin);
+  });
+
   it('references only known teams, venues and month themes', () => {
     for (const m of MATCHES) {
       expect(TEAMS[m.home]).toBeDefined();

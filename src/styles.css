@@ -182,3 +182,14 @@ footer a{color:inherit}
 .copy-btn:focus-visible,.controls button:focus-visible,.download-btn:focus-visible{outline:3px solid var(--brand-2);outline-offset:2px}
 .download-text{min-width:0}
 @media (max-width:600px){.cal-actions .download-btn{width:100%;justify-content:center}}
+
+/* Header top row: eyebrow left, language switch top right */
+.hero-top{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:6px}
+.hero-top .eyebrow{min-width:0;flex:1;padding-top:6px}
+.lang-switch{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px);flex-shrink:0}
+.lang-switch button{display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:0;background:transparent;color:#fff;font:inherit;font-size:12px;font-weight:800;letter-spacing:.06em;padding:6px 10px;border-radius:999px;opacity:.75;transition:background .15s,opacity .15s}
+.lang-switch button:hover{opacity:1;background:rgba(255,255,255,.14)}
+.lang-switch button[aria-pressed="true"]{opacity:1;background:#fff;color:#173b7b;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.lang-switch button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.lang-switch .flag{width:22px;height:15px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.18);flex-shrink:0;display:block}
+@media (prefers-reduced-motion:reduce){.lang-switch button{transition:none}}
