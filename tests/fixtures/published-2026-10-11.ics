@@ -1,0 +1,662 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//FDM Basketball//UISP 2026-27//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:FDM Basket 2026-27
+X-WR-TIMEZONE:Europe/Rome
+BEGIN:VTIMEZONE
+TZID:Europe/Rome
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:uisp-2026-27-20261014-fdmafdmb@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261014T210000
+DTEND;TZID=Europe/Rome:20261014T230000
+SUMMARY:🏀 FDM B | FDM A — FDM B
+LOCATION:Palestra Ugo Guidi · Via Ignazio da Carrara 80\, Forte dei Marmi 
+ (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM B. Home court, Forte dei 
+ Marmi.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: FDM A — FDM B
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: FDM A — FDM B
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261021-fdmbperignano@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261021T210000
+DTEND;TZID=Europe/Rome:20261021T230000
+SUMMARY:🏀 FDM B | FDM B — Perignano
+LOCATION:Palestra Ugo Guidi · Via Ignazio da Carrara 80\, Forte dei Marmi 
+ (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM B. Home court, Forte dei 
+ Marmi.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: FDM B — Perignano
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: FDM B — Perignano
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261022-valderafdma@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261022T213000
+DTEND;TZID=Europe/Rome:20261022T233000
+SUMMARY:🏀 FDM A away | Valdera — FDM A
+LOCATION:Palestra Via della Resistenza · Via della Resistenza\, San Pietro
+  Belvedere\, Capannoli (PI)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM A away. FDM A away game. 
+ Game 304. Google Maps: https://www.google.com/maps/search/?api=1&query=Via
+ %20della%20Resistenza%2C%20San%20Pietro%20Belvedere%2C%20Capannoli%20%28PI
+ %29
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: Valdera — FDM A
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: Valdera — FDM A
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261028-fdmaperignano@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261028T210000
+DTEND;TZID=Europe/Rome:20261028T230000
+SUMMARY:🏀 FDM A home | FDM A — Perignano
+LOCATION:Palestra Ugo Guidi · Via Ignazio da Carrara 80\, Forte dei Marmi 
+ (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM A home. Home court, Forte
+  dei Marmi.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: FDM A — Perignano
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: FDM A — Perignano
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261029-cefacastelnuovofdmb@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261029T214500
+DTEND;TZID=Europe/Rome:20261029T234500
+SUMMARY:🏀 FDM B | CEFA Castelnuovo — FDM B
+LOCATION:Pala CEFA · Piazza Aldo Rossi 8\, Castelnuovo di Garfagnana (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM B. FDM B away game. Googl
+ e Maps: https://www.google.com/maps/search/?api=1&query=Piazza%20Aldo%20Ro
+ ssi%208%2C%20Castelnuovo%20di%20Garfagnana%20%28LU%29
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: CEFA Castelnuovo — FDM B
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: CEFA Castelnuovo — FDM B
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261102-piscesluccafdma@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261102T213000
+DTEND;TZID=Europe/Rome:20261102T233000
+SUMMARY:🏀 FDM A away | Pisces Lucca — FDM A
+LOCATION:Palestra Scuola Elementare Sardi · Via Provinciale di Sant’Ales
+ sio\, Sant’Alessio\, Lucca (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM A away. FDM A away game. 
+ Game 314. Google Maps: https://www.google.com/maps/search/?api=1&query=Via
+ %20Provinciale%20di%20Sant%E2%80%99Alessio%2C%20Sant%E2%80%99Alessio%2C%20
+ Lucca%20%28LU%29
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: Pisces Lucca — FDM A
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: Pisces Lucca — FDM A
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261104-fdmbsanminiato@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261104T210000
+DTEND;TZID=Europe/Rome:20261104T230000
+SUMMARY:🏀 FDM B | FDM B — San Miniato
+LOCATION:Palestra Ugo Guidi · Via Ignazio da Carrara 80\, Forte dei Marmi 
+ (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM B. Home court, Forte dei 
+ Marmi.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: FDM B — San Miniato
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: FDM B — San Miniato
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261111-fdmacefacastelnuovo@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261111T210000
+DTEND;TZID=Europe/Rome:20261111T230000
+SUMMARY:🏀 FDM A home | FDM A — CEFA Castelnuovo
+LOCATION:Palestra Ugo Guidi · Via Ignazio da Carrara 80\, Forte dei Marmi 
+ (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM A home. Home court, Forte
+  dei Marmi.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: FDM A — CEFA Castelnuovo
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: FDM A — CEFA Castelnuovo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261112-valderafdmb@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261112T213000
+DTEND;TZID=Europe/Rome:20261112T233000
+SUMMARY:🏀 FDM B | Valdera — FDM B
+LOCATION:Palestra Via della Resistenza · Via della Resistenza\, San Pietro
+  Belvedere\, Capannoli (PI)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM B. FDM B away game. Googl
+ e Maps: https://www.google.com/maps/search/?api=1&query=Via%20della%20Resi
+ stenza%2C%20San%20Pietro%20Belvedere%2C%20Capannoli%20%28PI%29
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: Valdera — FDM B
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: Valdera — FDM B
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261116-laperlafdma@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261116T213000
+DTEND;TZID=Europe/Rome:20261116T233000
+SUMMARY:🏀 FDM A away | La Perla — FDM A
+LOCATION:Palestra Via Usciana · Via Usciana 10\, Ponticelli\, Santa Maria 
+ a Monte (PI)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM A away. FDM A away game. 
+ Game 321. Google Maps: https://www.google.com/maps/search/?api=1&query=Via
+ %20Usciana%2010%2C%20Ponticelli%2C%20Santa%20Maria%20a%20Monte%20%28PI%29
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: La Perla — FDM A
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: La Perla — FDM A
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261118-fdmbpisceslucca@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261118T210000
+DTEND;TZID=Europe/Rome:20261118T230000
+SUMMARY:🏀 FDM B | FDM B — Pisces Lucca
+LOCATION:Palestra Ugo Guidi · Via Ignazio da Carrara 80\, Forte dei Marmi 
+ (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM B. Home court, Forte dei 
+ Marmi.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: FDM B — Pisces Lucca
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: FDM B — Pisces Lucca
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261123-laperlafdmb@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261123T213000
+DTEND;TZID=Europe/Rome:20261123T233000
+SUMMARY:🏀 FDM B | La Perla — FDM B
+LOCATION:Palestra Via Usciana · Via Usciana 10\, Ponticelli\, Santa Maria 
+ a Monte (PI)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM B. FDM B away game. Googl
+ e Maps: https://www.google.com/maps/search/?api=1&query=Via%20Usciana%2010
+ %2C%20Ponticelli%2C%20Santa%20Maria%20a%20Monte%20%28PI%29
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: La Perla — FDM B
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: La Perla — FDM B
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261125-fdmasanminiato@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261125T210000
+DTEND;TZID=Europe/Rome:20261125T230000
+SUMMARY:🏀 FDM A home | FDM A — San Miniato
+LOCATION:Palestra Ugo Guidi · Via Ignazio da Carrara 80\, Forte dei Marmi 
+ (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM A home. Home court, Forte
+  dei Marmi.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: FDM A — San Miniato
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: FDM A — San Miniato
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261202-fdmbfdma@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261202T210000
+DTEND;TZID=Europe/Rome:20261202T230000
+SUMMARY:🏀 FDM B | FDM B — FDM A
+LOCATION:Palestra Ugo Guidi · Via Ignazio da Carrara 80\, Forte dei Marmi 
+ (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM B. Home court, Forte dei 
+ Marmi.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: FDM B — FDM A
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: FDM B — FDM A
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261209-fdmavaldera@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261209T210000
+DTEND;TZID=Europe/Rome:20261209T230000
+SUMMARY:🏀 FDM A home | FDM A — Valdera
+LOCATION:Palestra Ugo Guidi · Via Ignazio da Carrara 80\, Forte dei Marmi 
+ (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM A home. Home court, Forte
+  dei Marmi.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: FDM A — Valdera
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: FDM A — Valdera
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261211-perignanofdmb@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261211T213000
+DTEND;TZID=Europe/Rome:20261211T233000
+SUMMARY:🏀 FDM B | Perignano — FDM B
+LOCATION:Palestra scolastica Ciurli e Cardelli · Via Antica Pontederese\, 
+ Casciana Terme (PI)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM B. FDM B away game. Googl
+ e Maps: https://www.google.com/maps/search/?api=1&query=Via%20Antica%20Pon
+ tederese%2C%20Casciana%20Terme%20%28PI%29
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: Perignano — FDM B
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: Perignano — FDM B
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261216-fdmbcefacastelnuovo@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261216T210000
+DTEND;TZID=Europe/Rome:20261216T230000
+SUMMARY:🏀 FDM B | FDM B — CEFA Castelnuovo
+LOCATION:Palestra Ugo Guidi · Via Ignazio da Carrara 80\, Forte dei Marmi 
+ (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM B. Home court, Forte dei 
+ Marmi.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: FDM B — CEFA Castelnuovo
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: FDM B — CEFA Castelnuovo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20261218-perignanofdma@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20261218T213000
+DTEND;TZID=Europe/Rome:20261218T233000
+SUMMARY:🏀 FDM A away | Perignano — FDM A
+LOCATION:Palestra scolastica Ciurli e Cardelli · Via Antica Pontederese\, 
+ Casciana Terme (PI)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM A away. FDM A away game. 
+ Game 410. Google Maps: https://www.google.com/maps/search/?api=1&query=Via
+ %20Antica%20Pontederese%2C%20Casciana%20Terme%20%28PI%29
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: Perignano — FDM A
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: Perignano — FDM A
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20270112-sanminiatofdmb@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20270112T214500
+DTEND;TZID=Europe/Rome:20270112T234500
+SUMMARY:🏀 FDM B | San Miniato — FDM B
+LOCATION:Palestra Mannucci · Via G. Toniolo 21\, Ponte a Egola\, San Minia
+ to (PI)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM B. FDM B away game. Googl
+ e Maps: https://www.google.com/maps/search/?api=1&query=Via%20G.%20Toniolo
+ %2021%2C%20Ponte%20a%20Egola%2C%20San%20Miniato%20%28PI%29
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: San Miniato — FDM B
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: San Miniato — FDM B
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20270113-fdmapisceslucca@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20270113T210000
+DTEND;TZID=Europe/Rome:20270113T230000
+SUMMARY:🏀 FDM A home | FDM A — Pisces Lucca
+LOCATION:Palestra Ugo Guidi · Via Ignazio da Carrara 80\, Forte dei Marmi 
+ (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM A home. Home court, Forte
+  dei Marmi.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: FDM A — Pisces Lucca
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: FDM A — Pisces Lucca
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20270120-fdmbvaldera@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20270120T210000
+DTEND;TZID=Europe/Rome:20270120T230000
+SUMMARY:🏀 FDM B | FDM B — Valdera
+LOCATION:Palestra Ugo Guidi · Via Ignazio da Carrara 80\, Forte dei Marmi 
+ (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM B. Home court, Forte dei 
+ Marmi.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: FDM B — Valdera
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: FDM B — Valdera
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20270121-cefacastelnuovofdma@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20270121T214500
+DTEND;TZID=Europe/Rome:20270121T234500
+SUMMARY:🏀 FDM A away | CEFA Castelnuovo — FDM A
+LOCATION:Pala CEFA · Piazza Aldo Rossi 8\, Castelnuovo di Garfagnana (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM A away. FDM A away game. 
+ Game 419. Google Maps: https://www.google.com/maps/search/?api=1&query=Pia
+ zza%20Aldo%20Rossi%208%2C%20Castelnuovo%20di%20Garfagnana%20%28LU%29
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: CEFA Castelnuovo — FDM A
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: CEFA Castelnuovo — FDM A
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20270125-piscesluccafdmb@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20270125T213000
+DTEND;TZID=Europe/Rome:20270125T233000
+SUMMARY:🏀 FDM B | Pisces Lucca — FDM B
+LOCATION:Palestra Scuola Elementare Sardi · Via Provinciale di Sant’Ales
+ sio\, Sant’Alessio\, Lucca (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM B. FDM B away game. Googl
+ e Maps: https://www.google.com/maps/search/?api=1&query=Via%20Provinciale%
+ 20di%20Sant%E2%80%99Alessio%2C%20Sant%E2%80%99Alessio%2C%20Lucca%20%28LU%2
+ 9
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: Pisces Lucca — FDM B
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: Pisces Lucca — FDM B
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20270127-fdmalaperla@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20270127T210000
+DTEND;TZID=Europe/Rome:20270127T230000
+SUMMARY:🏀 FDM A home | FDM A — La Perla
+LOCATION:Palestra Ugo Guidi · Via Ignazio da Carrara 80\, Forte dei Marmi 
+ (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM A home. Home court, Forte
+  dei Marmi.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: FDM A — La Perla
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: FDM A — La Perla
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20270202-sanminiatofdma@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20270202T214500
+DTEND;TZID=Europe/Rome:20270202T234500
+SUMMARY:🏀 FDM A away | San Miniato — FDM A
+LOCATION:Palestra Mannucci · Via G. Toniolo 21\, Ponte a Egola\, San Minia
+ to (PI)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM A away. FDM A away game. 
+ Game 426. Google Maps: https://www.google.com/maps/search/?api=1&query=Via
+ %20G.%20Toniolo%2021%2C%20Ponte%20a%20Egola%2C%20San%20Miniato%20%28PI%29
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: San Miniato — FDM A
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: San Miniato — FDM A
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uisp-2026-27-20270203-fdmblaperla@fdm-calendar.local
+DTSTAMP:20261011T135000Z
+SEQUENCE:1
+DTSTART;TZID=Europe/Rome:20270203T210000
+DTEND;TZID=Europe/Rome:20270203T230000
+SUMMARY:🏀 FDM B | FDM B — La Perla
+LOCATION:Palestra Ugo Guidi · Via Ignazio da Carrara 80\, Forte dei Marmi 
+ (LU)
+DESCRIPTION:UISP Serie A/2 Tirreno Nord. 🏀 FDM B. Home court, Forte dei 
+ Marmi.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Basketball tomorrow: FDM B — La Perla
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT300M
+ACTION:DISPLAY
+DESCRIPTION:Basketball in 5 hours: FDM B — La Perla
+END:VALARM
+END:VEVENT
+END:VCALENDAR

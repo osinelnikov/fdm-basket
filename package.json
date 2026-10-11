@@ -1,0 +1,24 @@
+{
+  "name": "fdm-basket",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Pallacanestro Forte dei Marmi A & B fixtures 2026/27: schedule page, venue map and calendar feed",
+  "scripts": {
+    "dev": "vite",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vitest run && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "leaflet": "1.9.4"
+  },
+  "devDependencies": {
+    "@types/leaflet": "1.9.22",
+    "@types/node": "20.19.43",
+    "typescript": "7.0.2",
+    "vite": "8.3.1",
+    "vitest": "4.1.11"
+  }
+}
