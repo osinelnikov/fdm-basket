@@ -44,7 +44,7 @@ describe('iCalendar format (RFC 5545)', () => {
   });
 
   it('escapes TEXT values', () => {
-    expect(escapeText('a,b;c\\d\ne')).toBe('a\\,b\;c\\\\d\\ne');
+    expect(escapeText('a,b;c\\d\ne')).toBe('a\\,b\\;c\\\\d\\ne');
   });
 
   it('has one calendar, the Europe/Rome time zone, 26 events and 52 alarms', () => {
@@ -72,6 +72,24 @@ describe('events', () => {
     const ev = byGame(304);
     expect(prop(ev, 'DTSTART')).toBe('DTSTART;TZID=Europe/Rome:20261022T213000');
     expect(prop(ev, 'DTEND')).toBe('DTEND;TZID=Europe/Rome:20261022T233000');
+  });
+
+  it.each(MATCHES)('keeps game $game identity when its date, time and venue change', (match) => {
+    const moved: Match = { ...match, date: '2027-03-01', time: '22:30', venue: match.venue === 'fdm' ? 'valdera' : 'fdm', revision: 1 };
+    const ev = events(buildIcs([moved], { now: NOW }))[0];
+    expect(prop(ev, 'UID')).toBe(prop(byGame(match.game), 'UID'));
+    expect(prop(ev, 'DTSTART')).toBe('DTSTART;TZID=Europe/Rome:20270301T223000');
+    expect(prop(ev, 'DTEND')).toBe('DTEND;TZID=Europe/Rome:20270302T003000');
+    expect(prop(ev, 'LOCATION')).not.toBe(prop(byGame(match.game), 'LOCATION'));
+    expect(prop(ev, 'SEQUENCE')).toBe(`SEQUENCE:${ICS_SEQUENCE_BASE + 1}`);
+  });
+
+  it('uses a stable game-number UID for a newly added match', () => {
+    const added: Match = { ...MATCHES[0], game: 500 };
+    const ev = events(buildIcs([added], { now: NOW }))[0];
+    const moved = events(buildIcs([{ ...added, date: '2027-03-01', revision: 1 }], { now: NOW }))[0];
+    expect(prop(ev, 'UID')).toBe('UID:uisp-2026-27-game-500@fdm-calendar.local');
+    expect(prop(moved, 'UID')).toBe(prop(ev, 'UID'));
   });
 
   it.each([

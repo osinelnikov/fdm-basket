@@ -17,6 +17,9 @@ All pages and the calendar are generated from one file: `src/data/fixtures.ts`.
 4. Run `npm run build`. It type-checks, runs the tests and builds `dist/`.
 5. Push to `main`. Cloudflare Pages rebuilds and publishes the site.
 
+Keep the match's `game` number unchanged when rescheduling. Published calendar UIDs
+are fixed by game number in `src/calendar/ics.ts`; do not update them when dates change.
+
 A failing test stops the build, so a broken schedule is never published.
 
 ## Develop

@@ -34,9 +34,37 @@ export function foldLine(line: string): string[] {
 
 /** RFC 5545 §3.3.11 TEXT escaping. */
 export const escapeText = (s: string): string =>
-  s.replace(/\\/g, '\\\\').replace(/;/g, '\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+  s.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
 
-const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+/** Published identities keyed by game number. Never change these when rescheduling. */
+const PUBLISHED_UIDS: Readonly<Partial<Record<number, string>>> = {
+  300: 'uisp-2026-27-20261014-fdmafdmb@fdm-calendar.local',
+  306: 'uisp-2026-27-20261021-fdmbperignano@fdm-calendar.local',
+  304: 'uisp-2026-27-20261022-valderafdma@fdm-calendar.local',
+  310: 'uisp-2026-27-20261028-fdmaperignano@fdm-calendar.local',
+  309: 'uisp-2026-27-20261029-cefacastelnuovofdmb@fdm-calendar.local',
+  314: 'uisp-2026-27-20261102-piscesluccafdma@fdm-calendar.local',
+  315: 'uisp-2026-27-20261104-fdmbsanminiato@fdm-calendar.local',
+  317: 'uisp-2026-27-20261111-fdmacefacastelnuovo@fdm-calendar.local',
+  319: 'uisp-2026-27-20261112-valderafdmb@fdm-calendar.local',
+  321: 'uisp-2026-27-20261116-laperlafdma@fdm-calendar.local',
+  320: 'uisp-2026-27-20261118-fdmbpisceslucca@fdm-calendar.local',
+  324: 'uisp-2026-27-20261123-laperlafdmb@fdm-calendar.local',
+  325: 'uisp-2026-27-20261125-fdmasanminiato@fdm-calendar.local',
+  402: 'uisp-2026-27-20261202-fdmbfdma@fdm-calendar.local',
+  406: 'uisp-2026-27-20261209-fdmavaldera@fdm-calendar.local',
+  405: 'uisp-2026-27-20261211-perignanofdmb@fdm-calendar.local',
+  411: 'uisp-2026-27-20261216-fdmbcefacastelnuovo@fdm-calendar.local',
+  410: 'uisp-2026-27-20261218-perignanofdma@fdm-calendar.local',
+  413: 'uisp-2026-27-20270112-sanminiatofdmb@fdm-calendar.local',
+  412: 'uisp-2026-27-20270113-fdmapisceslucca@fdm-calendar.local',
+  418: 'uisp-2026-27-20270120-fdmbvaldera@fdm-calendar.local',
+  419: 'uisp-2026-27-20270121-cefacastelnuovofdma@fdm-calendar.local',
+  422: 'uisp-2026-27-20270125-piscesluccafdmb@fdm-calendar.local',
+  421: 'uisp-2026-27-20270127-fdmalaperla@fdm-calendar.local',
+  426: 'uisp-2026-27-20270202-sanminiatofdma@fdm-calendar.local',
+  425: 'uisp-2026-27-20270203-fdmblaperla@fdm-calendar.local',
+};
 const compact = (date: string, time: string) => date.replace(/-/g, '') + 'T' + time.replace(':', '') + '00';
 
 function utcStamp(d: Date): string {
@@ -44,7 +72,7 @@ function utcStamp(d: Date): string {
 }
 
 export const eventUid = (m: Match): string =>
-  `uisp-2026-27-${m.date.replace(/-/g, '')}-${slug(m.home)}${slug(m.away)}@fdm-calendar.local`;
+  PUBLISHED_UIDS[m.game] ?? `uisp-2026-27-game-${m.game}@fdm-calendar.local`;
 
 export function eventSummary(m: Match): string {
   const label = m.sides.includes('b') ? 'FDM B' : isAway(m) ? 'FDM A away' : 'FDM A home';
