@@ -10,3 +10,6 @@
 /fdm-2026-27.ics
   Content-Type: text/calendar; charset=utf-8
   Cache-Control: public, max-age=300
+
+https://:version.fdm-basket.pages.dev/*
+  X-Robots-Tag: noindex

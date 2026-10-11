@@ -3,8 +3,8 @@
 Schedule page for Pallacanestro Forte dei Marmi A and B in UISP Serie A/2 “Tirreno Nord”:
 match list by month, venue map, Google Calendar links and a subscribable calendar feed.
 
-Live site: https://fdm-basket.sinol-work.workers.dev
-Calendar feed: https://fdm-basket.sinol-work.workers.dev/fdm-2026-27.ics
+Live site: https://fdm-basket.pages.dev
+Calendar feed: https://fdm-basket.pages.dev/fdm-2026-27.ics
 
 ## Update the schedule
 
@@ -15,7 +15,7 @@ All pages and the calendar are generated from one file: `src/data/fixtures.ts`.
    or increase the existing number. Calendar subscribers then replace the old event.
 3. Update the expected row in `tests/fixtures.test.ts` and the `SOURCE.bulletin` text.
 4. Run `npm run build`. It type-checks, runs the tests and builds `dist/`.
-5. Push to `main`. Cloudflare rebuilds and publishes the site.
+5. Push to `main`. Cloudflare Pages rebuilds and publishes the site.
 
 A failing test stops the build, so a broken schedule is never published.
 
@@ -30,22 +30,23 @@ npm run build    # typecheck + tests + production build into dist/
 
 Node version: see `.node-version`.
 
-## Deploy: Cloudflare Workers (static assets)
+## Deploy: Cloudflare Pages
 
-The site is an assets-only Worker named `fdm-basket`, connected to this repository.
-`wrangler.jsonc` publishes `./dist` and returns a real 404 for unknown paths.
+The site is the Cloudflare Pages project `fdm-basket`, connected to this repository.
 
 | Setting | Value |
 |---|---|
-| Worker name | `fdm-basket` (must match `name` in `wrangler.jsonc`) |
+| Project name | `fdm-basket` |
 | Production branch | `main` |
+| Framework preset | None |
 | Build command | `npm run build` |
-| Deploy command | `npx wrangler deploy` |
-| Node version | from `.node-version` (Wrangler needs Node 22 or newer) |
+| Build output directory | `dist` |
+| Node version | from `.node-version` |
 
 `public/_headers` sets the calendar content type, caching and security headers.
-Preview URLs for other branches are off (`preview_urls: false` in `wrangler.jsonc`).
-Rollback: Workers & Pages → fdm-basket → Deployments → pick an older version → Rollback.
+`public/404.html` is served with status 404 for unknown paths.
+Other branches get preview URLs that are not indexed by search engines.
+Rollback: Workers & Pages → fdm-basket → Deployments → pick an older deployment → Rollback.
 
 ## Sources and credits
 
