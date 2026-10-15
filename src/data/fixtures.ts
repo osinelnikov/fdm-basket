@@ -35,7 +35,8 @@ export const VENUES: Record<VenueId, Venue> = {
 };
 
 export const MATCHES: Match[] = [
-  { game: 300, date: '2026-10-14', time: '21:00', home: 'FDM A', away: 'FDM B', venue: 'fdm', sides: ['a', 'b'], derby: true },
+  { game: 300, date: '2026-10-14', time: '21:00', home: 'FDM A', away: 'FDM B', venue: 'fdm', sides: ['a', 'b'], derby: true,
+    result: { home: 74, away: 31, periods: [[18, 8], [12, 7], [22, 12], [22, 4]] } },
   { game: 306, date: '2026-10-21', time: '21:00', home: 'FDM B', away: 'Perignano', venue: 'fdm', sides: ['b'] },
   { game: 304, date: '2026-10-22', time: '21:30', home: 'Valdera', away: 'FDM A', venue: 'valdera', sides: ['a'] },
   { game: 310, date: '2026-10-28', time: '21:00', home: 'FDM A', away: 'Perignano', venue: 'fdm', sides: ['a'] },

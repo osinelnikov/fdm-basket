@@ -20,22 +20,37 @@ function tags(m: Match, { t }: ViewContext): string {
   if (m.sides.includes('a')) out.push(`<span class="tag a">${esc(t.tagA)}</span>`);
   out.push(isAway(m) ? `<span class="tag away">${esc(t.tagAway)}</span>` : `<span class="tag home">${esc(t.tagHome)}</span>`);
   if (m.derby) out.push(`<span class="tag derby">${esc(t.tagDerby)}</span>`);
+  if (m.result) out.push(`<span class="tag final">${esc(t.tagFinal)}</span>`);
   out.push(`<span class="tag num">${esc(t.gameNo(m.game))}</span>`);
   return out.join('');
+}
+
+/** Big final score, with the period scores on one line below. Empty for games not played yet. */
+function resultBlock(m: Match, { lang, t }: ViewContext): string {
+  const r = m.result;
+  if (!r) return '';
+  const cls = (mine: number, theirs: number) => (mine > theirs ? 'win' : mine < theirs ? 'lose' : '');
+  const line = r.periods.map(([h, a], i) => `${i >= 4 ? `${t.periodName(i)} ` : ''}${h}:${a}`).join(' · ');
+  const spoken = r.periods.map(([h, a], i) => `${t.periodName(i)} ${h}–${a}`).join(', ');
+  return `<div class="result">
+      <span class="sr-only">${esc(t.resultAria(teamName(m.home, lang), teamName(m.away, lang), r.home, r.away, spoken))}</span>
+      <div class="score" aria-hidden="true"><span class="${cls(r.home, r.away)}">${r.home}</span><span class="colon">:</span><span class="${cls(r.away, r.home)}">${r.away}</span></div>
+      <div class="periods" aria-hidden="true">${esc(line)}</div>
+    </div>`;
 }
 
 function matchCard(m: Match, ctx: ViewContext): string {
   const { lang, t } = ctx;
   const v = VENUES[m.venue];
   const date = (opts: Intl.DateTimeFormatOptions) => formatDate(m.date, opts, t.locale);
-  return `<article class="match" data-game="${m.game}" data-category="${m.sides.join(' ')}">
+  return `<article class="match${m.result ? ' played' : ''}" data-game="${m.game}" data-category="${m.sides.join(' ')}">
     <div class="date"><span class="day">${date({ day: '2-digit' })}</span><span class="mon">${date({ month: 'short' })}</span><span class="time">${date({ weekday: 'short' })} · ${m.time}</span></div>
     <div class="details">
       <div class="teams"><span class="team">${crest(m.home, ctx)}${esc(teamName(m.home, lang))}</span><span class="vs">${esc(t.vs)}</span><span class="team">${crest(m.away, ctx)}${esc(teamName(m.away, lang))}</span></div>
       <div class="tags">${tags(m, ctx)}</div>
       <div class="venue"><span aria-hidden="true">📍</span><a href="${esc(mapsUrl(v))}" target="_blank" rel="noopener noreferrer">${esc(v.name)} · ${esc(v.address)} ↗</a></div>
       <a class="gcal" href="${esc(gcalUrl(m, lang))}" target="_blank" rel="noopener noreferrer">${esc(t.addToGoogle)}</a>
-    </div></article>`;
+    </div>${resultBlock(m, ctx)}</article>`;
 }
 
 const CHEVRON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';

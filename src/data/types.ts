@@ -36,6 +36,15 @@ export interface Venue {
   approximate?: boolean;
 }
 
+export interface MatchResult {
+  /** Final points of the home team (Match.home). */
+  home: number;
+  /** Final points of the away team (Match.away). */
+  away: number;
+  /** Points per period as [home, away]: the four quarters, then any overtimes. */
+  periods: [number, number][];
+}
+
 export interface Match {
   /** Game number in the UISP bulletin. */
   game: number;
@@ -53,6 +62,8 @@ export interface Match {
    * so calendar subscribers replace the old event.
    */
   revision?: number;
+  /** Final score, once the game has been played. */
+  result?: MatchResult;
 }
 
 export interface MonthTheme {

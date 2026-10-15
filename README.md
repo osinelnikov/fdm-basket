@@ -22,6 +22,19 @@ are fixed by game number in `src/calendar/ics.ts`; do not update them when dates
 
 A failing test stops the build, so a broken schedule is never published.
 
+## Add a result
+
+Add `result` to the match in `src/data/fixtures.ts`, home team first, then push:
+
+```ts
+result: { home: 74, away: 31, periods: [[18, 8], [12, 7], [22, 12], [22, 4]] },
+```
+
+`periods` lists the four quarters as `[home, away]`, then any overtimes. Tests check that the
+periods add up to the final score and that the game date is not in the future. The card then
+shows the score on the right and a muted "played" style; its links stay active.
+The calendar feed does not include results.
+
 ## Develop
 
 ```bash

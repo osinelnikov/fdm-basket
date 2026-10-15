@@ -121,3 +121,29 @@ describe('fixtures are internally consistent', () => {
     }
   });
 });
+
+describe('results', () => {
+  const played = MATCHES.filter((m) => m.result);
+  const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
+
+  it('records game 300 as reported: 74–31, quarters 18–8, 12–7, 22–12, 22–4', () => {
+    expect(MATCHES.find((m) => m.game === 300)!.result).toEqual({
+      home: 74, away: 31, periods: [[18, 8], [12, 7], [22, 12], [22, 4]],
+    });
+  });
+
+  it.each(played.map((m) => [m.game, m] as const))('game %i: periods add up to the final score', (_, m) => {
+    const r = m.result!;
+    expect(r.periods.length).toBeGreaterThanOrEqual(4);
+    for (const [h, a] of r.periods) {
+      expect(Number.isInteger(h) && h >= 0 && Number.isInteger(a) && a >= 0).toBe(true);
+    }
+    expect(sum(r.periods.map(([h]) => h))).toBe(r.home);
+    expect(sum(r.periods.map(([, a]) => a))).toBe(r.away);
+  });
+
+  it('has results only for games that have already been played', () => {
+    const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome' }).format(new Date());
+    for (const m of played) expect(m.date <= today, `game ${m.game} on ${m.date}`).toBe(true);
+  });
+});

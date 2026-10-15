@@ -38,6 +38,10 @@ export interface Messages {
   tagHome: string;
   tagDerby: string;
   gameNo: (game: number) => string;
+  tagFinal: string;
+  /** Name of a period by 0-based index: quarters, then overtimes. */
+  periodName: (index: number) => string;
+  resultAria: (home: string, away: string, homePoints: number, awayPoints: number, periods: string) => string;
   vs: string;
   addToGoogle: string;
   openInMaps: string;
