@@ -1,7 +1,7 @@
 import { gcalUrl } from '../calendar/gcal.ts';
 import { FALLBACK_CREST, MATCHES, MONTH_THEMES, TEAMS, VENUES } from '../data/fixtures.ts';
 import type { Match, TeamId } from '../data/types.ts';
-import { type Filter, isAway, mapsUrl, matchesFilter, monthKey } from '../domain.ts';
+import { type Filter, isAway, mapsUrl, matchesFilter, monthKey, nextMatch } from '../domain.ts';
 import { teamName } from '../i18n/index.ts';
 import type { ViewContext } from './context.ts';
 import { capitalize, esc, formatDate, romeToday } from './format.ts';
@@ -14,8 +14,9 @@ function crest(team: TeamId, { lang, t }: ViewContext): string {
   return `<span class="crest"><img src="${info.crest}" alt="${esc(alt)}" title="${esc(info.official)}" width="32" height="32" loading="lazy"></span>`;
 }
 
-function tags(m: Match, { t }: ViewContext): string {
+function tags(m: Match, { t }: ViewContext, isNext: boolean): string {
   const out: string[] = [];
+  if (isNext) out.push(`<span class="tag next">${esc(t.tagNext)}</span>`);
   if (m.sides.includes('b')) out.push(`<span class="tag b">${esc(t.tagB)}</span>`);
   if (m.sides.includes('a')) out.push(`<span class="tag a">${esc(t.tagA)}</span>`);
   out.push(isAway(m) ? `<span class="tag away">${esc(t.tagAway)}</span>` : `<span class="tag home">${esc(t.tagHome)}</span>`);
@@ -39,15 +40,15 @@ function resultBlock(m: Match, { lang, t }: ViewContext): string {
     </div>`;
 }
 
-function matchCard(m: Match, ctx: ViewContext): string {
+function matchCard(m: Match, ctx: ViewContext, isNext = false): string {
   const { lang, t } = ctx;
   const v = VENUES[m.venue];
   const date = (opts: Intl.DateTimeFormatOptions) => formatDate(m.date, opts, t.locale);
-  return `<article class="match${m.result ? ' played' : ''}" data-game="${m.game}" data-category="${m.sides.join(' ')}">
+  return `<article class="match${m.result ? ' played' : ''}${isNext ? ' next' : ''}" data-game="${m.game}" data-category="${m.sides.join(' ')}">
     <div class="date"><span class="day">${date({ day: '2-digit' })}</span><span class="mon">${date({ month: 'short' })}</span><span class="time">${date({ weekday: 'short' })} · ${m.time}</span></div>
     <div class="details">
       <div class="teams"><span class="team">${crest(m.home, ctx)}${esc(teamName(m.home, lang))}</span><span class="vs">${esc(t.vs)}</span><span class="team">${crest(m.away, ctx)}${esc(teamName(m.away, lang))}</span></div>
-      <div class="tags">${tags(m, ctx)}</div>
+      <div class="tags">${tags(m, ctx, isNext)}</div>
       <div class="venue"><span aria-hidden="true">📍</span><a href="${esc(mapsUrl(v))}" target="_blank" rel="noopener noreferrer">${esc(v.name)} · ${esc(v.address)} ↗</a></div>
       <a class="gcal" href="${esc(gcalUrl(m, lang))}" target="_blank" rel="noopener noreferrer">${esc(t.addToGoogle)}</a>
     </div>${resultBlock(m, ctx)}</article>`;
@@ -59,6 +60,7 @@ const installed = new WeakSet<HTMLElement>();
 
 /** Renders the month blocks. Safe to call again when the language changes. */
 export function renderMatches(root: HTMLElement, ctx: ViewContext): void {
+  const next = nextMatch(MATCHES, romeToday())?.game;
   const byMonth = new Map<string, Match[]>();
   for (const m of MATCHES) byMonth.set(monthKey(m), [...(byMonth.get(monthKey(m)) ?? []), m]);
 
@@ -72,7 +74,7 @@ export function renderMatches(root: HTMLElement, ctx: ViewContext): void {
         <span class="month-count"><b class="mc-games"></b><b class="mc-away"></b></span>
         <span class="month-chevron">${CHEVRON}</span>
       </summary>
-      <div class="month-body">${games.map((m) => matchCard(m, ctx)).join('')}</div>
+      <div class="month-body">${games.map((m) => matchCard(m, ctx, m.game === next)).join('')}</div>
     </details>`;
   }).join('');
 

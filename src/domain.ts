@@ -36,3 +36,13 @@ export function addHours(date: string, time: string, hours: number): { date: str
 }
 
 export const matchEnd = (m: Match) => addHours(m.date, m.time, GAME_LENGTH_HOURS);
+
+/**
+ * The next game to play: the first one dated today or later (Rome date, YYYY-MM-DD)
+ * that has no result yet. A game played today stops being "next" once its result is in.
+ */
+export function nextMatch(matches: readonly Match[], today: string): Match | undefined {
+  return [...matches]
+    .sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time))
+    .find((m) => m.date >= today && !m.result);
+}

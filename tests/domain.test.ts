@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { MATCHES } from '../src/data/fixtures.ts';
-import { addHours, isAway, matchesFilter, monthKey } from '../src/domain.ts';
+import { addHours, isAway, matchesFilter, monthKey, nextMatch } from '../src/domain.ts';
 import { gcalUrl } from '../src/calendar/gcal.ts';
 
 describe('filters', () => {
@@ -39,5 +39,26 @@ describe('Google Calendar link', () => {
     expect(url.searchParams.get('ctz')).toBe('Europe/Rome');
     expect(url.searchParams.get('text')).toBe('🏀 Valdera vs FDM A');
     expect(url.searchParams.get('location')).toContain('Palestra Via della Resistenza');
+  });
+});
+
+describe('next game', () => {
+  const withoutResults = MATCHES.map(({ result: _ignored, ...m }) => m);
+
+  it('is the first game from today on', () => {
+    expect(nextMatch(withoutResults, '2026-10-11')?.game).toBe(300);
+  });
+
+  it('includes a game played today until its result is entered', () => {
+    expect(nextMatch(withoutResults, '2026-10-14')?.game).toBe(300);
+    expect(nextMatch(MATCHES, '2026-10-14')?.game).toBe(306);
+  });
+
+  it('skips past games even when their result is missing', () => {
+    expect(nextMatch(MATCHES, '2026-10-23')?.game).toBe(310);
+  });
+
+  it('is undefined once the season is over', () => {
+    expect(nextMatch(MATCHES, '2027-02-04')).toBeUndefined();
   });
 });

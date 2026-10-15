@@ -8,6 +8,7 @@ import { applyStaticTexts, renderLangSwitch } from './ui/i18n-dom.ts';
 import { createVenueMap } from './ui/map.ts';
 import { applyFilter, renderMatches, setAllMonths } from './ui/matches.ts';
 import { readLang, writeLang } from './ui/storage.ts';
+import { withSmoothTransition } from './ui/transition.ts';
 
 const state: { lang: Lang; filter: Filter } = {
   lang: resolveLang(location.search, readLang(), navigator.languages?.length ? navigator.languages : [navigator.language]),
@@ -41,14 +42,16 @@ function setLang(lang: Lang): void {
   const url = new URL(location.href);
   url.searchParams.set('lang', lang);
   history.replaceState(null, '', url);
-  applyStaticTexts(lang);
-  resetCalendarStatus();
-  renderMatches(root, context());
-  select(state.filter, false);
+  withSmoothTransition(() => {
+    applyStaticTexts(lang);
+    resetCalendarStatus();
+    renderMatches(root, context());
+    select(state.filter, false);
+  });
 }
 
 for (const b of document.querySelectorAll<HTMLButtonElement>('[data-filter]')) {
-  b.addEventListener('click', () => select(b.dataset.filter as Filter));
+  b.addEventListener('click', () => withSmoothTransition(() => select(b.dataset.filter as Filter)));
 }
 document.querySelector('#expand-all')!.addEventListener('click', () => setAllMonths(root, true));
 document.querySelector('#collapse-all')!.addEventListener('click', () => setAllMonths(root, false));

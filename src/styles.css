@@ -203,17 +203,56 @@ footer p{margin:0}
 .match.played .date{background:color-mix(in srgb,var(--card) 70%,transparent)}
 .match.played .date .day{color:var(--muted)}
 .tag.final{background:var(--text);color:var(--card)}
-.result{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;font-variant-numeric:tabular-nums;white-space:nowrap}
-.score{font-size:36px;font-weight:900;line-height:1;letter-spacing:-.02em;color:var(--text)}
-.score .colon{margin:0 6px;font-weight:700;color:var(--muted)}
+.result{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:10px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.score{font-size:56px;font-weight:900;line-height:1;letter-spacing:-.03em;color:var(--text)}
+.score .colon{margin:0 8px;font-weight:700;color:var(--muted)}
 .score .lose{color:var(--muted)}
-.periods{font-size:12px;font-weight:600;color:var(--muted)}
+.periods{font-size:14px;font-weight:700;color:var(--muted)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 @media (max-width:600px){
   .match.played{grid-template-columns:1fr auto;grid-template-areas:"date result" "details details"}
   .match.played .date{grid-area:date}
   .match.played .details{grid-area:details}
   .match.played .result{grid-area:result}
-  .score{font-size:28px}
-  .periods{font-size:11px}
+  .score{font-size:40px}
+  .periods{font-size:12px}
+}
+
+/* Next game: pulsing badge and a soft ring around the card */
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 60%,transparent)}50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 0%,transparent)}}
+.tag.next{display:inline-flex;align-items:center;gap:6px;background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--tag-a-fg);border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);text-transform:uppercase;letter-spacing:.05em}
+.tag.next::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse-dot 2s ease-in-out infinite}
+.match.next{box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 55%,transparent),var(--shadow);
+  grid-template-columns:128px 1fr;gap:26px;padding:30px 32px;margin-block:20px;border-left-width:8px;
+  background:color-mix(in srgb,#22c55e 11%,var(--card))}
+.match.next .date{padding:18px 10px;border-radius:18px;background:color-mix(in srgb,#22c55e 10%,var(--card))}
+.match.next .date .day{font-size:54px}
+.match.next .date .mon{font-size:15px}
+.match.next .date .time{font-size:15px;margin-top:8px}
+.match.next .teams{font-size:31px;gap:16px}
+.match.next .crest{width:70px;height:70px;border-radius:18px}
+.match.next .crest img{width:56px;height:56px}
+.match.next .vs{font-size:13px;padding:6px 10px}
+.match.next .tags{margin:14px 0 10px}
+.match.next .tag{font-size:12.5px;padding:5px 10px}
+.match.next .venue,.match.next .gcal{font-size:14.5px}
+@media (max-width:600px){
+  .match.next{grid-template-columns:1fr;gap:16px;padding:20px 16px}
+  .match.next .date{padding:10px 14px}
+  .match.next .date .day{font-size:36px}
+  .match.next .date .time{margin-top:0}
+  .match.next .teams{font-size:22px}
+  .match.next .crest{width:56px;height:56px}
+  .match.next .crest img{width:44px;height:44px}
+}
+
+/* Pressed state for buttons */
+.controls button:active,.download-btn:active,.copy-btn:active,.lang-switch button:active{transform:scale(.97)}
+
+/* Keep view transitions short */
+::view-transition-old(root),::view-transition-new(root){animation-duration:.22s}
+
+@media (prefers-reduced-motion:reduce){
+  .tag.next::before{animation:none}
+  .controls button:active,.download-btn:active,.copy-btn:active,.lang-switch button:active{transform:none}
 }

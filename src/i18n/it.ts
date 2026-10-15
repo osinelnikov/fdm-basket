@@ -37,6 +37,7 @@ export const it: Messages = {
   tagDerby: 'Derby',
   gameNo: (n) => `Gara n° ${n}`,
   tagFinal: 'Finale',
+  tagNext: 'Prossima gara',
   periodName: (i) => (i < 4 ? `${i + 1}° quarto` : i === 4 ? 'TS' : `TS${i - 3}`),
   resultAria: (home, away, hp, ap, periods) => `Risultato finale: ${home} ${hp}, ${away} ${ap}. Parziali: ${periods}.`,
   vs: 'VS',

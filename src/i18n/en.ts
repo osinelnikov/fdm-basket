@@ -36,6 +36,7 @@ export const en: Messages = {
   tagDerby: 'Derby',
   gameNo: (n) => `Game ${n}`,
   tagFinal: 'Final',
+  tagNext: 'Next game',
   periodName: (i) => (i < 4 ? `Q${i + 1}` : i === 4 ? 'OT' : `OT${i - 3}`),
   resultAria: (home, away, hp, ap, periods) => `Final score: ${home} ${hp}, ${away} ${ap}. By period: ${periods}.`,
   vs: 'VS',
