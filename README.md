@@ -35,6 +35,23 @@ periods add up to the final score and that the game date is not in the future. T
 shows the score on the right and a muted "played" style; its links stay active.
 The calendar feed does not include results.
 
+## Update the standings
+
+The league table comes from the latest UISP bulletin (Serie A/2 girone "Tirreno Nord", "Classifica").
+
+1. Put the new bulletin PDF into `docs/` (kept out of git).
+2. Replace `STANDINGS` in `src/data/standings.ts`: `source` and `date` of the bulletin, then one row
+   per team in the bulletin's order (positions follow that order; tie-breaks are UISP's).
+   Copy PG, PV, PP, CF, CS and Punti; the point difference is calculated.
+3. Replace the copy of the printed table at the top of `tests/standings.test.ts` with the new one.
+4. Enter the results of the FDM games up to the bulletin date in `src/data/fixtures.ts`: the tests check
+   that FDM A and FDM B in the table agree with those results.
+5. Run `npm run build` and push.
+
+Tests also check that wins plus losses equal games, two points per win, and that wins, losses and
+points scored and conceded balance across the group. If the bulletin itself has a typo, correct the row
+and leave a comment explaining it (as done for FDM B in CU 02).
+
 ## Develop
 
 ```bash

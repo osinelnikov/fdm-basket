@@ -259,3 +259,35 @@ footer p{margin:0}
   .tag.next::before{animation:none}
   .controls button:active,.download-btn:active,.copy-btn:active,.lang-switch button:active{transform:none}
 }
+
+/* League table */
+.standings-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line);overflow:hidden}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.table-scroll:focus-visible{outline:3px solid var(--brand-2);outline-offset:-3px}
+.standings{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:14px}
+.standings thead th{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:right;padding:12px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.standings abbr{text-decoration:none;cursor:help}
+.standings td,.standings tbody th{padding:10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+.standings tbody tr:last-child td,.standings tbody tr:last-child th{border-bottom:0}
+.standings .col-pos{width:1%;text-align:center;color:var(--muted);font-weight:700}
+.standings .col-team{text-align:left;font-weight:700;width:100%}
+.standings td.col-points{font-weight:900;font-size:16px;color:var(--text)}
+.standings td.col-diff{color:var(--muted);font-weight:600}
+.st-team{display:inline-flex;align-items:center;gap:10px}
+.st-crest{width:30px;height:30px;flex-shrink:0;border-radius:8px;background:#fff;border:1px solid var(--line);display:grid;place-items:center}
+.st-crest img{width:24px;height:24px;object-fit:contain}
+.standings tr.fdm{background:color-mix(in srgb,var(--brand-2) 9%,transparent)}
+.standings tr.fdm .col-team{color:var(--text)}
+.standings tbody tr:hover{background:color-mix(in srgb,var(--line) 40%,transparent)}
+.standings tbody tr.fdm:hover{background:color-mix(in srgb,var(--brand-2) 14%,transparent)}
+@media (max-width:600px){
+  /* Phone: drop games played (= won + lost) and points for/against (the difference stays)
+     so league points fit without scrolling */
+  .standings .col-played,.standings .col-pointsFor,.standings .col-pointsAgainst{display:none}
+  .standings{font-size:13px}
+  .standings td,.standings tbody th{padding:9px 6px}
+  .standings thead th{padding:10px 6px;letter-spacing:.03em}
+  .st-team{gap:8px}
+  .standings tbody th.col-team{white-space:normal;line-height:1.25;min-width:0}
+  .st-crest{width:26px;height:26px}.st-crest img{width:20px;height:20px}
+}

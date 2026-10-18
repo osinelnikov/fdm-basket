@@ -1,5 +1,7 @@
 export type Lang = 'en' | 'it';
 
+export type StandingsColumn = 'pos' | 'team' | 'played' | 'won' | 'lost' | 'pointsFor' | 'pointsAgainst' | 'diff' | 'points';
+
 /** Order of the buttons in the language switch. */
 export const LANGS: readonly Lang[] = ['it', 'en'];
 
@@ -15,6 +17,10 @@ export interface Messages {
   heroTitleHtml: string;
   heroIntroHtml: string;
   logoAlt: string;
+  standingsTitle: string;
+  standingsSource: (source: string) => string;
+  /** [column heading, full name for the tooltip] */
+  standingsColumns: Record<StandingsColumn, [string, string]>;
   mapTitle: string;
   mapSubtitle: string;
   mapAria: string;

@@ -7,6 +7,7 @@ import type { ViewContext } from './ui/context.ts';
 import { applyStaticTexts, renderLangSwitch } from './ui/i18n-dom.ts';
 import { createVenueMap } from './ui/map.ts';
 import { applyFilter, renderMatches, setAllMonths } from './ui/matches.ts';
+import { renderStandings } from './ui/standings.ts';
 import { readLang, writeLang } from './ui/storage.ts';
 import { withSmoothTransition } from './ui/transition.ts';
 
@@ -17,6 +18,8 @@ const state: { lang: Lang; filter: Filter } = {
 const context = (): ViewContext => ({ lang: state.lang, t: MESSAGES[state.lang] });
 
 const root = document.querySelector<HTMLElement>('#matches')!;
+const standingsTable = document.querySelector<HTMLTableElement>('#standings')!;
+const standingsSource = document.querySelector<HTMLElement>('#standings-source')!;
 const venueMap = createVenueMap(document.querySelector<HTMLElement>('#map')!, context);
 
 const setText = (id: string, n: number) => (document.getElementById(id)!.textContent = String(n));
@@ -46,6 +49,7 @@ function setLang(lang: Lang): void {
     applyStaticTexts(lang);
     resetCalendarStatus();
     renderMatches(root, context());
+    renderStandings(standingsTable, standingsSource, context());
     select(state.filter, false);
   });
 }
@@ -58,6 +62,7 @@ document.querySelector('#collapse-all')!.addEventListener('click', () => setAllM
 
 renderLangSwitch(document.querySelector<HTMLElement>('#lang-switch')!, setLang);
 applyStaticTexts(state.lang);
+renderStandings(standingsTable, standingsSource, context());
 renderMatches(root, context());
 select('all');
 setupCalendarCard(context);

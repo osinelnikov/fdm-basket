@@ -70,3 +70,29 @@ export interface MonthTheme {
   theme: 'oct' | 'nov' | 'dec' | 'jan' | 'feb';
   emoji: string;
 }
+
+/** One team's line in the league table, as printed in the UISP bulletin. */
+export interface StandingRow {
+  team: TeamId;
+  /** PG: games played. */
+  played: number;
+  /** PV: games won. */
+  won: number;
+  /** PP: games lost. */
+  lost: number;
+  /** CF: points scored. */
+  pointsFor: number;
+  /** CS: points conceded. */
+  pointsAgainst: number;
+  /** Punti: league points, two per win. */
+  points: number;
+}
+
+export interface Standings {
+  /** Bulletin the table is copied from, as shown on the page. */
+  source: string;
+  /** Bulletin date, YYYY-MM-DD. */
+  date: string;
+  /** In bulletin order, which already applies UISP tie-breaks. */
+  rows: StandingRow[];
+}
