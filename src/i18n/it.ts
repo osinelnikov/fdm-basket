@@ -75,7 +75,7 @@ export const it: Messages = {
   copyLink: 'Copia link',
   copied: 'Link copiato.',
   copyFallback: 'Premi Ctrl+C o Cmd+C per copiare.',
-  footerHtml: `Fonte: Comunicato Ufficiale N° 01 2026–27 · UISP Pallacanestro Pisa–Lucca–Livorno.<br>I loghi di CEFA Basket, Lucca Pisces e Pallacanestro Valdera provengono dalle loro pagine Facebook pubbliche; il logo della Pallacanestro Forte dei Marmi è fornito dalla squadra. ASD Perignano, Casa Culturale San Miniato e Polisportiva La Perla non hanno un logo online e sono mostrate con lo stemma del loro comune (Wikimedia Commons, CC BY-SA / pubblico dominio). Dati della mappa © contributori di ${OSM}.`,
+  footerHtml: `Fonte: Comunicato Ufficiale N° 01 2026–27 · UISP Pallacanestro Pisa–Lucca–Livorno.<br>I loghi di CEFA Basket e Lucca Pisces provengono dalle loro pagine Facebook pubbliche; i loghi di Pallacanestro Forte dei Marmi, Amatori Basket Valdera e Casa Culturale San Miniato ci sono stati forniti. ASD Perignano e Polisportiva La Perla non hanno un logo online e sono mostrate con lo stemma del loro comune (Wikimedia Commons, CC BY-SA / pubblico dominio). Dati della mappa © contributori di ${OSM}.`,
   crestAltLogo: (team) => `Logo ${team}`,
   crestAltArms: (team, town) => `${team} (stemma del comune di ${town})`,
   gcalTitle: (home, away) => `🏀 ${home} - ${away}`,

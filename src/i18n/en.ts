@@ -74,7 +74,7 @@ export const en: Messages = {
   copyLink: 'Copy link',
   copied: 'Link copied.',
   copyFallback: 'Press Ctrl+C or Cmd+C to copy.',
-  footerHtml: `Source: CU 01 2026–27 · UISP Pallacanestro Pisa–Lucca–Livorno.<br>Club logos for CEFA Basket, Lucca Pisces and Pallacanestro Valdera are taken from their public Facebook pages; the Pallacanestro Forte dei Marmi logo was supplied by the team. ASD Perignano, Casa Culturale San Miniato and Polisportiva La Perla have no club logo online, so they are shown with the coat of arms of their home town (Wikimedia Commons, CC BY-SA / public domain). Map data © ${OSM} contributors.`,
+  footerHtml: `Source: CU 01 2026–27 · UISP Pallacanestro Pisa–Lucca–Livorno.<br>Club logos for CEFA Basket and Lucca Pisces are taken from their public Facebook pages; the logos of Pallacanestro Forte dei Marmi, Amatori Basket Valdera and Casa Culturale San Miniato were supplied to us. ASD Perignano and Polisportiva La Perla have no club logo online, so they are shown with the coat of arms of their home town (Wikimedia Commons, CC BY-SA / public domain). Map data © ${OSM} contributors.`,
   crestAltLogo: (team) => `${team} logo`,
   crestAltArms: (team, town) => `${team} (coat of arms of ${town})`,
   gcalTitle: (home, away) => `🏀 ${home} vs ${away}`,

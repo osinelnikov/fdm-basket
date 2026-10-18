@@ -84,7 +84,7 @@ Rollback: Workers & Pages → fdm-basket → Deployments → pick an older deplo
 ## Sources and credits
 
 - Fixtures: UISP Pallacanestro Pisa–Lucca–Livorno, Comunicato Ufficiale N° 01 of 11/10/2026.
-- Club logos of CEFA Basket, Lucca Pisces and Pallacanestro Valdera from their public Facebook pages;
-  Pallacanestro Forte dei Marmi logo supplied by the team; other teams shown with their town's
-  coat of arms from Wikimedia Commons.
+- Club logos of CEFA Basket and Lucca Pisces from their public Facebook pages; logos of Pallacanestro
+  Forte dei Marmi, Amatori Basket Valdera and Casa Culturale San Miniato supplied to us; ASD Perignano
+  and Polisportiva La Perla shown with their town's coat of arms from Wikimedia Commons.
 - Map data © OpenStreetMap contributors.

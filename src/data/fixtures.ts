@@ -16,8 +16,8 @@ export const TEAMS: Record<TeamId, Team> = {
   'FDM B': { bulletinName: 'Pall. FDM “B”', official: 'ASD Pallacanestro Forte dei Marmi “B”', crest: '/logos/fdm.png', isClubLogo: true, town: 'Forte dei Marmi' },
   Perignano: { bulletinName: 'ASD Perignano', official: 'ASD Perignano', crest: '/logos/perignano-casciana-terme-lari.png', isClubLogo: false, town: 'Casciana Terme Lari' },
   'CEFA Castelnuovo': { bulletinName: 'CEFA Castelnuovo', official: 'CEFA Basket Amatori Castelnuovo G.', crest: '/logos/cefa-castelnuovo.jpg', isClubLogo: true, town: 'Castelnuovo di Garfagnana' },
-  'San Miniato': { bulletinName: 'Casa Cult. S. Miniato', official: 'Casa Culturale San Miniato', crest: '/logos/san-miniato.png', isClubLogo: false, town: 'San Miniato' },
-  Valdera: { bulletinName: 'AB Valdera', official: 'Amatori Basket Valdera', crest: '/logos/valdera.jpg', isClubLogo: true, town: 'Capannoli' },
+  'San Miniato': { bulletinName: 'Casa Cult. S. Miniato', official: 'Casa Culturale San Miniato', crest: '/logos/san-miniato.png', isClubLogo: true, town: 'San Miniato' },
+  Valdera: { bulletinName: 'AB Valdera', official: 'Amatori Basket Valdera', crest: '/logos/valdera.png', isClubLogo: true, town: 'Capannoli' },
   'Pisces Lucca': { bulletinName: 'Pisces Lucca', official: 'Pisces Lucca', crest: '/logos/pisces-lucca.jpg', isClubLogo: true, town: 'Lucca' },
   'La Perla': { bulletinName: 'Pol. La Perla SMM', official: 'Polisportiva La Perla Santa Maria a Monte', crest: '/logos/la-perla-santa-maria-a-monte.png', isClubLogo: false, town: 'Santa Maria a Monte' },
 };
