@@ -116,7 +116,7 @@ h1{font-size:clamp(28px,5vw,46px);line-height:1.08;margin:12px 0 10px;font-weigh
 .teams{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:18px;font-weight:800;letter-spacing:-.01em}
 .team{display:flex;align-items:center;gap:10px}
 .crest{width:42px;height:42px;border-radius:12px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,.06)}
-.crest img{width:32px;height:32px;object-fit:contain}
+.crest img{width:38px;height:38px;object-fit:contain}
 .vs{color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.12em;padding:4px 8px;border-radius:7px;background:color-mix(in srgb,var(--line) 50%,transparent)}
 .tags{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 8px}
 .tag{border-radius:7px;padding:4px 9px;font-size:11px;font-weight:800;letter-spacing:.02em;background:var(--tag-bg);color:var(--tag-fg)}
@@ -234,7 +234,7 @@ footer p{margin:0}
 .match.next .date .time{font-size:15px;margin-top:8px}
 .match.next .teams{font-size:31px;gap:16px}
 .match.next .crest{width:70px;height:70px;border-radius:18px}
-.match.next .crest img{width:56px;height:56px}
+.match.next .crest img{width:64px;height:64px}
 .match.next .vs{font-size:13px;padding:6px 10px}
 .match.next .tags{margin:14px 0 10px}
 .match.next .tag{font-size:12.5px;padding:5px 10px}
@@ -246,7 +246,7 @@ footer p{margin:0}
   .match.next .date .time{margin-top:0}
   .match.next .teams{font-size:22px}
   .match.next .crest{width:56px;height:56px}
-  .match.next .crest img{width:44px;height:44px}
+  .match.next .crest img{width:51px;height:51px}
 }
 
 /* Pressed state for buttons */
@@ -275,7 +275,7 @@ footer p{margin:0}
 .standings td.col-diff{color:var(--muted);font-weight:600}
 .st-team{display:inline-flex;align-items:center;gap:10px}
 .st-crest{width:30px;height:30px;flex-shrink:0;border-radius:8px;background:#fff;border:1px solid var(--line);display:grid;place-items:center}
-.st-crest img{width:24px;height:24px;object-fit:contain}
+.st-crest img{width:27px;height:27px;object-fit:contain}
 .standings tr.fdm{background:color-mix(in srgb,var(--brand-2) 9%,transparent)}
 .standings tr.fdm .col-team{color:var(--text)}
 .standings tbody tr:hover{background:color-mix(in srgb,var(--line) 40%,transparent)}
@@ -289,5 +289,5 @@ footer p{margin:0}
   .standings thead th{padding:10px 6px;letter-spacing:.03em}
   .st-team{gap:8px}
   .standings tbody th.col-team{white-space:normal;line-height:1.25;min-width:0}
-  .st-crest{width:26px;height:26px}.st-crest img{width:20px;height:20px}
+  .st-crest{width:26px;height:26px}.st-crest img{width:23px;height:23px}
 }
