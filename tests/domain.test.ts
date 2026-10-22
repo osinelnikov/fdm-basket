@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { MATCHES } from '../src/data/fixtures.ts';
+import type { Match } from '../src/data/types.ts';
 import { addHours, isAway, matchesFilter, monthKey, nextMatch } from '../src/domain.ts';
 import { gcalUrl } from '../src/calendar/gcal.ts';
 
@@ -43,22 +44,30 @@ describe('Google Calendar link', () => {
 });
 
 describe('next game', () => {
-  const withoutResults = MATCHES.map(({ result: _ignored, ...m }) => m);
+  // Own data set: the real schedule without results, plus results set by each test.
+  // Entering real results in fixtures.ts must not change what these tests expect.
+  const unplayed: Match[] = MATCHES.map(({ result: _ignored, ...m }) => m);
+  const played = (games: number[]): Match[] =>
+    unplayed.map((m) => (games.includes(m.game) ? { ...m, result: { home: 1, away: 0, periods: [[1, 0], [0, 0], [0, 0], [0, 0]] } } : m));
 
   it('is the first game from today on', () => {
-    expect(nextMatch(withoutResults, '2026-10-11')?.game).toBe(300);
+    expect(nextMatch(unplayed, '2026-10-11')?.game).toBe(300);
   });
 
   it('includes a game played today until its result is entered', () => {
-    expect(nextMatch(withoutResults, '2026-10-14')?.game).toBe(300);
-    expect(nextMatch(MATCHES, '2026-10-14')?.game).toBe(306);
+    expect(nextMatch(unplayed, '2026-10-14')?.game).toBe(300);
+    expect(nextMatch(played([300]), '2026-10-14')?.game).toBe(306);
   });
 
   it('skips past games even when their result is missing', () => {
-    expect(nextMatch(MATCHES, '2026-10-23')?.game).toBe(310);
+    expect(nextMatch(unplayed, '2026-10-23')?.game).toBe(310);
+  });
+
+  it('skips games of later days that already have a result', () => {
+    expect(nextMatch(played([306, 304]), '2026-10-20')?.game).toBe(310);
   });
 
   it('is undefined once the season is over', () => {
-    expect(nextMatch(MATCHES, '2027-02-04')).toBeUndefined();
+    expect(nextMatch(unplayed, '2027-02-04')).toBeUndefined();
   });
 });
