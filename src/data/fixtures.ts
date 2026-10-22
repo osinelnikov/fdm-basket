@@ -14,7 +14,7 @@ export const SOURCE = {
 export const TEAMS: Record<TeamId, Team> = {
   'FDM A': { bulletinName: 'Pall. FDM “A”', official: 'ASD Pallacanestro Forte dei Marmi “A”', crest: '/logos/fdm.png', isClubLogo: true, town: 'Forte dei Marmi' },
   'FDM B': { bulletinName: 'Pall. FDM “B”', official: 'ASD Pallacanestro Forte dei Marmi “B”', crest: '/logos/fdm.png', isClubLogo: true, town: 'Forte dei Marmi' },
-  Perignano: { bulletinName: 'ASD Perignano', official: 'ASD Perignano', crest: '/logos/perignano-casciana-terme-lari.png', isClubLogo: false, town: 'Casciana Terme Lari' },
+  Perignano: { bulletinName: 'ASD Perignano', official: 'ASD Perignano', crest: '/logos/perignano.png', isClubLogo: true, town: 'Casciana Terme Lari' },
   'CEFA Castelnuovo': { bulletinName: 'CEFA Castelnuovo', official: 'CEFA Basket Amatori Castelnuovo G.', crest: '/logos/cefa-castelnuovo.jpg', isClubLogo: true, town: 'Castelnuovo di Garfagnana' },
   'San Miniato': { bulletinName: 'Casa Cult. S. Miniato', official: 'Casa Culturale San Miniato', crest: '/logos/san-miniato.png', isClubLogo: true, town: 'San Miniato' },
   Valdera: { bulletinName: 'AB Valdera', official: 'Amatori Basket Valdera', crest: '/logos/valdera.png', isClubLogo: true, town: 'Capannoli' },
