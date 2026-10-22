@@ -19,7 +19,7 @@ export const TEAMS: Record<TeamId, Team> = {
   'San Miniato': { bulletinName: 'Casa Cult. S. Miniato', official: 'Casa Culturale San Miniato', crest: '/logos/san-miniato.png', isClubLogo: true, town: 'San Miniato' },
   Valdera: { bulletinName: 'AB Valdera', official: 'Amatori Basket Valdera', crest: '/logos/valdera.png', isClubLogo: true, town: 'Capannoli' },
   'Pisces Lucca': { bulletinName: 'Pisces Lucca', official: 'Pisces Lucca', crest: '/logos/pisces-lucca.jpg', isClubLogo: true, town: 'Lucca' },
-  'La Perla': { bulletinName: 'Pol. La Perla SMM', official: 'Polisportiva La Perla Santa Maria a Monte', crest: '/logos/la-perla-santa-maria-a-monte.png', isClubLogo: false, town: 'Santa Maria a Monte' },
+  'La Perla': { bulletinName: 'Pol. La Perla SMM', official: 'Polisportiva La Perla Santa Maria a Monte', crest: '/logos/la-perla.png', isClubLogo: true, town: 'Santa Maria a Monte' },
 };
 
 export const FALLBACK_CREST = '/logos/italy.png';
