@@ -30,8 +30,10 @@ Add `result` to the match in `src/data/fixtures.ts`, home team first, then push:
 result: { home: 74, away: 31, periods: [[18, 8], [12, 7], [22, 12], [22, 4]] },
 ```
 
-`periods` lists the four quarters as `[home, away]`, then any overtimes. Tests check that the
-periods add up to the final score and that the game date is not in the future. The card then
+`periods` lists the four quarters as `[home, away]`, then any overtimes. If only the final score is
+known (the bulletin prints final scores only), leave `periods` out: `result: { home: 33, away: 54 }`;
+the card then shows the score without the quarter line. Tests check that the periods, when given, add
+up to the final score and that the game date is not in the future. The card then
 shows the score on the right and a muted "played" style; its links stay active.
 The calendar feed does not include results.
 

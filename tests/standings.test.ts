@@ -3,32 +3,30 @@ import { MATCHES, TEAMS } from '../src/data/fixtures.ts';
 import { STANDINGS } from '../src/data/standings.ts';
 import type { TeamId } from '../src/data/types.ts';
 
-// The table exactly as printed in CU 02 del 17/10/2026, p. 10: [team, PG, PV, PP, CF, CS, DC, Punti].
-const CU02: [TeamId, number, number, number, number, number, number, number][] = [
-  ['FDM A', 1, 1, 0, 74, 31, 43, 2],
-  ['San Miniato', 1, 1, 0, 64, 47, 17, 2],
-  ['La Perla', 1, 1, 0, 54, 42, 12, 2],
-  ['Pisces Lucca', 1, 1, 0, 69, 64, 5, 2],
-  ['CEFA Castelnuovo', 1, 0, 1, 64, 69, -5, 0],
-  ['Perignano', 1, 0, 1, 42, 54, -12, 0],
-  ['Valdera', 1, 0, 1, 47, 64, -17, 0],
-  ['FDM B', 0, 0, 1, 31, 74, -43, 0],
+// The table exactly as printed in CU 03, p. 9: [team, PG, PV, PP, CF, CS, DC, Punti].
+const PRINTED: [TeamId, number, number, number, number, number, number, number][] = [
+  ['FDM A', 2, 2, 0, 128, 64, 64, 4],
+  ['Pisces Lucca', 2, 2, 0, 123, 115, 8, 4],
+  ['San Miniato', 2, 1, 1, 115, 101, 14, 2],
+  ['La Perla', 2, 1, 1, 100, 89, 11, 2],
+  ['Perignano', 2, 1, 1, 109, 106, 3, 2],
+  ['CEFA Castelnuovo', 2, 1, 1, 111, 115, -4, 2],
+  ['Valdera', 2, 0, 2, 80, 118, -38, 0],
+  ['FDM B', 2, 0, 2, 83, 141, -58, 0],
 ];
 
 const rows = STANDINGS.rows;
 const sum = (f: (r: (typeof rows)[number]) => number) => rows.reduce((a, r) => a + f(r), 0);
 
-describe('standings match bulletin CU 02', () => {
+describe('standings match the latest bulletin', () => {
   it('lists the teams in bulletin order', () => {
-    expect(rows.map((r) => r.team)).toEqual(CU02.map(([t]) => t));
+    expect(rows.map((r) => r.team)).toEqual(PRINTED.map(([t]) => t));
   });
 
-  it.each(CU02)('%s has the printed figures (only PG of FDM B corrected)', (team, pg, pv, pp, cf, cs, dc, pts) => {
+  it.each(PRINTED)('%s has the printed figures', (team, pg, pv, pp, cf, cs, dc, pts) => {
     const r = rows.find((x) => x.team === team)!;
-    const printed = { played: pg, won: pv, lost: pp, pointsFor: cf, pointsAgainst: cs, points: pts };
-    const expected = team === 'FDM B' ? { ...printed, played: 1 } : printed;
     expect({ played: r.played, won: r.won, lost: r.lost, pointsFor: r.pointsFor, pointsAgainst: r.pointsAgainst, points: r.points })
-      .toEqual(expected);
+      .toEqual({ played: pg, won: pv, lost: pp, pointsFor: cf, pointsAgainst: cs, points: pts });
     expect(r.pointsFor - r.pointsAgainst).toBe(dc);
   });
 });

@@ -52,7 +52,7 @@ export const it: Messages = {
   tagFinal: 'Finale',
   tagNext: 'Prossima gara',
   periodName: (i) => (i < 4 ? `${i + 1}° quarto` : i === 4 ? 'TS' : `TS${i - 3}`),
-  resultAria: (home, away, hp, ap, periods) => `Risultato finale: ${home} ${hp}, ${away} ${ap}. Parziali: ${periods}.`,
+  resultAria: (home, away, hp, ap, periods) => `Risultato finale: ${home} ${hp}, ${away} ${ap}.${periods ? ` Parziali: ${periods}.` : ''}`,
   vs: 'VS',
   addToGoogle: '📅 Aggiungi a Google Calendar ↗',
   openInMaps: 'Apri in Google Maps ↗',

@@ -41,8 +41,11 @@ export interface MatchResult {
   home: number;
   /** Final points of the away team (Match.away). */
   away: number;
-  /** Points per period as [home, away]: the four quarters, then any overtimes. */
-  periods: [number, number][];
+  /**
+   * Points per period as [home, away]: the four quarters, then any overtimes.
+   * Omit when only the final score is known (the bulletin prints final scores only).
+   */
+  periods?: [number, number][];
 }
 
 export interface Match {

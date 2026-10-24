@@ -132,8 +132,14 @@ describe('results', () => {
     });
   });
 
-  it.each(played.map((m) => [m.game, m] as const))('game %i: periods add up to the final score', (_, m) => {
+  it('records game 304 with the final score only: Valdera 33, FDM A 54 (CU 03)', () => {
+    expect(MATCHES.find((m) => m.game === 304)!.result).toEqual({ home: 33, away: 54 });
+  });
+
+  it.each(played.map((m) => [m.game, m] as const))('game %i: final score is valid, periods (when known) add up to it', (_, m) => {
     const r = m.result!;
+    expect(Number.isInteger(r.home) && r.home >= 0 && Number.isInteger(r.away) && r.away >= 0).toBe(true);
+    if (!r.periods) return;
     expect(r.periods.length).toBeGreaterThanOrEqual(4);
     for (const [h, a] of r.periods) {
       expect(Number.isInteger(h) && h >= 0 && Number.isInteger(a) && a >= 0).toBe(true);

@@ -31,12 +31,13 @@ function resultBlock(m: Match, { lang, t }: ViewContext): string {
   const r = m.result;
   if (!r) return '';
   const cls = (mine: number, theirs: number) => (mine > theirs ? 'win' : mine < theirs ? 'lose' : '');
-  const line = r.periods.map(([h, a], i) => `${i >= 4 ? `${t.periodName(i)} ` : ''}${h}:${a}`).join(' · ');
-  const spoken = r.periods.map(([h, a], i) => `${t.periodName(i)} ${h}–${a}`).join(', ');
+  const periods = r.periods ?? [];
+  const line = periods.map(([h, a], i) => `${i >= 4 ? `${t.periodName(i)} ` : ''}${h}:${a}`).join(' · ');
+  const spoken = periods.map(([h, a], i) => `${t.periodName(i)} ${h}–${a}`).join(', ');
   return `<div class="result">
       <span class="sr-only">${esc(t.resultAria(teamName(m.home, lang), teamName(m.away, lang), r.home, r.away, spoken))}</span>
       <div class="score" aria-hidden="true"><span class="${cls(r.home, r.away)}">${r.home}</span><span class="colon">:</span><span class="${cls(r.away, r.home)}">${r.away}</span></div>
-      <div class="periods" aria-hidden="true">${esc(line)}</div>
+      ${line ? `<div class="periods" aria-hidden="true">${esc(line)}</div>` : ''}
     </div>`;
 }
 

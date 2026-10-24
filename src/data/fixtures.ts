@@ -39,7 +39,8 @@ export const MATCHES: Match[] = [
     result: { home: 74, away: 31, periods: [[18, 8], [12, 7], [22, 12], [22, 4]] } },
   { game: 306, date: '2026-10-21', time: '21:00', home: 'FDM B', away: 'Perignano', venue: 'fdm', sides: ['b'],
     result: { home: 52, away: 67, periods: [[6, 15], [14, 13], [15, 22], [17, 17]] } },
-  { game: 304, date: '2026-10-22', time: '21:30', home: 'Valdera', away: 'FDM A', venue: 'valdera', sides: ['a'] },
+  { game: 304, date: '2026-10-22', time: '21:30', home: 'Valdera', away: 'FDM A', venue: 'valdera', sides: ['a'],
+    result: { home: 33, away: 54 } }, // quarters not known, CU 03 prints the final score only
   { game: 310, date: '2026-10-28', time: '21:00', home: 'FDM A', away: 'Perignano', venue: 'fdm', sides: ['a'] },
   { game: 309, date: '2026-10-29', time: '21:45', home: 'CEFA Castelnuovo', away: 'FDM B', venue: 'cefa', sides: ['b'] },
   { game: 314, date: '2026-11-02', time: '21:30', home: 'Pisces Lucca', away: 'FDM A', venue: 'pisces', sides: ['a'] },

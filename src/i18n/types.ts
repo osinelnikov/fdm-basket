@@ -48,6 +48,7 @@ export interface Messages {
   tagNext: string;
   /** Name of a period by 0-based index: quarters, then overtimes. */
   periodName: (index: number) => string;
+  /** `periods` is empty when only the final score is known. */
   resultAria: (home: string, away: string, homePoints: number, awayPoints: number, periods: string) => string;
   vs: string;
   addToGoogle: string;
