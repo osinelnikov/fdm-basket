@@ -126,18 +126,6 @@ describe('results', () => {
   const played = MATCHES.filter((m) => m.result);
   const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
 
-  it('records game 300 as reported: 74–31, quarters 18–8, 12–7, 22–12, 22–4', () => {
-    expect(MATCHES.find((m) => m.game === 300)!.result).toEqual({
-      home: 74, away: 31, periods: [[18, 8], [12, 7], [22, 12], [22, 4]],
-    });
-  });
-
-  it('records game 304 as reported: 33–54, quarters 6–23, 8–11, 8–10, 11–10', () => {
-    expect(MATCHES.find((m) => m.game === 304)!.result).toEqual({
-      home: 33, away: 54, periods: [[6, 23], [8, 11], [8, 10], [11, 10]],
-    });
-  });
-
   it.each(played.map((m) => [m.game, m] as const))('game %i: final score is valid, periods (when known) add up to it', (_, m) => {
     const r = m.result!;
     expect(Number.isInteger(r.home) && r.home >= 0 && Number.isInteger(r.away) && r.away >= 0).toBe(true);

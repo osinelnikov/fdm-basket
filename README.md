@@ -24,16 +24,17 @@ A failing test stops the build, so a broken schedule is never published.
 
 ## Add a result
 
-Add `result` to the match in `src/data/fixtures.ts`, home team first, then push:
+Add `result` to the match in `src/data/fixtures.ts`, home team first, run `npm run build`, then push:
 
 ```ts
 result: { home: 74, away: 31, periods: [[18, 8], [12, 7], [22, 12], [22, 4]] },
 ```
 
 `periods` lists the four quarters as `[home, away]`, then any overtimes. If only the final score is
-known (the bulletin prints final scores only), leave `periods` out: `result: { home: 33, away: 54 }`;
+known (bulletins print final scores only), leave `periods` out: `result: { home: 33, away: 54 }`;
 the card then shows the score without the quarter line. Tests check that the periods, when given, add
-up to the final score and that the game date is not in the future. The card then
+up to the final score and that the game date is not in the future; they do not pin the scores of
+particular games, so adding quarters later or correcting a score needs no test change. The card then
 shows the score on the right and a muted "played" style; its links stay active.
 The calendar feed does not include results.
 
