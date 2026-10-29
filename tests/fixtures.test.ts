@@ -132,8 +132,10 @@ describe('results', () => {
     });
   });
 
-  it('records game 304 with the final score only: Valdera 33, FDM A 54 (CU 03)', () => {
-    expect(MATCHES.find((m) => m.game === 304)!.result).toEqual({ home: 33, away: 54 });
+  it('records game 304 as reported: 33–54, quarters 6–23, 8–11, 8–10, 11–10', () => {
+    expect(MATCHES.find((m) => m.game === 304)!.result).toEqual({
+      home: 33, away: 54, periods: [[6, 23], [8, 11], [8, 10], [11, 10]],
+    });
   });
 
   it.each(played.map((m) => [m.game, m] as const))('game %i: final score is valid, periods (when known) add up to it', (_, m) => {
