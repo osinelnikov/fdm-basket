@@ -38,6 +38,21 @@ particular games, so adding quarters later or correcting a score needs no test c
 shows the score on the right and a muted "played" style; its links stay active.
 The calendar feed does not include results.
 
+## Add a video or statistics
+
+Once a game has a result, its card can show two icons under the score: the game video on YouTube
+and the statistics PDF. Add either or both to the match in `src/data/fixtures.ts`:
+
+```ts
+video: 'https://www.youtube.com/watch?v=…',
+stats: '/stats/310.pdf',
+```
+
+Put the PDF into `public/stats/` named after the game number (`310.pdf`); it is published with the
+site and downloads from the icon. Tests check that `video` is an https YouTube link (`youtube.com` or
+`youtu.be`), that the PDF exists under that name, and that neither is given for a game without a result.
+Run `npm run build`, then push.
+
 ## Update the standings
 
 The league table comes from the latest UISP bulletin (Serie A/2 girone "Tirreno Nord", "Classifica").

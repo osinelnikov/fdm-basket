@@ -50,6 +50,10 @@ export interface Messages {
   periodName: (index: number) => string;
   /** `periods` is empty when only the final score is known. */
   resultAria: (home: string, away: string, homePoints: number, awayPoints: number, periods: string) => string;
+  /** Label of the YouTube icon of a played game. */
+  watchVideo: (game: number) => string;
+  /** Label of the statistics PDF icon of a played game. */
+  statsPdf: (game: number) => string;
   vs: string;
   addToGoogle: string;
   openInMaps: string;

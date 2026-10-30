@@ -37,11 +37,28 @@ function resultBlock(m: Match, { lang, t }: ViewContext): string {
   return `<div class="result">
       <span class="sr-only">${esc(t.resultAria(teamName(m.home, lang), teamName(m.away, lang), r.home, r.away, spoken))}</span>
       <div class="score" aria-hidden="true"><span class="${cls(r.home, r.away)}">${r.home}</span><span class="colon">:</span><span class="${cls(r.away, r.home)}">${r.away}</span></div>
-      ${line ? `<div class="periods" aria-hidden="true">${esc(line)}</div>` : ''}
+      ${line ? `<div class="periods" aria-hidden="true">${esc(line)}</div>` : ''}${mediaLinks(m, { lang, t })}
     </div>`;
 }
 
-function matchCard(m: Match, ctx: ViewContext, isNext = false): string {
+const YOUTUBE_ICON = '<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="4.5" fill="#ff0033"/><path d="m10 8.8 5.2 3.2-5.2 3.2z" fill="#fff"/></svg>';
+const PDF_ICON = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5"/><text x="12" y="17.6" text-anchor="middle" font-size="6.4" font-weight="800" font-family="system-ui,sans-serif" fill="currentColor" stroke="none">PDF</text></svg>';
+
+/** Icons under the score: the game video on YouTube and the statistics PDF, each only when known. */
+function mediaLinks(m: Match, { t }: ViewContext): string {
+  const out: string[] = [];
+  if (m.video) {
+    const label = esc(t.watchVideo(m.game));
+    out.push(`<a class="media-link yt" href="${esc(m.video)}" target="_blank" rel="noopener noreferrer" aria-label="${label}" title="${label}">${YOUTUBE_ICON}</a>`);
+  }
+  if (m.stats) {
+    const label = esc(t.statsPdf(m.game));
+    out.push(`<a class="media-link pdf" href="${esc(m.stats)}" download aria-label="${label}" title="${label}">${PDF_ICON}</a>`);
+  }
+  return out.length ? `<div class="media">${out.join('')}</div>` : '';
+}
+
+export function matchCard(m: Match, ctx: ViewContext, isNext = false): string {
   const { lang, t } = ctx;
   const v = VENUES[m.venue];
   const date = (opts: Intl.DateTimeFormatOptions) => formatDate(m.date, opts, t.locale);

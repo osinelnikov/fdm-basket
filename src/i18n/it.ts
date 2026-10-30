@@ -53,6 +53,8 @@ export const it: Messages = {
   tagNext: 'Prossima gara',
   periodName: (i) => (i < 4 ? `${i + 1}° quarto` : i === 4 ? 'TS' : `TS${i - 3}`),
   resultAria: (home, away, hp, ap, periods) => `Risultato finale: ${home} ${hp}, ${away} ${ap}.${periods ? ` Parziali: ${periods}.` : ''}`,
+  watchVideo: (n) => `Guarda la gara n° ${n} su YouTube`,
+  statsPdf: (n) => `Statistiche della gara n° ${n} (PDF)`,
   vs: 'VS',
   addToGoogle: '📅 Aggiungi a Google Calendar ↗',
   openInMaps: 'Apri in Google Maps ↗',

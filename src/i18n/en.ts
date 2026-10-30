@@ -52,6 +52,8 @@ export const en: Messages = {
   tagNext: 'Next game',
   periodName: (i) => (i < 4 ? `Q${i + 1}` : i === 4 ? 'OT' : `OT${i - 3}`),
   resultAria: (home, away, hp, ap, periods) => `Final score: ${home} ${hp}, ${away} ${ap}.${periods ? ` By period: ${periods}.` : ''}`,
+  watchVideo: (n) => `Watch game ${n} on YouTube`,
+  statsPdf: (n) => `Statistics of game ${n} (PDF)`,
   vs: 'VS',
   addToGoogle: '📅 Add to Google Calendar ↗',
   openInMaps: 'Open in Google Maps ↗',

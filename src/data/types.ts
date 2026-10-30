@@ -67,6 +67,10 @@ export interface Match {
   revision?: number;
   /** Final score, once the game has been played. */
   result?: MatchResult;
+  /** YouTube link to the recording of the game; only for a game with a result. */
+  video?: string;
+  /** Game statistics PDF, as a path under /public: `/stats/<game>.pdf`; only for a game with a result. */
+  stats?: string;
 }
 
 export interface MonthTheme {

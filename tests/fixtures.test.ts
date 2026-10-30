@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { MATCHES, MONTH_THEMES, TEAMS, VENUES } from '../src/data/fixtures.ts';
 import type { TeamId } from '../src/data/types.ts';
@@ -141,5 +142,24 @@ describe('results', () => {
   it('has results only for games that have already been played', () => {
     const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome' }).format(new Date());
     for (const m of played) expect(m.date <= today, `game ${m.game} on ${m.date}`).toBe(true);
+  });
+});
+
+describe('video and statistics', () => {
+  const YOUTUBE_HOSTS = ['www.youtube.com', 'youtube.com', 'm.youtube.com', 'youtu.be'];
+
+  it('are given only for games with a result', () => {
+    for (const m of MATCHES.filter((x) => x.video || x.stats)) expect(m.result, `game ${m.game}`).toBeDefined();
+  });
+
+  it.each(MATCHES.filter((m) => m.video).map((m) => [m.game, m.video!] as const))('game %i: video is an https YouTube link', (_, video) => {
+    const url = new URL(video);
+    expect(url.protocol).toBe('https:');
+    expect(YOUTUBE_HOSTS).toContain(url.hostname);
+  });
+
+  it.each(MATCHES.filter((m) => m.stats).map((m) => [m.game, m.stats!] as const))('game %i: statistics PDF is in public/stats', (game, stats) => {
+    expect(stats).toBe(`/stats/${game}.pdf`);
+    expect(existsSync(new URL(`../public${stats}`, import.meta.url)), `public${stats}`).toBe(true);
   });
 });
