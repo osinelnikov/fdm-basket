@@ -2,7 +2,7 @@ import { gcalUrl } from '../calendar/gcal.ts';
 import { FALLBACK_CREST, MATCHES, MONTH_THEMES, TEAMS, VENUES } from '../data/fixtures.ts';
 import type { Match, TeamId } from '../data/types.ts';
 import { type Filter, isAway, mapsUrl, matchesFilter, monthKey, nextMatch } from '../domain.ts';
-import { teamName } from '../i18n/index.ts';
+import { teamName } from '../i18n';
 import type { ViewContext } from './context.ts';
 import { capitalize, esc, formatDate, romeToday } from './format.ts';
 import { readCollapsed, writeCollapsed } from './storage.ts';
@@ -14,9 +14,12 @@ function crest(team: TeamId, { lang, t }: ViewContext): string {
   return `<span class="crest"><img src="${info.crest}" alt="${esc(alt)}" title="${esc(info.official)}" width="32" height="32" loading="lazy"></span>`;
 }
 
-function tags(m: Match, { t }: ViewContext, isNext: boolean): string {
+const nextTag = ({ t }: ViewContext): string => `<span class="tag next">${esc(t.tagNext)}</span>`;
+
+function tags(m: Match, ctx: ViewContext, isNext: boolean): string {
+  const { t } = ctx;
   const out: string[] = [];
-  if (isNext) out.push(`<span class="tag next">${esc(t.tagNext)}</span>`);
+  if (isNext) out.push(nextTag(ctx));
   if (m.sides.includes('b')) out.push(`<span class="tag b">${esc(t.tagB)}</span>`);
   if (m.sides.includes('a')) out.push(`<span class="tag a">${esc(t.tagA)}</span>`);
   out.push(isAway(m) ? `<span class="tag away">${esc(t.tagAway)}</span>` : `<span class="tag home">${esc(t.tagHome)}</span>`);
@@ -76,9 +79,11 @@ const CHEVRON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" str
 
 const installed = new WeakSet<HTMLElement>();
 
-/** Renders the month blocks. Safe to call again when the language changes. */
+/**
+ * Renders the month blocks. Safe to call again when the language changes.
+ * The next game is marked by applyFilter, which must follow.
+ */
 export function renderMatches(root: HTMLElement, ctx: ViewContext): void {
-  const next = nextMatch(MATCHES, romeToday())?.game;
   const byMonth = new Map<string, Match[]>();
   for (const m of MATCHES) byMonth.set(monthKey(m), [...(byMonth.get(monthKey(m)) ?? []), m]);
 
@@ -92,7 +97,7 @@ export function renderMatches(root: HTMLElement, ctx: ViewContext): void {
         <span class="month-count"><b class="mc-games"></b><b class="mc-away"></b></span>
         <span class="month-chevron">${CHEVRON}</span>
       </summary>
-      <div class="month-body">${games.map((m) => matchCard(m, ctx, m.game === next)).join('')}</div>
+      <div class="month-body">${games.map((m) => matchCard(m, ctx)).join('')}</div>
     </details>`;
   }).join('');
 
@@ -131,10 +136,18 @@ export function setAllMonths(root: HTMLElement, open: boolean): void {
   saveMonthState(root);
 }
 
-export function applyFilter(root: HTMLElement, f: Filter, { t }: ViewContext): void {
+/** Shows the games of the filter and marks the next game among them. */
+export function applyFilter(root: HTMLElement, f: Filter, ctx: ViewContext): void {
+  const { t } = ctx;
+  const next = nextMatch(MATCHES, romeToday(), f)?.game;
   for (const el of root.querySelectorAll<HTMLElement>('.match')) {
     const m = MATCHES.find((x) => x.game === Number(el.dataset.game))!;
     el.hidden = !matchesFilter(m, f);
+    const isNext = m.game === next;
+    if (el.classList.contains('next') === isNext) continue;
+    el.classList.toggle('next', isNext);
+    if (isNext) el.querySelector('.tags')!.insertAdjacentHTML('afterbegin', nextTag(ctx));
+    else el.querySelector('.tag.next')?.remove();
   }
   for (const d of months(root)) {
     const games = MATCHES.filter((m) => monthKey(m) === d.dataset.key && matchesFilter(m, f));

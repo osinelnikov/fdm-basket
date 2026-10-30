@@ -70,4 +70,31 @@ describe('next game', () => {
   it('is undefined once the season is over', () => {
     expect(nextMatch(unplayed, '2027-02-04')).toBeUndefined();
   });
+
+  it('is the first game the filter shows, skipping the ones it hides', () => {
+    expect(nextMatch(unplayed, '2026-10-20')?.game).toBe(306);
+    expect(nextMatch(unplayed, '2026-10-20', 'b')?.game).toBe(306);
+    expect(nextMatch(unplayed, '2026-10-20', 'a')?.game).toBe(304);
+    expect(nextMatch(unplayed, '2026-10-20', 'away')?.game).toBe(304);
+  });
+
+  it('counts a derby for both teams but not as an away game', () => {
+    expect(nextMatch(unplayed, '2026-10-11', 'a')?.game).toBe(300);
+    expect(nextMatch(unplayed, '2026-10-11', 'b')?.game).toBe(300);
+    expect(nextMatch(unplayed, '2026-10-11', 'away')?.game).toBe(304);
+  });
+
+  it('skips played games within the filter', () => {
+    expect(nextMatch(played([304]), '2026-10-20', 'away')?.game).toBe(309);
+  });
+
+  it('matches the unfiltered next game for "all"', () => {
+    const games = played([306]);
+    expect(nextMatch(games, '2026-10-20', 'all')).toBe(nextMatch(games, '2026-10-20'));
+  });
+
+  it('is undefined when the filter has no games left', () => {
+    expect(nextMatch(unplayed, '2027-02-03')?.game).toBe(425);
+    expect(nextMatch(unplayed, '2027-02-03', 'a')).toBeUndefined();
+  });
 });
