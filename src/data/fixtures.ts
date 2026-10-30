@@ -43,7 +43,9 @@ export const MATCHES: Match[] = [
     result: { home: 33, away: 54, periods: [[6, 23], [8, 11], [8, 10], [11, 10]] } },
   { game: 310, date: '2026-10-28', time: '21:00', home: 'FDM A', away: 'Perignano', venue: 'fdm', sides: ['a'],
     result: { home: 72, away: 57, periods: [[16, 13], [23, 15], [19, 13], [14, 16]] } },
-  { game: 309, date: '2026-10-29', time: '21:45', home: 'CEFA Castelnuovo', away: 'FDM B', venue: 'cefa', sides: ['b'] },
+  { game: 309, date: '2026-10-29', time: '21:45', home: 'CEFA Castelnuovo', away: 'FDM B', venue: 'cefa', sides: ['b'],
+    result: { home: 69, away: 33, periods: [[22, 8], [11, 5], [24, 10], [12, 10]] }
+  },
   { game: 314, date: '2026-11-02', time: '21:30', home: 'Pisces Lucca', away: 'FDM A', venue: 'pisces', sides: ['a'] },
   { game: 315, date: '2026-11-04', time: '21:00', home: 'FDM B', away: 'San Miniato', venue: 'fdm', sides: ['b'] },
   { game: 317, date: '2026-11-11', time: '21:00', home: 'FDM A', away: 'CEFA Castelnuovo', venue: 'fdm', sides: ['a'] },
