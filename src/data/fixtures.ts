@@ -43,7 +43,8 @@ export const MATCHES: Match[] = [
   { game: 304, date: '2026-10-22', time: '21:30', home: 'Valdera', away: 'FDM A', venue: 'valdera', sides: ['a'],
     result: { home: 33, away: 54, periods: [[6, 23], [8, 11], [8, 10], [11, 10]] } },
   { game: 310, date: '2026-10-28', time: '21:00', home: 'FDM A', away: 'Perignano', venue: 'fdm', sides: ['a'],
-    result: { home: 72, away: 57, periods: [[16, 13], [23, 15], [19, 13], [14, 16]] } },
+    result: { home: 72, away: 57, periods: [[16, 13], [23, 15], [19, 13], [14, 16]] },
+    video: 'https://youtu.be/Oz_boF16vpA', stats: '/stats/310.pdf' },
   { game: 309, date: '2026-10-29', time: '21:45', home: 'CEFA Castelnuovo', away: 'FDM B', venue: 'cefa', sides: ['b'],
     result: { home: 69, away: 33, periods: [[22, 8], [11, 5], [24, 10], [12, 10]] }
   },
