@@ -3,16 +3,16 @@ import { MATCHES, TEAMS } from '../src/data/fixtures.ts';
 import { STANDINGS } from '../src/data/standings.ts';
 import type { TeamId } from '../src/data/types.ts';
 
-// The table exactly as printed in CU 03, p. 9: [team, PG, PV, PP, CF, CS, DC, Punti].
+// The table exactly as printed in CU 04: [team, PG, PV, PP, CF, CS, DC, Punti].
 const PRINTED: [TeamId, number, number, number, number, number, number, number][] = [
-  ['FDM A', 2, 2, 0, 128, 64, 64, 4],
-  ['Pisces Lucca', 2, 2, 0, 123, 115, 8, 4],
-  ['San Miniato', 2, 1, 1, 115, 101, 14, 2],
-  ['La Perla', 2, 1, 1, 100, 89, 11, 2],
-  ['Perignano', 2, 1, 1, 109, 106, 3, 2],
-  ['CEFA Castelnuovo', 2, 1, 1, 111, 115, -4, 2],
-  ['Valdera', 2, 0, 2, 80, 118, -38, 0],
-  ['FDM B', 2, 0, 2, 83, 141, -58, 0],
+  ['FDM A', 3, 3, 0, 200, 121, 79, 6],
+  ['Pisces Lucca', 3, 3, 0, 173, 145, 28, 6],
+  ['CEFA Castelnuovo', 3, 2, 1, 180, 148, 32, 4],
+  ['San Miniato', 3, 2, 1, 170, 154, 16, 4],
+  ['La Perla', 3, 1, 2, 153, 144, 9, 2],
+  ['Perignano', 3, 1, 2, 166, 178, -12, 2],
+  ['Valdera', 3, 0, 3, 110, 168, -58, 0],
+  ['FDM B', 3, 0, 3, 116, 210, -94, 0],
 ];
 
 const rows = STANDINGS.rows;
