@@ -8,6 +8,7 @@
     "dev": "vite",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
+    "boxscore": "node scripts/boxscore-from-pdf.mjs",
     "build": "tsc --noEmit && vitest run && vite build",
     "preview": "vite preview"
   },
@@ -17,6 +18,7 @@
   "devDependencies": {
     "@types/leaflet": "1.9.22",
     "@types/node": "20.19.43",
+    "pdfjs-dist": "6.4.299",
     "typescript": "7.0.2",
     "vite": "8.3.1",
     "vitest": "4.1.11"

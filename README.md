@@ -49,8 +49,21 @@ stats: '/stats/310.pdf',
 ```
 
 Put the PDF into `public/stats/` named after the game number (`310.pdf`); it is published with the
-site and downloads from the icon. Tests check that `video` is an https YouTube link (`youtube.com` or
-`youtu.be`), that the PDF exists under that name, and that neither is given for a game without a result.
+site. Tests check that `video` is an https YouTube link (`youtube.com` or `youtu.be`), that the PDF
+exists under that name, and that neither is given for a game without a result.
+
+Then turn the PDF into a box score (Node 22.13 or newer):
+
+```bash
+npm run boxscore -- public/stats/310.pdf
+```
+
+It writes `src/data/boxscores/310.json`. The statistics icon then opens a box score dialog with both
+teams' player tables (the PDF stays downloadable from it), and `/#box-310` opens it directly; a game
+with a PDF but no box score keeps the PDF download icon. The script reads the PDF of the scoring program
+("Tabellino dettagliato", one page per team, home first) and stops without writing anything when the
+layout is not what it expects. Tests check that each box score belongs to a played game with its PDF,
+that totals and quarters agree with `result`, and that players, team row, totals and periods add up.
 Run `npm run build`, then push.
 
 ## Update the standings

@@ -1,18 +1,13 @@
 import { gcalUrl } from '../calendar/gcal.ts';
-import { FALLBACK_CREST, MATCHES, MONTH_THEMES, TEAMS, VENUES } from '../data/fixtures.ts';
-import type { Match, TeamId } from '../data/types.ts';
+import { FALLBACK_CREST, MATCHES, MONTH_THEMES, VENUES } from '../data/fixtures.ts';
+import type { Match } from '../data/types.ts';
 import { type Filter, isAway, mapsUrl, matchesFilter, monthKey, nextMatch } from '../domain.ts';
 import { teamName } from '../i18n';
+import { hasBoxScore } from './boxscore.ts';
 import type { ViewContext } from './context.ts';
+import { crest } from './crest.ts';
 import { capitalize, esc, formatDate, romeToday } from './format.ts';
 import { readCollapsed, writeCollapsed } from './storage.ts';
-
-function crest(team: TeamId, { lang, t }: ViewContext): string {
-  const info = TEAMS[team];
-  const name = teamName(team, lang);
-  const alt = info.isClubLogo ? t.crestAltLogo(name) : t.crestAltArms(name, info.town);
-  return `<span class="crest"><img src="${info.crest}" alt="${esc(alt)}" title="${esc(info.official)}" width="32" height="32" loading="lazy"></span>`;
-}
 
 const nextTag = ({ t }: ViewContext): string => `<span class="tag next">${esc(t.tagNext)}</span>`;
 
@@ -47,14 +42,19 @@ function resultBlock(m: Match, { lang, t }: ViewContext): string {
 const YOUTUBE_ICON = '<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="4.5" fill="#ff0033"/><path d="m10 8.8 5.2 3.2-5.2 3.2z" fill="#fff"/></svg>';
 const PDF_ICON = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5"/><text x="12" y="17.6" text-anchor="middle" font-size="6.4" font-weight="800" font-family="system-ui,sans-serif" fill="currentColor" stroke="none">PDF</text></svg>';
 
-/** Icons under the score: the game video on YouTube and the statistics PDF, each only when known. */
+const STATS_ICON = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M3.5 14.5h17M9.2 9.5v10M14.8 9.5v10"/></svg>';
+
+/** Icons under the score: the game video on YouTube and the statistics, each only when known. */
 function mediaLinks(m: Match, { t }: ViewContext): string {
   const out: string[] = [];
   if (m.video) {
     const label = esc(t.watchVideo(m.game));
     out.push(`<a class="media-link yt" href="${esc(m.video)}" target="_blank" rel="noopener noreferrer" aria-label="${label}" title="${label}">${YOUTUBE_ICON}</a>`);
   }
-  if (m.stats) {
+  if (m.stats && hasBoxScore(m.game)) {
+    const label = esc(t.openBoxScore(m.game));
+    out.push(`<button type="button" class="media-link box" data-boxscore="${m.game}" aria-haspopup="dialog" aria-label="${label}" title="${label}">${STATS_ICON}</button>`);
+  } else if (m.stats) {
     const label = esc(t.statsPdf(m.game));
     out.push(`<a class="media-link pdf" href="${esc(m.stats)}" download aria-label="${label}" title="${label}">${PDF_ICON}</a>`);
   }

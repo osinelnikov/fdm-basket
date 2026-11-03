@@ -21,17 +21,26 @@ describe('video and statistics icons on a match card', () => {
     expect(html).not.toContain('class="media-link pdf"');
   });
 
-  it('offers the statistics PDF as a download, labelled in the page language', () => {
+  it('opens the box score dialog from a game that has one, labelled in the page language', () => {
     const html = matchCard({ ...base, stats: '/stats/310.pdf' }, itCtx);
-    expect(html).toContain('href="/stats/310.pdf" download');
-    expect(html).toContain('aria-label="Statistiche della gara n° 310 (PDF)"');
+    expect(html).toContain('<button type="button" class="media-link box" data-boxscore="310" aria-haspopup="dialog"');
+    expect(html).toContain('aria-label="Tabellino della gara n° 310"');
+    expect(html).not.toContain('download');
+    expect(html).not.toContain('class="media-link pdf"');
     expect(html).not.toContain('class="media-link yt"');
+  });
+
+  it('falls back to the PDF download when no box score data exists for the game', () => {
+    const html = matchCard({ ...base, game: 999, stats: '/stats/999.pdf' }, itCtx);
+    expect(html).toContain('href="/stats/999.pdf" download');
+    expect(html).toContain('aria-label="Statistiche della gara n° 999 (PDF)"');
+    expect(html).not.toContain('data-boxscore');
   });
 
   it('shows both icons, video first', () => {
     const html = matchCard({ ...base, video: 'https://www.youtube.com/watch?v=abc123', stats: '/stats/310.pdf' }, enCtx);
     expect(html.indexOf('media-link yt')).toBeGreaterThan(-1);
-    expect(html.indexOf('media-link yt')).toBeLessThan(html.indexOf('media-link pdf'));
+    expect(html.indexOf('media-link yt')).toBeLessThan(html.indexOf('media-link box'));
   });
 
   it('escapes the link', () => {

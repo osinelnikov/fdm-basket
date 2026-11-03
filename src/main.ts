@@ -2,6 +2,7 @@ import './styles.css';
 import { MATCHES } from './data/fixtures.ts';
 import { type Filter, isAway } from './domain.ts';
 import { type Lang, MESSAGES, resolveLang } from './i18n/index.ts';
+import { openBoxScore, syncBoxScoreWithHash } from './ui/boxscore.ts';
 import { resetCalendarStatus, setupCalendarCard } from './ui/calendar.ts';
 import type { ViewContext } from './ui/context.ts';
 import { applyStaticTexts, renderLangSwitch } from './ui/i18n-dom.ts';
@@ -57,6 +58,10 @@ function setLang(lang: Lang): void {
 for (const b of document.querySelectorAll<HTMLButtonElement>('[data-filter]')) {
   b.addEventListener('click', () => withSmoothTransition(() => select(b.dataset.filter as Filter)));
 }
+root.addEventListener('click', (e) => {
+  const trigger = e.target instanceof Element ? e.target.closest<HTMLButtonElement>('button[data-boxscore]') : null;
+  if (trigger) void openBoxScore(Number(trigger.dataset.boxscore), context(), trigger);
+});
 document.querySelector('#expand-all')!.addEventListener('click', () => setAllMonths(root, true));
 document.querySelector('#collapse-all')!.addEventListener('click', () => setAllMonths(root, false));
 
@@ -66,3 +71,10 @@ renderStandings(standingsTable, standingsSource, context());
 renderMatches(root, context());
 select('all');
 setupCalendarCard(context);
+
+// A shared link such as /#box-310 opens that game's box score; an address that no longer names it closes the dialog.
+function openFromHash(): void {
+  syncBoxScoreWithHash(location.hash, context());
+}
+window.addEventListener('hashchange', openFromHash);
+openFromHash();

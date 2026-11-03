@@ -2,6 +2,12 @@ export type Lang = 'en' | 'it';
 
 export type StandingsColumn = 'pos' | 'team' | 'played' | 'won' | 'lost' | 'pointsFor' | 'pointsAgainst' | 'diff' | 'points';
 
+export type BoxColumn =
+  | 'no' | 'player' | 'min' | 'pts' | 'fg2' | 'fg2p' | 'fg3' | 'fg3p' | 'fg' | 'fgp' | 'ft' | 'ftp'
+  | 'oreb' | 'dreb' | 'reb' | 'ast' | 'stl' | 'tov' | 'blk' | 'blkAgainst' | 'pf' | 'fd' | 'eff' | 'plusMinus';
+
+export type BoxExtra = 'pointsOffTurnovers' | 'fastBreak' | 'secondChance' | 'paint' | 'starters' | 'bench';
+
 /** Order of the buttons in the language switch. */
 export const LANGS: readonly Lang[] = ['it', 'en'];
 
@@ -54,6 +60,32 @@ export interface Messages {
   watchVideo: (game: number) => string;
   /** Label of the statistics PDF icon of a played game. */
   statsPdf: (game: number) => string;
+  /** Label of the statistics icon that opens the box score of a played game. */
+  openBoxScore: (game: number) => string;
+  boxScoreTitle: (game: number) => string;
+  boxClose: string;
+  boxLoading: string;
+  boxError: string;
+  boxReferees: string;
+  boxSpectators: string;
+  /** Caption of the points-per-period table. */
+  boxByPeriod: string;
+  boxTotal: string;
+  /** Accessible name of the team switch. */
+  boxTeamsAria: string;
+  boxTableCaption: (team: string) => string;
+  /** [column heading, full name for the tooltip] */
+  boxColumns: Record<BoxColumn, [string, string]>;
+  /** Row of the counting stats credited to the team rather than to a player. */
+  boxTeamRow: string;
+  boxTotals: string;
+  /** Meaning of the mark before a starter's name. */
+  boxStarter: string;
+  boxCaptain: string;
+  /** Cell of a player who was listed but did not enter the game. */
+  boxDnp: string;
+  boxDnpTitle: string;
+  boxExtras: Record<BoxExtra, string>;
   vs: string;
   addToGoogle: string;
   openInMaps: string;

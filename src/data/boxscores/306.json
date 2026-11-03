@@ -1,0 +1,1243 @@
+{
+  "game": 306,
+  "referees": [
+    "Mancini Mancini (ITA)"
+  ],
+  "spectators": 10,
+  "home": {
+    "players": [
+      {
+        "no": "4",
+        "name": "S Arrigo",
+        "starter": false,
+        "captain": false
+      },
+      {
+        "no": "5",
+        "name": "F Fruzzetti",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "24:29",
+          "pts": 8,
+          "fg2": {
+            "made": 3,
+            "att": 10
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 3,
+            "att": 10
+          },
+          "ft": {
+            "made": 2,
+            "att": 2
+          },
+          "oreb": 1,
+          "dreb": 4,
+          "reb": 5,
+          "pf": 1,
+          "fd": 1,
+          "stl": 4,
+          "tov": 5,
+          "ast": 4,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 9,
+          "plusMinus": -6
+        }
+      },
+      {
+        "no": "7",
+        "name": "A Batyna",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "23:38",
+          "pts": 11,
+          "fg2": {
+            "made": 1,
+            "att": 4
+          },
+          "fg3": {
+            "made": 3,
+            "att": 10
+          },
+          "fg": {
+            "made": 4,
+            "att": 14
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 1,
+          "dreb": 6,
+          "reb": 7,
+          "pf": 3,
+          "fd": 2,
+          "stl": 0,
+          "tov": 2,
+          "ast": 2,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 8,
+          "plusMinus": -9
+        }
+      },
+      {
+        "no": "10",
+        "name": "F Lupo",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "27:23",
+          "pts": 14,
+          "fg2": {
+            "made": 5,
+            "att": 12
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 5,
+            "att": 12
+          },
+          "ft": {
+            "made": 4,
+            "att": 7
+          },
+          "oreb": 8,
+          "dreb": 9,
+          "reb": 17,
+          "pf": 4,
+          "fd": 9,
+          "stl": 1,
+          "tov": 0,
+          "ast": 0,
+          "blk": 1,
+          "blkAgainst": 0,
+          "eff": 23,
+          "plusMinus": -1
+        }
+      },
+      {
+        "no": "14",
+        "name": "O Sinelnikov",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "12:23",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 2
+          },
+          "fg3": {
+            "made": 0,
+            "att": 1
+          },
+          "fg": {
+            "made": 0,
+            "att": 3
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 1,
+          "reb": 1,
+          "pf": 0,
+          "fd": 0,
+          "stl": 0,
+          "tov": 0,
+          "ast": 1,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": -1,
+          "plusMinus": -13
+        }
+      },
+      {
+        "no": "19",
+        "name": "L Vezzoni",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "11:06",
+          "pts": 3,
+          "fg2": {
+            "made": 0,
+            "att": 1
+          },
+          "fg3": {
+            "made": 1,
+            "att": 2
+          },
+          "fg": {
+            "made": 1,
+            "att": 3
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 0,
+          "reb": 0,
+          "pf": 2,
+          "fd": 2,
+          "stl": 0,
+          "tov": 0,
+          "ast": 1,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 2,
+          "plusMinus": 4
+        }
+      },
+      {
+        "no": "25",
+        "name": "G Balderi",
+        "starter": true,
+        "captain": true,
+        "stats": {
+          "min": "25:35",
+          "pts": 2,
+          "fg2": {
+            "made": 1,
+            "att": 2
+          },
+          "fg3": {
+            "made": 0,
+            "att": 3
+          },
+          "fg": {
+            "made": 1,
+            "att": 5
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 1,
+          "dreb": 2,
+          "reb": 3,
+          "pf": 4,
+          "fd": 0,
+          "stl": 1,
+          "tov": 3,
+          "ast": 2,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 1,
+          "plusMinus": -14
+        }
+      },
+      {
+        "no": "27",
+        "name": "D Franchi",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "16:42",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 3
+          },
+          "fg3": {
+            "made": 0,
+            "att": 1
+          },
+          "fg": {
+            "made": 0,
+            "att": 4
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 3,
+          "reb": 3,
+          "pf": 1,
+          "fd": 1,
+          "stl": 0,
+          "tov": 3,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": -4,
+          "plusMinus": -9
+        }
+      },
+      {
+        "no": "28",
+        "name": "E Lorenzetti",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "11:29",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 4
+          },
+          "fg3": {
+            "made": 0,
+            "att": 1
+          },
+          "fg": {
+            "made": 0,
+            "att": 5
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 3,
+          "reb": 3,
+          "pf": 1,
+          "fd": 0,
+          "stl": 1,
+          "tov": 0,
+          "ast": 1,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 0,
+          "plusMinus": -10
+        }
+      },
+      {
+        "no": "36",
+        "name": "M Angelotti",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "10:28",
+          "pts": 9,
+          "fg2": {
+            "made": 3,
+            "att": 5
+          },
+          "fg3": {
+            "made": 1,
+            "att": 3
+          },
+          "fg": {
+            "made": 4,
+            "att": 8
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 1,
+          "reb": 1,
+          "pf": 0,
+          "fd": 1,
+          "stl": 0,
+          "tov": 4,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 2,
+          "plusMinus": -4
+        }
+      },
+      {
+        "no": "97",
+        "name": "C Sansaric",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "23:18",
+          "pts": 1,
+          "fg2": {
+            "made": 0,
+            "att": 3
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 0,
+            "att": 3
+          },
+          "ft": {
+            "made": 1,
+            "att": 4
+          },
+          "oreb": 2,
+          "dreb": 4,
+          "reb": 6,
+          "pf": 2,
+          "fd": 2,
+          "stl": 1,
+          "tov": 1,
+          "ast": 0,
+          "blk": 2,
+          "blkAgainst": 0,
+          "eff": 3,
+          "plusMinus": -9
+        }
+      },
+      {
+        "no": "99",
+        "name": "A Angelotti",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "13:30",
+          "pts": 4,
+          "fg2": {
+            "made": 2,
+            "att": 5
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 2,
+            "att": 5
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 1,
+          "reb": 1,
+          "pf": 0,
+          "fd": 0,
+          "stl": 0,
+          "tov": 0,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 2,
+          "plusMinus": -4
+        }
+      }
+    ],
+    "team": {
+      "oreb": 0,
+      "dreb": 0,
+      "reb": 0,
+      "pf": 0,
+      "tov": 0
+    },
+    "totals": {
+      "min": "200:00",
+      "pts": 52,
+      "fg2": {
+        "made": 15,
+        "att": 51
+      },
+      "fg3": {
+        "made": 5,
+        "att": 21
+      },
+      "fg": {
+        "made": 20,
+        "att": 72
+      },
+      "ft": {
+        "made": 7,
+        "att": 13
+      },
+      "oreb": 13,
+      "dreb": 34,
+      "reb": 47,
+      "pf": 18,
+      "fd": 18,
+      "stl": 8,
+      "tov": 18,
+      "ast": 11,
+      "blk": 3,
+      "blkAgainst": 0,
+      "eff": 45,
+      "plusMinus": -15
+    },
+    "periods": [
+      {
+        "min": "50:00",
+        "pts": 6,
+        "fg2": {
+          "made": 0,
+          "att": 10
+        },
+        "fg3": {
+          "made": 2,
+          "att": 9
+        },
+        "fg": {
+          "made": 2,
+          "att": 19
+        },
+        "ft": {
+          "made": 0,
+          "att": 0
+        },
+        "oreb": 5,
+        "dreb": 7,
+        "reb": 12,
+        "pf": 6,
+        "fd": 2,
+        "stl": 0,
+        "tov": 3,
+        "ast": 2,
+        "blk": 0,
+        "blkAgainst": 0,
+        "eff": 0,
+        "plusMinus": -9
+      },
+      {
+        "min": "50:00",
+        "pts": 14,
+        "fg2": {
+          "made": 5,
+          "att": 17
+        },
+        "fg3": {
+          "made": 1,
+          "att": 3
+        },
+        "fg": {
+          "made": 6,
+          "att": 20
+        },
+        "ft": {
+          "made": 1,
+          "att": 1
+        },
+        "oreb": 2,
+        "dreb": 7,
+        "reb": 9,
+        "pf": 5,
+        "fd": 5,
+        "stl": 5,
+        "tov": 7,
+        "ast": 3,
+        "blk": 1,
+        "blkAgainst": 0,
+        "eff": 11,
+        "plusMinus": 1
+      },
+      {
+        "min": "50:00",
+        "pts": 15,
+        "fg2": {
+          "made": 7,
+          "att": 14
+        },
+        "fg3": {
+          "made": 0,
+          "att": 5
+        },
+        "fg": {
+          "made": 7,
+          "att": 19
+        },
+        "ft": {
+          "made": 1,
+          "att": 4
+        },
+        "oreb": 4,
+        "dreb": 10,
+        "reb": 14,
+        "pf": 1,
+        "fd": 6,
+        "stl": 2,
+        "tov": 4,
+        "ast": 3,
+        "blk": 1,
+        "blkAgainst": 0,
+        "eff": 16,
+        "plusMinus": -7
+      },
+      {
+        "min": "50:00",
+        "pts": 17,
+        "fg2": {
+          "made": 3,
+          "att": 10
+        },
+        "fg3": {
+          "made": 2,
+          "att": 4
+        },
+        "fg": {
+          "made": 5,
+          "att": 14
+        },
+        "ft": {
+          "made": 5,
+          "att": 8
+        },
+        "oreb": 2,
+        "dreb": 10,
+        "reb": 12,
+        "pf": 6,
+        "fd": 5,
+        "stl": 1,
+        "tov": 4,
+        "ast": 3,
+        "blk": 1,
+        "blkAgainst": 0,
+        "eff": 18,
+        "plusMinus": 0
+      }
+    ],
+    "running": [
+      3,
+      6,
+      18,
+      20,
+      26,
+      35,
+      47,
+      52
+    ],
+    "extras": {
+      "pointsOffTurnovers": 10,
+      "fastBreak": 7,
+      "secondChance": 6,
+      "paint": 24,
+      "starters": {
+        "pts": 39,
+        "reb": 33
+      },
+      "bench": {
+        "pts": 13,
+        "reb": 14
+      }
+    }
+  },
+  "away": {
+    "players": [
+      {
+        "no": "3",
+        "name": "L Cervoni",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "23:54",
+          "pts": 11,
+          "fg2": {
+            "made": 4,
+            "att": 6
+          },
+          "fg3": {
+            "made": 1,
+            "att": 3
+          },
+          "fg": {
+            "made": 5,
+            "att": 9
+          },
+          "ft": {
+            "made": 0,
+            "att": 1
+          },
+          "oreb": 1,
+          "dreb": 3,
+          "reb": 4,
+          "pf": 3,
+          "fd": 1,
+          "stl": 2,
+          "tov": 2,
+          "ast": 3,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 13,
+          "plusMinus": 21
+        }
+      },
+      {
+        "no": "4",
+        "name": "F Bricone",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "20:49",
+          "pts": 5,
+          "fg2": {
+            "made": 1,
+            "att": 3
+          },
+          "fg3": {
+            "made": 1,
+            "att": 5
+          },
+          "fg": {
+            "made": 2,
+            "att": 8
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 2,
+          "reb": 2,
+          "pf": 0,
+          "fd": 1,
+          "stl": 0,
+          "tov": 0,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 1,
+          "plusMinus": 6
+        }
+      },
+      {
+        "no": "6",
+        "name": "F Franceschi",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "19:17",
+          "pts": 3,
+          "fg2": {
+            "made": 0,
+            "att": 3
+          },
+          "fg3": {
+            "made": 1,
+            "att": 1
+          },
+          "fg": {
+            "made": 1,
+            "att": 4
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 0,
+          "reb": 0,
+          "pf": 2,
+          "fd": 0,
+          "stl": 2,
+          "tov": 3,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": -1,
+          "plusMinus": -4
+        }
+      },
+      {
+        "no": "8",
+        "name": "G Tsolani",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "04:44",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 1
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 0,
+            "att": 1
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 0,
+          "reb": 0,
+          "pf": 4,
+          "fd": 0,
+          "stl": 0,
+          "tov": 1,
+          "ast": 1,
+          "blk": 0,
+          "blkAgainst": 1,
+          "eff": -1,
+          "plusMinus": -6
+        }
+      },
+      {
+        "no": "9",
+        "name": "A Poggi",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "07:15",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 0
+          },
+          "fg3": {
+            "made": 0,
+            "att": 1
+          },
+          "fg": {
+            "made": 0,
+            "att": 1
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 1,
+          "reb": 1,
+          "pf": 0,
+          "fd": 0,
+          "stl": 0,
+          "tov": 0,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 0,
+          "plusMinus": -10
+        }
+      },
+      {
+        "no": "10",
+        "name": "A Dinuccci",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "14:33",
+          "pts": 4,
+          "fg2": {
+            "made": 0,
+            "att": 1
+          },
+          "fg3": {
+            "made": 1,
+            "att": 4
+          },
+          "fg": {
+            "made": 1,
+            "att": 5
+          },
+          "ft": {
+            "made": 1,
+            "att": 2
+          },
+          "oreb": 1,
+          "dreb": 0,
+          "reb": 1,
+          "pf": 0,
+          "fd": 2,
+          "stl": 0,
+          "tov": 1,
+          "ast": 1,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 0,
+          "plusMinus": 9
+        }
+      },
+      {
+        "no": "11",
+        "name": "A Michelangeli",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "12:49",
+          "pts": 4,
+          "fg2": {
+            "made": 2,
+            "att": 8
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 2,
+            "att": 8
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 4,
+          "dreb": 0,
+          "reb": 4,
+          "pf": 2,
+          "fd": 0,
+          "stl": 0,
+          "tov": 1,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 1,
+          "eff": 1,
+          "plusMinus": 3
+        }
+      },
+      {
+        "no": "13",
+        "name": "D Calo",
+        "starter": true,
+        "captain": true,
+        "stats": {
+          "min": "34:02",
+          "pts": 18,
+          "fg2": {
+            "made": 4,
+            "att": 7
+          },
+          "fg3": {
+            "made": 2,
+            "att": 8
+          },
+          "fg": {
+            "made": 6,
+            "att": 15
+          },
+          "ft": {
+            "made": 4,
+            "att": 5
+          },
+          "oreb": 2,
+          "dreb": 9,
+          "reb": 11,
+          "pf": 2,
+          "fd": 4,
+          "stl": 3,
+          "tov": 5,
+          "ast": 2,
+          "blk": 0,
+          "blkAgainst": 1,
+          "eff": 19,
+          "plusMinus": 28
+        }
+      },
+      {
+        "no": "18",
+        "name": "M Baldi",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "31:44",
+          "pts": 11,
+          "fg2": {
+            "made": 5,
+            "att": 5
+          },
+          "fg3": {
+            "made": 0,
+            "att": 2
+          },
+          "fg": {
+            "made": 5,
+            "att": 7
+          },
+          "ft": {
+            "made": 1,
+            "att": 5
+          },
+          "oreb": 4,
+          "dreb": 16,
+          "reb": 20,
+          "pf": 4,
+          "fd": 4,
+          "stl": 0,
+          "tov": 0,
+          "ast": 2,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 27,
+          "plusMinus": 10
+        }
+      },
+      {
+        "no": "23",
+        "name": "A Mancini",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "25:37",
+          "pts": 11,
+          "fg2": {
+            "made": 5,
+            "att": 14
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 5,
+            "att": 14
+          },
+          "ft": {
+            "made": 1,
+            "att": 7
+          },
+          "oreb": 5,
+          "dreb": 3,
+          "reb": 8,
+          "pf": 1,
+          "fd": 6,
+          "stl": 1,
+          "tov": 5,
+          "ast": 3,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 3,
+          "plusMinus": 19
+        }
+      },
+      {
+        "no": "24",
+        "name": "L Formichi",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "05:16",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 0
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 0,
+            "att": 0
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 2,
+          "reb": 2,
+          "pf": 0,
+          "fd": 0,
+          "stl": 0,
+          "tov": 0,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 2,
+          "plusMinus": -1
+        }
+      }
+    ],
+    "team": {
+      "oreb": 1,
+      "dreb": 6,
+      "reb": 7,
+      "pf": 0,
+      "tov": 0
+    },
+    "totals": {
+      "min": "200:00",
+      "pts": 67,
+      "fg2": {
+        "made": 21,
+        "att": 48
+      },
+      "fg3": {
+        "made": 6,
+        "att": 24
+      },
+      "fg": {
+        "made": 27,
+        "att": 72
+      },
+      "ft": {
+        "made": 7,
+        "att": 20
+      },
+      "oreb": 18,
+      "dreb": 42,
+      "reb": 60,
+      "pf": 18,
+      "fd": 18,
+      "stl": 8,
+      "tov": 18,
+      "ast": 12,
+      "blk": 0,
+      "blkAgainst": 3,
+      "eff": 71,
+      "plusMinus": 15
+    },
+    "periods": [
+      {
+        "min": "50:00",
+        "pts": 15,
+        "fg2": {
+          "made": 5,
+          "att": 9
+        },
+        "fg3": {
+          "made": 1,
+          "att": 6
+        },
+        "fg": {
+          "made": 6,
+          "att": 15
+        },
+        "ft": {
+          "made": 2,
+          "att": 7
+        },
+        "oreb": 4,
+        "dreb": 12,
+        "reb": 16,
+        "pf": 2,
+        "fd": 6,
+        "stl": 0,
+        "tov": 3,
+        "ast": 3,
+        "blk": 0,
+        "blkAgainst": 0,
+        "eff": 17,
+        "plusMinus": 9
+      },
+      {
+        "min": "50:00",
+        "pts": 13,
+        "fg2": {
+          "made": 4,
+          "att": 14
+        },
+        "fg3": {
+          "made": 1,
+          "att": 4
+        },
+        "fg": {
+          "made": 5,
+          "att": 18
+        },
+        "ft": {
+          "made": 2,
+          "att": 4
+        },
+        "oreb": 7,
+        "dreb": 12,
+        "reb": 19,
+        "pf": 5,
+        "fd": 5,
+        "stl": 4,
+        "tov": 10,
+        "ast": 2,
+        "blk": 0,
+        "blkAgainst": 1,
+        "eff": 13,
+        "plusMinus": -1
+      },
+      {
+        "min": "50:00",
+        "pts": 22,
+        "fg2": {
+          "made": 8,
+          "att": 14
+        },
+        "fg3": {
+          "made": 2,
+          "att": 8
+        },
+        "fg": {
+          "made": 10,
+          "att": 22
+        },
+        "ft": {
+          "made": 0,
+          "att": 1
+        },
+        "oreb": 3,
+        "dreb": 10,
+        "reb": 13,
+        "pf": 6,
+        "fd": 1,
+        "stl": 2,
+        "tov": 2,
+        "ast": 3,
+        "blk": 0,
+        "blkAgainst": 1,
+        "eff": 25,
+        "plusMinus": 7
+      },
+      {
+        "min": "50:00",
+        "pts": 17,
+        "fg2": {
+          "made": 4,
+          "att": 11
+        },
+        "fg3": {
+          "made": 2,
+          "att": 6
+        },
+        "fg": {
+          "made": 6,
+          "att": 17
+        },
+        "ft": {
+          "made": 3,
+          "att": 8
+        },
+        "oreb": 4,
+        "dreb": 8,
+        "reb": 12,
+        "pf": 5,
+        "fd": 6,
+        "stl": 2,
+        "tov": 3,
+        "ast": 4,
+        "blk": 0,
+        "blkAgainst": 1,
+        "eff": 16,
+        "plusMinus": 0
+      }
+    ],
+    "running": [
+      9,
+      15,
+      19,
+      28,
+      44,
+      50,
+      57,
+      67
+    ],
+    "extras": {
+      "pointsOffTurnovers": 13,
+      "fastBreak": 6,
+      "secondChance": 12,
+      "paint": 28,
+      "starters": {
+        "pts": 48,
+        "reb": 41
+      },
+      "bench": {
+        "pts": 19,
+        "reb": 12
+      }
+    }
+  }
+}
