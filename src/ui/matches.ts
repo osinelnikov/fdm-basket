@@ -70,7 +70,7 @@ export function matchCard(m: Match, ctx: ViewContext, isNext = false): string {
     <div class="details">
       <div class="teams"><span class="team">${crest(m.home, ctx)}${esc(teamName(m.home, lang))}</span><span class="vs">${esc(t.vs)}</span><span class="team">${crest(m.away, ctx)}${esc(teamName(m.away, lang))}</span></div>
       <div class="tags">${tags(m, ctx, isNext)}</div>
-      <div class="venue"><span aria-hidden="true">📍</span><a href="${esc(mapsUrl(v))}" target="_blank" rel="noopener noreferrer">${esc(v.name)} · ${esc(v.address)} ↗</a></div>
+      <div class="venue"><span aria-hidden="true">📍</span><a href="${esc(mapsUrl(v))}" target="_blank" rel="noopener noreferrer">${esc(v.name)} · ${esc(v.address)}&nbsp;↗</a></div>
       <a class="gcal" href="${esc(gcalUrl(m, lang))}" target="_blank" rel="noopener noreferrer">${esc(t.addToGoogle)}</a>
     </div>${resultBlock(m, ctx)}</article>`;
 }

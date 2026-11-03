@@ -126,8 +126,8 @@ h1{font-size:clamp(28px,5vw,46px);line-height:1.08;margin:12px 0 10px;font-weigh
 .tag.derby{background:var(--tag-derby-bg);color:var(--tag-derby-fg)}
 .tag.num{background:transparent;border:1px solid var(--line);color:var(--muted);font-weight:700}
 .venue{color:var(--muted);font-size:13px;line-height:1.6;display:flex;gap:6px;align-items:flex-start}
-.venue a{color:var(--brand-2);font-weight:600;text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--brand-2) 40%,transparent)}
-.venue a:hover{border-bottom-color:var(--brand-2)}
+.venue a{color:var(--brand-2);font-weight:600;text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--brand-2) 40%,transparent);text-underline-offset:3px}
+.venue a:hover{text-decoration-color:var(--brand-2)}
 
 /* Notice & footer */
 .notice{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:var(--radius);padding:18px 20px;font-size:14px;color:var(--muted);margin-top:34px;line-height:1.65;box-shadow:var(--shadow)}
