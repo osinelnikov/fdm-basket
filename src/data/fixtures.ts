@@ -52,7 +52,10 @@ export const MATCHES: Match[] = [
     result: { home: 71, away: 46, periods: [[18, 13], [15, 7], [13, 21], [25, 5]] },
     video: 'https://youtu.be/EDdn8abSB10'
   },
-  { game: 315, date: '2026-11-04', time: '21:00', home: 'FDM B', away: 'San Miniato', venue: 'fdm', sides: ['b'] },
+  { game: 315, date: '2026-11-04', time: '21:00', home: 'FDM B', away: 'San Miniato', venue: 'fdm', sides: ['b'],
+    result: { home: 35, away: 76, periods: [[6, 15], [9, 23], [11, 20], [9, 18]] },
+    video: 'https://youtu.be/IpiUVfIJ5z4'
+  },
   { game: 317, date: '2026-11-11', time: '21:00', home: 'FDM A', away: 'CEFA Castelnuovo', venue: 'fdm', sides: ['a'] },
   { game: 319, date: '2026-11-12', time: '21:30', home: 'Valdera', away: 'FDM B', venue: 'valdera', sides: ['b'] },
   { game: 321, date: '2026-11-16', time: '21:30', home: 'La Perla', away: 'FDM A', venue: 'laperla', sides: ['a'] },
