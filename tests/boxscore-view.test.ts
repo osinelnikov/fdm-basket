@@ -54,6 +54,14 @@ describe('box score dialog content', () => {
     expect(boxScoreHtml(m, b, itCtx)).toContain('Arbitri: L LUCCHESI, N NATALINI');
   });
 
+  it('leaves the referees out when the report names none (game 309)', () => {
+    const b309 = box(309);
+    expect(b309.referees).toEqual([]);
+    const html = boxScoreHtml(match(309), b309, itCtx);
+    expect(html).not.toContain('Arbitri');
+    expect(html).toContain(`Spettatori: ${b309.spectators}`);
+  });
+
   it('has a row per player plus the team and totals rows in each team table', () => {
     const html = boxScoreHtml(m, b, enCtx);
     const [home, away] = html.split('role="tabpanel"').slice(1);

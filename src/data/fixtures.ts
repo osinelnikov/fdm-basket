@@ -46,7 +46,8 @@ export const MATCHES: Match[] = [
     result: { home: 72, away: 57, periods: [[16, 13], [23, 15], [19, 13], [14, 16]] },
     video: 'https://youtu.be/Oz_boF16vpA', stats: '/stats/310.pdf' },
   { game: 309, date: '2026-10-29', time: '21:45', home: 'CEFA Castelnuovo', away: 'FDM B', venue: 'cefa', sides: ['b'],
-    result: { home: 69, away: 33, periods: [[22, 8], [11, 5], [24, 10], [12, 10]] }
+    result: { home: 69, away: 33, periods: [[22, 8], [11, 5], [24, 10], [12, 10]] },
+    video: 'https://youtu.be/gIHmnAQJUY8', stats: '/stats/309.pdf'
   },
   { game: 314, date: '2026-11-02', time: '21:30', home: 'Pisces Lucca', away: 'FDM A', venue: 'pisces', sides: ['a'],
     result: { home: 71, away: 46, periods: [[18, 13], [15, 7], [13, 21], [25, 5]] },

@@ -196,7 +196,7 @@ export interface TeamBox {
 export interface BoxScore {
   /** N. Gara: game number, same as Match.game. */
   game: number;
-  /** Arbitro / Arbitri: referees as printed. */
+  /** Arbitro / Arbitri: referees as printed; empty when the report names none. */
   referees: string[];
   /** Spettatori. */
   spectators: number;

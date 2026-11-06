@@ -256,11 +256,11 @@ function parseHeader(items) {
   const dash = scoreRow.items.findIndex((i) => i.str === '–');
   const score = [scoreRow.items[dash - 1], scoreRow.items[dash + 1]].map((i) => int(i && i.str, 'score line'));
 
+  // Some reports print no referees at all; a printed line must still have the expected form.
   const refRow = rows.find((r) => r.items.some((i) => i.str.startsWith('Arbitro:')));
-  if (!refRow) fail('referees line not found');
-  const refs = /^Arbitro:\s*(.+?)(?:\s+Arbitri:\s*(.+))?$/.exec(refRow.items.map((i) => i.str).join(' '));
-  if (!refs) fail('referees line is not "Arbitro: … [Arbitri: …]"');
-  const referees = [refs[1], refs[2]].filter(Boolean);
+  const refs = refRow && /^Arbitro:\s*(.+?)(?:\s+Arbitri:\s*(.+))?$/.exec(refRow.items.map((i) => i.str).join(' '));
+  if (refRow && !refs) fail('referees line is not "Arbitro: … [Arbitri: …]"');
+  const referees = refs ? [refs[1], refs[2]].filter(Boolean) : [];
 
   const at = rows.findIndex((r) => r.items.some((i) => i.str === 'Punteggio a intervalli di 5 minuti'));
   if (at < 0 || !rows[at + 1]) fail('running score rows not found');
