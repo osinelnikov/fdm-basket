@@ -83,6 +83,7 @@ export const it: Messages = {
   boxCaptain: 'Capitano',
   boxDnp: 'N.E.',
   boxDnpTitle: 'Non entrato: iscritto a referto ma non è sceso in campo',
+  boxNoName: 'Nome non indicato nel referto',
   boxExtras: {
     pointsOffTurnovers: 'Punti da palle perse', fastBreak: 'Punti in contropiede', secondChance: 'Punti da secondi tiri',
     paint: 'Punti in area', starters: 'Quintetto base', bench: 'Panchina',

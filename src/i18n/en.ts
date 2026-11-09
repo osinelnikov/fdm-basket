@@ -82,6 +82,7 @@ export const en: Messages = {
   boxCaptain: 'Captain',
   boxDnp: 'DNP',
   boxDnpTitle: 'Did not play: listed but not entered in the game',
+  boxNoName: 'Name not given in the report',
   boxExtras: {
     pointsOffTurnovers: 'Points off turnovers', fastBreak: 'Fast-break points', secondChance: 'Second-chance points',
     paint: 'Points in the paint', starters: 'Starting five', bench: 'Bench',

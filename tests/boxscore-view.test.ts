@@ -54,6 +54,15 @@ describe('box score dialog content', () => {
     expect(boxScoreHtml(m, b, itCtx)).toContain('Arbitri: L LUCCHESI, N NATALINI');
   });
 
+  it('shows a dash for players whose names the report does not give (game 314, Pisces Lucca)', () => {
+    const b314 = box(314);
+    expect(b314.home.players.every((p) => p.name === '')).toBe(true);
+    const html = boxScoreHtml(match(314), b314, itCtx, 'home');
+    const row = html.split('<tr').find((r) => r.includes('class="bs-no">') && r.includes('>12</td>'))!;
+    expect(row).toContain('<span class="bs-noname" title="Nome non indicato nel referto">—');
+    expect(html).toContain('>A Monti<');
+  });
+
   it('leaves the referees out when the report names none (game 309)', () => {
     const b309 = box(309);
     expect(b309.referees).toEqual([]);

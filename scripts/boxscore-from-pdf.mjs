@@ -179,8 +179,10 @@ function parseTable(table) {
     if (player) {
       const captain = / \(C\)$/.test(player[3]);
       const name = player[3].replace(/ \(C\)$/, '');
-      if (!/^\p{L} \S/u.test(name)) fail(`player "${label}": name is not "initial surname"`);
-      const entry = { no: player[2], name, starter: player[1] === '*', captain };
+      // A team entered without names gets its jersey number printed instead, "0 3" for No. 3: no name.
+      const numberOnly = /^\d \d+$/.test(name) && name.replace(' ', '') === player[2].padStart(2, '0');
+      if (!numberOnly && !/^\p{L} \S/u.test(name)) fail(`player "${label}": name is not "initial surname"`);
+      const entry = { no: player[2], name: numberOnly ? '' : name, starter: player[1] === '*', captain };
       if (cells.min === 'N.E.') {
         if (Object.keys(cells).length !== 1) fail(`player "${label}": N.E. with other cells filled`);
       } else {

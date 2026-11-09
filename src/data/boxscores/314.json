@@ -1,0 +1,1197 @@
+{
+  "game": 314,
+  "referees": [],
+  "spectators": 15,
+  "home": {
+    "players": [
+      {
+        "no": "3",
+        "name": "",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "21:26",
+          "pts": 6,
+          "fg2": {
+            "made": 1,
+            "att": 3
+          },
+          "fg3": {
+            "made": 0,
+            "att": 1
+          },
+          "fg": {
+            "made": 1,
+            "att": 4
+          },
+          "ft": {
+            "made": 4,
+            "att": 6
+          },
+          "oreb": 2,
+          "dreb": 4,
+          "reb": 6,
+          "pf": 1,
+          "fd": 3,
+          "stl": 1,
+          "tov": 3,
+          "ast": 2,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 7,
+          "plusMinus": -1
+        }
+      },
+      {
+        "no": "4",
+        "name": "",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "28:00",
+          "pts": 4,
+          "fg2": {
+            "made": 1,
+            "att": 4
+          },
+          "fg3": {
+            "made": 0,
+            "att": 6
+          },
+          "fg": {
+            "made": 1,
+            "att": 10
+          },
+          "ft": {
+            "made": 2,
+            "att": 2
+          },
+          "oreb": 0,
+          "dreb": 1,
+          "reb": 1,
+          "pf": 4,
+          "fd": 1,
+          "stl": 1,
+          "tov": 2,
+          "ast": 4,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": -1,
+          "plusMinus": 15
+        }
+      },
+      {
+        "no": "5",
+        "name": "",
+        "starter": true,
+        "captain": true,
+        "stats": {
+          "min": "31:43",
+          "pts": 8,
+          "fg2": {
+            "made": 3,
+            "att": 9
+          },
+          "fg3": {
+            "made": 0,
+            "att": 2
+          },
+          "fg": {
+            "made": 3,
+            "att": 11
+          },
+          "ft": {
+            "made": 2,
+            "att": 2
+          },
+          "oreb": 0,
+          "dreb": 3,
+          "reb": 3,
+          "pf": 3,
+          "fd": 3,
+          "stl": 0,
+          "tov": 1,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 2,
+          "plusMinus": 16
+        }
+      },
+      {
+        "no": "7",
+        "name": "",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "13:46",
+          "pts": 6,
+          "fg2": {
+            "made": 0,
+            "att": 1
+          },
+          "fg3": {
+            "made": 2,
+            "att": 3
+          },
+          "fg": {
+            "made": 2,
+            "att": 4
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 1,
+          "reb": 1,
+          "pf": 1,
+          "fd": 0,
+          "stl": 0,
+          "tov": 0,
+          "ast": 2,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 7,
+          "plusMinus": 17
+        }
+      },
+      {
+        "no": "11",
+        "name": "",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "02:15",
+          "pts": 1,
+          "fg2": {
+            "made": 0,
+            "att": 0
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 0,
+            "att": 0
+          },
+          "ft": {
+            "made": 1,
+            "att": 2
+          },
+          "oreb": 0,
+          "dreb": 0,
+          "reb": 0,
+          "pf": 0,
+          "fd": 1,
+          "stl": 0,
+          "tov": 0,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 0,
+          "plusMinus": 4
+        }
+      },
+      {
+        "no": "12",
+        "name": "",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "33:28",
+          "pts": 16,
+          "fg2": {
+            "made": 5,
+            "att": 5
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 5,
+            "att": 5
+          },
+          "ft": {
+            "made": 6,
+            "att": 14
+          },
+          "oreb": 1,
+          "dreb": 7,
+          "reb": 8,
+          "pf": 1,
+          "fd": 13,
+          "stl": 3,
+          "tov": 3,
+          "ast": 1,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 17,
+          "plusMinus": 21
+        }
+      },
+      {
+        "no": "14",
+        "name": "",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "14:09",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 1
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 0,
+            "att": 1
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 5,
+          "reb": 5,
+          "pf": 0,
+          "fd": 1,
+          "stl": 0,
+          "tov": 0,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 4,
+          "plusMinus": -5
+        }
+      },
+      {
+        "no": "17",
+        "name": "",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "30:08",
+          "pts": 12,
+          "fg2": {
+            "made": 4,
+            "att": 9
+          },
+          "fg3": {
+            "made": 1,
+            "att": 1
+          },
+          "fg": {
+            "made": 5,
+            "att": 10
+          },
+          "ft": {
+            "made": 1,
+            "att": 1
+          },
+          "oreb": 1,
+          "dreb": 3,
+          "reb": 4,
+          "pf": 3,
+          "fd": 2,
+          "stl": 0,
+          "tov": 2,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 9,
+          "plusMinus": 30
+        }
+      },
+      {
+        "no": "33",
+        "name": "",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "21:56",
+          "pts": 18,
+          "fg2": {
+            "made": 2,
+            "att": 3
+          },
+          "fg3": {
+            "made": 3,
+            "att": 7
+          },
+          "fg": {
+            "made": 5,
+            "att": 10
+          },
+          "ft": {
+            "made": 5,
+            "att": 7
+          },
+          "oreb": 0,
+          "dreb": 3,
+          "reb": 3,
+          "pf": 1,
+          "fd": 5,
+          "stl": 1,
+          "tov": 3,
+          "ast": 3,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 15,
+          "plusMinus": 22
+        }
+      },
+      {
+        "no": "91",
+        "name": "",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "03:09",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 0
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 0,
+            "att": 0
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 0,
+          "reb": 0,
+          "pf": 0,
+          "fd": 0,
+          "stl": 1,
+          "tov": 0,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 1,
+          "plusMinus": 6
+        }
+      }
+    ],
+    "team": {
+      "oreb": 1,
+      "dreb": 6,
+      "reb": 7,
+      "pf": 0,
+      "tov": 0
+    },
+    "totals": {
+      "min": "200:00",
+      "pts": 71,
+      "fg2": {
+        "made": 16,
+        "att": 35
+      },
+      "fg3": {
+        "made": 6,
+        "att": 20
+      },
+      "fg": {
+        "made": 22,
+        "att": 55
+      },
+      "ft": {
+        "made": 21,
+        "att": 34
+      },
+      "oreb": 5,
+      "dreb": 33,
+      "reb": 38,
+      "pf": 14,
+      "fd": 29,
+      "stl": 7,
+      "tov": 14,
+      "ast": 12,
+      "blk": 0,
+      "blkAgainst": 0,
+      "eff": 68,
+      "plusMinus": 25
+    },
+    "periods": [
+      {
+        "min": "50:00",
+        "pts": 18,
+        "fg2": {
+          "made": 4,
+          "att": 11
+        },
+        "fg3": {
+          "made": 2,
+          "att": 5
+        },
+        "fg": {
+          "made": 6,
+          "att": 16
+        },
+        "ft": {
+          "made": 4,
+          "att": 5
+        },
+        "oreb": 0,
+        "dreb": 7,
+        "reb": 7,
+        "pf": 3,
+        "fd": 6,
+        "stl": 1,
+        "tov": 2,
+        "ast": 4,
+        "blk": 0,
+        "blkAgainst": 0,
+        "eff": 17,
+        "plusMinus": 5
+      },
+      {
+        "min": "50:00",
+        "pts": 15,
+        "fg2": {
+          "made": 4,
+          "att": 7
+        },
+        "fg3": {
+          "made": 1,
+          "att": 7
+        },
+        "fg": {
+          "made": 5,
+          "att": 14
+        },
+        "ft": {
+          "made": 4,
+          "att": 6
+        },
+        "oreb": 1,
+        "dreb": 12,
+        "reb": 13,
+        "pf": 4,
+        "fd": 5,
+        "stl": 0,
+        "tov": 6,
+        "ast": 3,
+        "blk": 0,
+        "blkAgainst": 0,
+        "eff": 14,
+        "plusMinus": 8
+      },
+      {
+        "min": "50:00",
+        "pts": 14,
+        "fg2": {
+          "made": 2,
+          "att": 8
+        },
+        "fg3": {
+          "made": 0,
+          "att": 3
+        },
+        "fg": {
+          "made": 2,
+          "att": 11
+        },
+        "ft": {
+          "made": 10,
+          "att": 14
+        },
+        "oreb": 3,
+        "dreb": 7,
+        "reb": 10,
+        "pf": 2,
+        "fd": 12,
+        "stl": 1,
+        "tov": 6,
+        "ast": 1,
+        "blk": 0,
+        "blkAgainst": 0,
+        "eff": 7,
+        "plusMinus": -7
+      },
+      {
+        "min": "50:00",
+        "pts": 24,
+        "fg2": {
+          "made": 6,
+          "att": 9
+        },
+        "fg3": {
+          "made": 3,
+          "att": 5
+        },
+        "fg": {
+          "made": 9,
+          "att": 14
+        },
+        "ft": {
+          "made": 3,
+          "att": 9
+        },
+        "oreb": 1,
+        "dreb": 7,
+        "reb": 8,
+        "pf": 5,
+        "fd": 6,
+        "stl": 5,
+        "tov": 0,
+        "ast": 4,
+        "blk": 0,
+        "blkAgainst": 0,
+        "eff": 30,
+        "plusMinus": 19
+      }
+    ],
+    "running": [
+      7,
+      18,
+      25,
+      33,
+      39,
+      47,
+      58,
+      71
+    ],
+    "extras": {
+      "pointsOffTurnovers": 30,
+      "fastBreak": 8,
+      "secondChance": 6,
+      "paint": 24,
+      "starters": {
+        "pts": 34,
+        "reb": 23
+      },
+      "bench": {
+        "pts": 37,
+        "reb": 8
+      }
+    }
+  },
+  "away": {
+    "players": [
+      {
+        "no": "0",
+        "name": "A Monti",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "24:32",
+          "pts": 9,
+          "fg2": {
+            "made": 1,
+            "att": 2
+          },
+          "fg3": {
+            "made": 2,
+            "att": 4
+          },
+          "fg": {
+            "made": 3,
+            "att": 6
+          },
+          "ft": {
+            "made": 1,
+            "att": 2
+          },
+          "oreb": 0,
+          "dreb": 2,
+          "reb": 2,
+          "pf": 3,
+          "fd": 2,
+          "stl": 1,
+          "tov": 3,
+          "ast": 1,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 6,
+          "plusMinus": -10
+        }
+      },
+      {
+        "no": "1",
+        "name": "M Lombardi",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "21:05",
+          "pts": 3,
+          "fg2": {
+            "made": 0,
+            "att": 1
+          },
+          "fg3": {
+            "made": 1,
+            "att": 3
+          },
+          "fg": {
+            "made": 1,
+            "att": 4
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 4,
+          "reb": 4,
+          "pf": 5,
+          "fd": 0,
+          "stl": 1,
+          "tov": 6,
+          "ast": 3,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 2,
+          "plusMinus": 2
+        }
+      },
+      {
+        "no": "7",
+        "name": "S Giorgi",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "09:50",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 0
+          },
+          "fg3": {
+            "made": 0,
+            "att": 1
+          },
+          "fg": {
+            "made": 0,
+            "att": 1
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 5,
+          "reb": 5,
+          "pf": 5,
+          "fd": 0,
+          "stl": 0,
+          "tov": 0,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 4,
+          "plusMinus": -2
+        }
+      },
+      {
+        "no": "8",
+        "name": "A Luisi",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "10:21",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 3
+          },
+          "fg3": {
+            "made": 0,
+            "att": 3
+          },
+          "fg": {
+            "made": 0,
+            "att": 6
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 1,
+          "reb": 1,
+          "pf": 2,
+          "fd": 0,
+          "stl": 1,
+          "tov": 3,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": -7,
+          "plusMinus": -8
+        }
+      },
+      {
+        "no": "11",
+        "name": "A Arrigo",
+        "starter": false,
+        "captain": true,
+        "stats": {
+          "min": "19:49",
+          "pts": 4,
+          "fg2": {
+            "made": 2,
+            "att": 2
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 2,
+            "att": 2
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 2,
+          "dreb": 4,
+          "reb": 6,
+          "pf": 3,
+          "fd": 1,
+          "stl": 0,
+          "tov": 1,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 9,
+          "plusMinus": -19
+        }
+      },
+      {
+        "no": "14",
+        "name": "G Adessi",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "14:02",
+          "pts": 7,
+          "fg2": {
+            "made": 1,
+            "att": 3
+          },
+          "fg3": {
+            "made": 1,
+            "att": 2
+          },
+          "fg": {
+            "made": 2,
+            "att": 5
+          },
+          "ft": {
+            "made": 2,
+            "att": 2
+          },
+          "oreb": 0,
+          "dreb": 2,
+          "reb": 2,
+          "pf": 0,
+          "fd": 1,
+          "stl": 0,
+          "tov": 0,
+          "ast": 1,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 7,
+          "plusMinus": 3
+        }
+      },
+      {
+        "no": "15",
+        "name": "E Scalabrini",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "06:42",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 0
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 0,
+            "att": 0
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 1,
+          "reb": 1,
+          "pf": 2,
+          "fd": 0,
+          "stl": 0,
+          "tov": 0,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 1,
+          "plusMinus": -16
+        }
+      },
+      {
+        "no": "17",
+        "name": "P Gatti",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "27:16",
+          "pts": 6,
+          "fg2": {
+            "made": 3,
+            "att": 7
+          },
+          "fg3": {
+            "made": 0,
+            "att": 5
+          },
+          "fg": {
+            "made": 3,
+            "att": 12
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 7,
+          "reb": 7,
+          "pf": 0,
+          "fd": 4,
+          "stl": 2,
+          "tov": 5,
+          "ast": 4,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 5,
+          "plusMinus": -22
+        }
+      },
+      {
+        "no": "27",
+        "name": "E Panzino",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "33:13",
+          "pts": 7,
+          "fg2": {
+            "made": 3,
+            "att": 5
+          },
+          "fg3": {
+            "made": 0,
+            "att": 6
+          },
+          "fg": {
+            "made": 3,
+            "att": 11
+          },
+          "ft": {
+            "made": 1,
+            "att": 4
+          },
+          "oreb": 1,
+          "dreb": 4,
+          "reb": 5,
+          "pf": 1,
+          "fd": 4,
+          "stl": 0,
+          "tov": 2,
+          "ast": 3,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 2,
+          "plusMinus": -18
+        }
+      },
+      {
+        "no": "40",
+        "name": "A Granata",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "12:44",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 2
+          },
+          "fg3": {
+            "made": 0,
+            "att": 1
+          },
+          "fg": {
+            "made": 0,
+            "att": 3
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 1,
+          "dreb": 0,
+          "reb": 1,
+          "pf": 4,
+          "fd": 1,
+          "stl": 0,
+          "tov": 6,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": -8,
+          "plusMinus": -21
+        }
+      },
+      {
+        "no": "41",
+        "name": "L Metlica",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "20:26",
+          "pts": 10,
+          "fg2": {
+            "made": 5,
+            "att": 9
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 5,
+            "att": 9
+          },
+          "ft": {
+            "made": 0,
+            "att": 1
+          },
+          "oreb": 5,
+          "dreb": 4,
+          "reb": 9,
+          "pf": 4,
+          "fd": 1,
+          "stl": 0,
+          "tov": 0,
+          "ast": 1,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 15,
+          "plusMinus": -14
+        }
+      }
+    ],
+    "team": {
+      "oreb": 1,
+      "dreb": 1,
+      "reb": 2,
+      "pf": 0,
+      "tov": 1
+    },
+    "totals": {
+      "min": "200:00",
+      "pts": 46,
+      "fg2": {
+        "made": 15,
+        "att": 34
+      },
+      "fg3": {
+        "made": 4,
+        "att": 25
+      },
+      "fg": {
+        "made": 19,
+        "att": 59
+      },
+      "ft": {
+        "made": 4,
+        "att": 9
+      },
+      "oreb": 10,
+      "dreb": 35,
+      "reb": 45,
+      "pf": 29,
+      "fd": 14,
+      "stl": 5,
+      "tov": 27,
+      "ast": 13,
+      "blk": 0,
+      "blkAgainst": 0,
+      "eff": 37,
+      "plusMinus": -25
+    },
+    "periods": [
+      {
+        "min": "50:00",
+        "pts": 13,
+        "fg2": {
+          "made": 4,
+          "att": 11
+        },
+        "fg3": {
+          "made": 1,
+          "att": 5
+        },
+        "fg": {
+          "made": 5,
+          "att": 16
+        },
+        "ft": {
+          "made": 2,
+          "att": 2
+        },
+        "oreb": 3,
+        "dreb": 11,
+        "reb": 14,
+        "pf": 6,
+        "fd": 3,
+        "stl": 1,
+        "tov": 6,
+        "ast": 4,
+        "blk": 0,
+        "blkAgainst": 0,
+        "eff": 15,
+        "plusMinus": -5
+      },
+      {
+        "min": "50:00",
+        "pts": 7,
+        "fg2": {
+          "made": 3,
+          "att": 7
+        },
+        "fg3": {
+          "made": 0,
+          "att": 8
+        },
+        "fg": {
+          "made": 3,
+          "att": 15
+        },
+        "ft": {
+          "made": 1,
+          "att": 2
+        },
+        "oreb": 1,
+        "dreb": 9,
+        "reb": 10,
+        "pf": 5,
+        "fd": 4,
+        "stl": 3,
+        "tov": 7,
+        "ast": 2,
+        "blk": 0,
+        "blkAgainst": 0,
+        "eff": 2,
+        "plusMinus": -8
+      },
+      {
+        "min": "50:00",
+        "pts": 21,
+        "fg2": {
+          "made": 6,
+          "att": 11
+        },
+        "fg3": {
+          "made": 3,
+          "att": 6
+        },
+        "fg": {
+          "made": 9,
+          "att": 17
+        },
+        "ft": {
+          "made": 0,
+          "att": 1
+        },
+        "oreb": 2,
+        "dreb": 7,
+        "reb": 9,
+        "pf": 12,
+        "fd": 2,
+        "stl": 1,
+        "tov": 5,
+        "ast": 7,
+        "blk": 0,
+        "blkAgainst": 0,
+        "eff": 24,
+        "plusMinus": 7
+      },
+      {
+        "min": "50:00",
+        "pts": 5,
+        "fg2": {
+          "made": 2,
+          "att": 5
+        },
+        "fg3": {
+          "made": 0,
+          "att": 6
+        },
+        "fg": {
+          "made": 2,
+          "att": 11
+        },
+        "ft": {
+          "made": 1,
+          "att": 4
+        },
+        "oreb": 4,
+        "dreb": 8,
+        "reb": 12,
+        "pf": 6,
+        "fd": 5,
+        "stl": 0,
+        "tov": 9,
+        "ast": 0,
+        "blk": 0,
+        "blkAgainst": 0,
+        "eff": -4,
+        "plusMinus": -19
+      }
+    ],
+    "running": [
+      13,
+      13,
+      15,
+      20,
+      34,
+      41,
+      44,
+      46
+    ],
+    "extras": {
+      "pointsOffTurnovers": 12,
+      "fastBreak": 10,
+      "secondChance": 6,
+      "paint": 24,
+      "starters": {
+        "pts": 26,
+        "reb": 18
+      },
+      "bench": {
+        "pts": 20,
+        "reb": 25
+      }
+    }
+  }
+}

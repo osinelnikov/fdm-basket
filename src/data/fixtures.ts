@@ -50,8 +50,8 @@ export const MATCHES: Match[] = [
     video: 'https://youtu.be/gIHmnAQJUY8', stats: '/stats/309.pdf'
   },
   { game: 314, date: '2026-11-02', time: '21:30', home: 'Pisces Lucca', away: 'FDM A', venue: 'pisces', sides: ['a'],
-    result: { home: 71, away: 46, periods: [[18, 13], [15, 7], [13, 21], [25, 5]] },
-    video: 'https://youtu.be/EDdn8abSB10'
+    result: { home: 71, away: 46, periods: [[18, 13], [15, 7], [14, 21], [24, 5]] },
+    video: 'https://youtu.be/EDdn8abSB10', stats: '/stats/314.pdf'
   },
   { game: 315, date: '2026-11-04', time: '21:00', home: 'FDM B', away: 'San Miniato', venue: 'fdm', sides: ['b'],
     result: { home: 35, away: 76, periods: [[6, 15], [9, 23], [11, 20], [9, 18]] },

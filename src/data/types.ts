@@ -154,7 +154,7 @@ export interface StatLine {
 export interface BoxPlayer {
   /** N.: jersey number as printed (a string: "0" and "00" are different numbers). */
   no: string;
-  /** Nome: initial and surname as printed, without the captain mark, e.g. "A MONTINI". */
+  /** Nome: initial and surname as printed, without the captain mark, e.g. "A MONTINI"; empty when the report gives no name. */
   name: string;
   /** A leading `*` before the number: in the starting five. */
   starter: boolean;

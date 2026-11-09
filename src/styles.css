@@ -259,6 +259,7 @@ dialog.boxscore::backdrop{background:rgba(8,14,26,.62)}
 .bs-table .bs-name{left:46px;min-width:150px;font-weight:600;border-right:1px solid var(--line)}
 .bs-star{display:inline-block;margin-right:2px;color:var(--accent);font-weight:900}
 .bs-cap{text-decoration:none;color:var(--muted);font-weight:700}
+.bs-noname{color:var(--muted);cursor:help}
 .bs-table .bs-pts,.bs-table .bs-plusMinus{font-weight:700}
 .bs-dnp{text-align:left!important;color:var(--muted);font-style:italic}
 .bs-team th,.bs-team td{color:var(--muted)}

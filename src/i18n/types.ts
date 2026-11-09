@@ -85,6 +85,8 @@ export interface Messages {
   /** Cell of a player who was listed but did not enter the game. */
   boxDnp: string;
   boxDnpTitle: string;
+  /** Hint on the dash shown for a player whose name the report does not give. */
+  boxNoName: string;
   boxExtras: Record<BoxExtra, string>;
   vs: string;
   addToGoogle: string;

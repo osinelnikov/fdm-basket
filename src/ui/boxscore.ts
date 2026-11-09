@@ -95,7 +95,8 @@ function playerRow(p: BoxPlayer, ctx: ViewContext, f: Formatters): string {
   const { t } = ctx;
   const star = p.starter ? `<span class="bs-star" title="${esc(t.boxStarter)}"><span aria-hidden="true">*</span><span class="sr-only">${esc(t.boxStarter)}</span></span>` : '';
   const cap = p.captain ? ` <abbr class="bs-cap" title="${esc(t.boxCaptain)}">(C)</abbr>` : '';
-  const lead = `<td class="bs-no">${star}${esc(p.no)}</td><th scope="row" class="bs-name">${esc(p.name)}${cap}</th>`;
+  const name = p.name ? esc(p.name) : `<span class="bs-noname" title="${esc(t.boxNoName)}">—<span class="sr-only"> ${esc(t.boxNoName)}</span></span>`;
+  const lead = `<td class="bs-no">${star}${esc(p.no)}</td><th scope="row" class="bs-name">${name}${cap}</th>`;
   if (!p.stats) {
     return `<tr class="bs-dnp-row">${lead}<td class="bs-dnp" colspan="${STAT_COLUMNS.length}" title="${esc(t.boxDnpTitle)}">${esc(t.boxDnp)}</td></tr>`;
   }
