@@ -65,6 +65,12 @@ export interface Match {
    * so calendar subscribers replace the old event.
    */
   revision?: number;
+  /**
+   * Called off and moved to a date not fixed yet (TBD). `date` and `time` keep the original schedule,
+   * so the calendar feed is unchanged until the new date is known. Then remove this flag,
+   * set the new `date` and `time` and bump `revision`.
+   */
+  postponed?: true;
   /** Final score, once the game has been played. */
   result?: MatchResult;
   /** YouTube link to the recording of the game; only for a game with a result. */

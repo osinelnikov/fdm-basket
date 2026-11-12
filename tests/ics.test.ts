@@ -84,6 +84,11 @@ describe('events', () => {
     expect(prop(ev, 'SEQUENCE')).toBe(`SEQUENCE:${ICS_SEQUENCE_BASE + 1}`);
   });
 
+  it('keeps a postponed game at its original date until the new date is entered', () => {
+    const m: Match = { ...MATCHES.find((x) => x.game === 319)!, postponed: undefined };
+    expect(buildIcs([{ ...m, postponed: true }], { now: NOW })).toBe(buildIcs([m], { now: NOW }));
+  });
+
   it('uses a stable game-number UID for a newly added match', () => {
     const added: Match = { ...MATCHES[0], game: 500 };
     const ev = events(buildIcs([added], { now: NOW }))[0];

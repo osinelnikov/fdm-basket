@@ -139,6 +139,12 @@ describe('results', () => {
     expect(sum(r.periods.map(([, a]) => a))).toBe(r.away);
   });
 
+  it('has no result, video or statistics for a postponed game', () => {
+    for (const m of MATCHES.filter((x) => x.postponed)) {
+      expect({ game: m.game, result: m.result, video: m.video, stats: m.stats }).toEqual({ game: m.game, result: undefined, video: undefined, stats: undefined });
+    }
+  });
+
   it('has results only for games that have already been played', () => {
     const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome' }).format(new Date());
     for (const m of played) expect(m.date <= today, `game ${m.game} on ${m.date}`).toBe(true);

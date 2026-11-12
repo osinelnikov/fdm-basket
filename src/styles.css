@@ -366,3 +366,24 @@ dialog.boxscore::backdrop{background:rgba(8,14,26,.62)}
   .standings tbody th.col-team{white-space:normal;line-height:1.25;min-width:0}
   .st-crest{width:26px;height:26px}.st-crest img{width:23px;height:23px}
 }
+
+/* Postponed games: greyed out like an inactive control, the original date still shown. The venue link stays usable. */
+.match.postponed[data-category]{background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--muted) 8%,transparent) 0 10px,transparent 10px 20px),color-mix(in srgb,var(--card) 55%,var(--line));border-left-color:var(--muted);box-shadow:none}
+.match.postponed:hover{transform:none;box-shadow:none}
+.match.postponed .date{background:color-mix(in srgb,var(--card) 60%,transparent)}
+.match.postponed .crest{filter:grayscale(1);opacity:.65}
+.match.postponed .tag:not(.postponed){filter:grayscale(1)}
+.match.postponed .date .day{color:var(--muted)}
+.tag.postponed{background:var(--muted);color:var(--card);text-transform:uppercase;letter-spacing:.05em}
+.postponed-note{margin:0 0 8px;font-size:13px;font-weight:600;line-height:1.5;color:var(--text)}
+.match.postponed{grid-template-columns:84px 1fr auto}
+.postponed-mark{display:grid;place-items:center;color:var(--tag-a-fg)}
+.postponed-mark svg{width:56px;height:56px;display:block}
+.postponed-mark path.bang{stroke:var(--card)}
+.postponed-mark circle.bang{fill:var(--card)}
+@media (max-width:600px){
+  /* Phone: the sign sits in the top right corner, over the date row */
+  .match.postponed{grid-template-columns:minmax(0,1fr);position:relative}
+  .postponed-mark{position:absolute;top:12px;right:14px}
+  .postponed-mark svg{width:30px;height:30px}
+}

@@ -15,6 +15,7 @@ function tags(m: Match, ctx: ViewContext, isNext: boolean): string {
   const { t } = ctx;
   const out: string[] = [];
   if (isNext) out.push(nextTag(ctx));
+  if (m.postponed) out.push(`<span class="tag postponed">${esc(t.tagPostponed)}</span>`);
   if (m.sides.includes('b')) out.push(`<span class="tag b">${esc(t.tagB)}</span>`);
   if (m.sides.includes('a')) out.push(`<span class="tag a">${esc(t.tagA)}</span>`);
   out.push(isAway(m) ? `<span class="tag away">${esc(t.tagAway)}</span>` : `<span class="tag home">${esc(t.tagHome)}</span>`);
@@ -44,6 +45,8 @@ const PDF_ICON = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" st
 
 const STATS_ICON = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M3.5 14.5h17M9.2 9.5v10M14.8 9.5v10"/></svg>';
 
+const WARNING_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 21.5 20h-19z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path class="bang" d="M12 9.6v4.8" fill="none" stroke-width="2.4" stroke-linecap="round"/><circle class="bang" cx="12" cy="17.4" r="1.3"/></svg>';
+
 /** Icons under the score: the game video on YouTube and the statistics, each only when known. */
 function mediaLinks(m: Match, { t }: ViewContext): string {
   const out: string[] = [];
@@ -65,14 +68,19 @@ export function matchCard(m: Match, ctx: ViewContext, isNext = false): string {
   const { lang, t } = ctx;
   const v = VENUES[m.venue];
   const date = (opts: Intl.DateTimeFormatOptions) => formatDate(m.date, opts, t.locale);
-  return `<article class="match${m.result ? ' played' : ''}${isNext ? ' next' : ''}" data-game="${m.game}" data-category="${m.sides.join(' ')}">
+  // A postponed game keeps its original date on the card, but there is nothing to add to a calendar yet.
+  const note = m.postponed ? `<p class="postponed-note">${esc(t.postponedNote)}</p>` : '';
+  // Warning sign where a played game shows its score; the note above already says it in words.
+  const mark = m.postponed ? `<div class="postponed-mark" title="${esc(t.postponedNote)}">${WARNING_ICON}</div>` : '';
+  const gcal = m.postponed ? '' : `
+      <a class="gcal" href="${esc(gcalUrl(m, lang))}" target="_blank" rel="noopener noreferrer">${esc(t.addToGoogle)}</a>`;
+  return `<article class="match${m.result ? ' played' : ''}${m.postponed ? ' postponed' : ''}${isNext ? ' next' : ''}" data-game="${m.game}" data-category="${m.sides.join(' ')}">
     <div class="date"><span class="day">${date({ day: '2-digit' })}</span><span class="mon">${date({ month: 'short' })}</span><span class="time">${date({ weekday: 'short' })} · ${m.time}</span></div>
     <div class="details">
       <div class="teams"><span class="team">${crest(m.home, ctx)}${esc(teamName(m.home, lang))}</span><span class="vs">${esc(t.vs)}</span><span class="team">${crest(m.away, ctx)}${esc(teamName(m.away, lang))}</span></div>
-      <div class="tags">${tags(m, ctx, isNext)}</div>
-      <div class="venue"><span aria-hidden="true">📍</span><a href="${esc(mapsUrl(v))}" target="_blank" rel="noopener noreferrer">${esc(v.name)} · ${esc(v.address)}&nbsp;↗</a></div>
-      <a class="gcal" href="${esc(gcalUrl(m, lang))}" target="_blank" rel="noopener noreferrer">${esc(t.addToGoogle)}</a>
-    </div>${resultBlock(m, ctx)}</article>`;
+      <div class="tags">${tags(m, ctx, isNext)}</div>${note}
+      <div class="venue"><span aria-hidden="true">📍</span><a href="${esc(mapsUrl(v))}" target="_blank" rel="noopener noreferrer">${esc(v.name)} · ${esc(v.address)}&nbsp;↗</a></div>${gcal}
+    </div>${resultBlock(m, ctx)}${mark}</article>`;
 }
 
 const CHEVRON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';

@@ -51,6 +51,8 @@ export const it: Messages = {
   gameNo: (n) => `Gara n° ${n}`,
   tagFinal: 'Finale',
   tagNext: 'Prossima gara',
+  tagPostponed: 'Rinviata',
+  postponedNote: 'Gara rinviata, nuova data da definire.',
   periodName: (i) => (i < 4 ? `${i + 1}° quarto` : i === 4 ? 'TS' : `TS${i - 3}`),
   resultAria: (home, away, hp, ap, periods) => `Risultato finale: ${home} ${hp}, ${away} ${ap}.${periods ? ` Parziali: ${periods}.` : ''}`,
   watchVideo: (n) => `Guarda la gara n° ${n} su YouTube`,

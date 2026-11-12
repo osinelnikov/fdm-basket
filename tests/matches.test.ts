@@ -48,3 +48,31 @@ describe('video and statistics icons on a match card', () => {
     expect(html).toContain('href="https://www.youtube.com/watch?v=a&amp;t=60&quot;"');
   });
 });
+
+describe('postponed game', () => {
+  // Own data: a real game marked postponed here; its date and time are pinned below, so rescheduling games
+  // in fixtures.ts does not change what these tests expect.
+  const scheduled: Match = { ...MATCHES.find((m) => m.game === 319)!, date: '2026-11-12', time: '21:30', postponed: undefined };
+  const postponed: Match = { ...scheduled, postponed: true };
+
+  it('is greyed out and says the new date is to be decided, keeping the original date', () => {
+    const html = matchCard(postponed, itCtx);
+    expect(html).toContain('<article class="match postponed"');
+    expect(html).toContain('<span class="tag postponed">Rinviata</span>');
+    expect(html).toContain('<p class="postponed-note">Gara rinviata, nuova data da definire.</p>');
+    expect(html).toContain('<span class="day">12</span><span class="mon">nov</span><span class="time">gio · 21:30</span>');
+    expect(html).toContain('<div class="postponed-mark" title="Gara rinviata, nuova data da definire."><svg');
+  });
+
+  it('says the same in English', () => {
+    const html = matchCard(postponed, enCtx);
+    expect(html).toContain('<span class="tag postponed">Postponed</span>');
+    expect(html).toContain('<p class="postponed-note">Game postponed, new date to be announced.</p>');
+  });
+
+  it('offers no Google Calendar link for the old date, while a scheduled game keeps it', () => {
+    expect(matchCard(postponed, enCtx)).not.toContain('class="gcal"');
+    expect(matchCard(scheduled, enCtx)).toContain('class="gcal"');
+    expect(matchCard(scheduled, enCtx)).not.toContain('postponed');
+  });
+});

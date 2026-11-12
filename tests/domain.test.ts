@@ -46,12 +46,21 @@ describe('Google Calendar link', () => {
 describe('next game', () => {
   // Own data set: the real schedule without results, plus results set by each test.
   // Entering real results in fixtures.ts must not change what these tests expect.
-  const unplayed: Match[] = MATCHES.map(({ result: _ignored, ...m }) => m);
+  const unplayed: Match[] = MATCHES.map(({ result: _ignored, postponed: _alsoIgnored, ...m }) => m);
   const played = (games: number[]): Match[] =>
     unplayed.map((m) => (games.includes(m.game) ? { ...m, result: { home: 1, away: 0, periods: [[1, 0], [0, 0], [0, 0], [0, 0]] } } : m));
 
   it('is the first game from today on', () => {
     expect(nextMatch(unplayed, '2026-10-11')?.game).toBe(300);
+  });
+
+  it('skips a postponed game, whose original date no longer holds', () => {
+    const slot = (game: number, date: string, side: 'a' | 'b'): Match => ({ ...unplayed[0], game, date, sides: [side], derby: undefined });
+    const open = [slot(1, '2026-11-12', 'b'), slot(2, '2026-11-16', 'a'), slot(3, '2026-11-18', 'b')];
+    const games = open.map((m) => (m.game === 1 ? { ...m, postponed: true as const } : m));
+    expect(nextMatch(open, '2026-11-12')?.game).toBe(1);
+    expect(nextMatch(games, '2026-11-12')?.game).toBe(2);
+    expect(nextMatch(games, '2026-11-12', 'b')?.game).toBe(3);
   });
 
   it('includes a game played today until its result is entered', () => {

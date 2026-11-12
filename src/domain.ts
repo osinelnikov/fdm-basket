@@ -40,10 +40,11 @@ export const matchEnd = (m: Match) => addHours(m.date, m.time, GAME_LENGTH_HOURS
 /**
  * The next game to play: the first one dated today or later (Rome date, YYYY-MM-DD)
  * that has no result yet. A game played today stops being "next" once its result is in.
+ * A postponed game has no date yet, so it is never "next".
  * With a filter, only the games that filter shows are considered.
  */
 export function nextMatch(matches: readonly Match[], today: string, filter: Filter = 'all'): Match | undefined {
   return [...matches]
     .sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time))
-    .find((m) => m.date >= today && !m.result && matchesFilter(m, filter));
+    .find((m) => m.date >= today && !m.result && !m.postponed && matchesFilter(m, filter));
 }

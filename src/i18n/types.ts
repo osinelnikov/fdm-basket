@@ -52,6 +52,10 @@ export interface Messages {
   gameNo: (game: number) => string;
   tagFinal: string;
   tagNext: string;
+  /** Tag of a game called off and moved to a date not fixed yet. */
+  tagPostponed: string;
+  /** Line on a postponed game's card, which keeps showing the original date. */
+  postponedNote: string;
   /** Name of a period by 0-based index: quarters, then overtimes. */
   periodName: (index: number) => string;
   /** `periods` is empty when only the final score is known. */

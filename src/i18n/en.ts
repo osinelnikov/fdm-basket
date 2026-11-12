@@ -50,6 +50,8 @@ export const en: Messages = {
   gameNo: (n) => `Game ${n}`,
   tagFinal: 'Final',
   tagNext: 'Next game',
+  tagPostponed: 'Postponed',
+  postponedNote: 'Game postponed, new date to be announced.',
   periodName: (i) => (i < 4 ? `Q${i + 1}` : i === 4 ? 'OT' : `OT${i - 3}`),
   resultAria: (home, away, hp, ap, periods) => `Final score: ${home} ${hp}, ${away} ${ap}.${periods ? ` By period: ${periods}.` : ''}`,
   watchVideo: (n) => `Watch game ${n} on YouTube`,

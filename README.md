@@ -22,6 +22,25 @@ are fixed by game number in `src/calendar/ics.ts`; do not update them when dates
 
 A failing test stops the build, so a broken schedule is never published.
 
+## Postpone a game
+
+When a game is called off and the new date is not known yet (TBD), add `postponed: true` to it in
+`src/data/fixtures.ts` and keep its `date` and `time`. The card stays in its month at the original date,
+turns grey, gets a "Postponed" tag and a "new date to be announced" line, and loses its Google Calendar
+link; it is never the next game. The calendar feed keeps the event at the original date.
+
+When the new date is announced:
+
+1. Remove `postponed`, set the new `date` and `time` (and `venue`, if it changed) and add `revision: 1`
+   or increase the existing number. Calendar subscribers then see the event move.
+2. Move the match to its new place in `MATCHES`: the list must stay sorted by date and time.
+3. If the new date falls in a month that has no games yet, add the month to `MonthTheme['theme']` in
+   `src/data/types.ts` and to `MONTH_THEMES` in `src/data/fixtures.ts`, give it colours with a
+   `.month[data-theme="…"]` rule in `src/styles.css`, and add its tagline to `monthTaglines` in
+   `src/i18n/it.ts` and `src/i18n/en.ts`.
+4. Update the game's row in `tests/fixtures.test.ts` and the `SOURCE.bulletin` text.
+5. Run `npm run build` and push.
+
 ## Add a result
 
 Add `result` to the match in `src/data/fixtures.ts`, home team first, run `npm run build`, then push:
