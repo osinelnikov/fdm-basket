@@ -1,6 +1,6 @@
 import type { BoxScore, Match, Standings } from '../../src/data/types.ts';
-import matches from './data/matches.json' with { type: 'json' };
-import standings from './data/standings.json' with { type: 'json' };
+import matches from './data/matches.json';
+import standings from './data/standings.json';
 
 /**
  * A frozen copy of the league data as of CU 05 (6 Nov 2026), for tests of code behaviour.

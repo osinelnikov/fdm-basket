@@ -1,5 +1,5 @@
 import type { Standings } from './types.ts';
-import standings from './standings.json' with { type: 'json' };
+import standings from './standings.json';
 
 /**
  * League table of the Serie A/2 girone "Tirreno Nord", copied from the latest UISP bulletin

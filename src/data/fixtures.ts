@@ -1,5 +1,5 @@
 import type { Match, MonthTheme, Team, TeamId, Venue, VenueId } from './types.ts';
-import matches from './matches.json' with { type: 'json' };
+import matches from './matches.json';
 
 /**
  * Source: UISP Pallacanestro Pisa–Lucca–Livorno, Comunicato Ufficiale N° 01

@@ -46,10 +46,11 @@ function devAdminApi(): Plugin {
     configureServer(server) {
       let handle: Promise<(request: Request) => Promise<Response>> | undefined;
       const load = async () => {
-        const [{ handleAdminRequest, romeToday }, { MemoryDataStore }] = await Promise.all([
-          import('./functions/_lib/handlers.ts'),
-          import('./src/admin/memory-datastore.ts'),
-        ]);
+        // Loaded through Vite, which, unlike plain Node, imports the JSON data modules.
+        const [{ handleAdminRequest, romeToday }, { MemoryDataStore }] = (await Promise.all([
+          server.ssrLoadModule('/functions/_lib/handlers.ts'),
+          server.ssrLoadModule('/src/admin/memory-datastore.ts'),
+        ])) as [typeof import('./functions/_lib/handlers.ts'), typeof import('./src/admin/memory-datastore.ts')];
         const json = (path: string) => JSON.parse(readFileSync(fromRoot(path), 'utf8'));
         const boxScores = Object.fromEntries(
           readdirSync(fromRoot('./src/data/boxscores/'))
