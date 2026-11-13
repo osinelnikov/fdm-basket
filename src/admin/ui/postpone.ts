@@ -38,27 +38,27 @@ export function postponeAction(): ActionSpec {
       const open = postponableGames(state.matches, state.today);
       const postponed = postponedGames(state.matches);
       const radio = (value: Mode, label: string, enabled: boolean, checked: boolean) =>
-        `<label class="ad-radio"><input type="radio" name="mode" value="${value}"${enabled ? '' : ' disabled'}${checked ? ' checked' : ''}> ${label}</label>`;
+        `<label class="cp-radio"><input type="radio" name="mode" value="${value}"${enabled ? '' : ' disabled'}${checked ? ' checked' : ''}> ${label}</label>`;
       const venues = (Object.keys(VENUES) as VenueId[]).map((v) => `<option value="${v}">${esc(VENUES[v].name)}</option>`).join('');
-      body.innerHTML = `<fieldset class="ad-fieldset"><legend>What to do</legend>
+      body.innerHTML = `<fieldset class="cp-fieldset"><legend>What to do</legend>
           ${radio('postpone', 'Postpone a game', open.length > 0, open.length > 0)}
           ${radio('reschedule', 'Reschedule a postponed game', postponed.length > 0, open.length === 0 && postponed.length > 0)}
           ${radio('unpostpone', 'Remove the postponed mark', postponed.length > 0, false)}
         </fieldset>
         <div data-mode="postpone">${
           open.length > 0
-            ? `<div class="ad-field"><label for="pp-game">Game</label><select id="pp-game" name="postponeGame">${gameOptions(open, open[0].game)}</select></div>`
+            ? `<div class="cp-field"><label for="pp-game">Game</label><select id="pp-game" name="postponeGame">${gameOptions(open, open[0].game)}</select></div>`
             : '<p>No game without a result is dated today or later.</p>'
         }</div>
         <div data-mode="reschedule unpostpone">${
           postponed.length > 0
-            ? `<div class="ad-field"><label for="pp-postponed">Postponed game</label><select id="pp-postponed" name="postponedGame">${gameOptions(postponed, postponed[0].game)}</select></div>`
+            ? `<div class="cp-field"><label for="pp-postponed">Postponed game</label><select id="pp-postponed" name="postponedGame">${gameOptions(postponed, postponed[0].game)}</select></div>`
             : '<p>No game is postponed.</p>'
         }</div>
-        <div data-mode="reschedule" class="ad-grid3">
-          <div class="ad-field"><label for="pp-date">New date</label><input id="pp-date" name="date" type="date" min="${esc(state.today)}"></div>
-          <div class="ad-field"><label for="pp-time">Tip-off</label><input id="pp-time" name="time" type="time"></div>
-          <div class="ad-field"><label for="pp-venue">Venue</label><select id="pp-venue" name="venue">${venues}</select></div>
+        <div data-mode="reschedule" class="cp-grid3">
+          <div class="cp-field"><label for="pp-date">New date</label><input id="pp-date" name="date" type="date" min="${esc(state.today)}"></div>
+          <div class="cp-field"><label for="pp-time">Tip-off</label><input id="pp-time" name="time" type="time"></div>
+          <div class="cp-field"><label for="pp-venue">Venue</label><select id="pp-venue" name="venue">${venues}</select></div>
         </div>`;
       body.querySelectorAll('[name="mode"]').forEach((el) => el.addEventListener('change', showMode));
       $('[name="postponedGame"]')?.addEventListener('change', () => fillSchedule(state));

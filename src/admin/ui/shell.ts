@@ -104,7 +104,7 @@ export function showExpired(container: HTMLElement, draft?: Draft) {
   container.hidden = false;
   container.className = container.className.replace(/\bis-\w+\b/g, '').trim() + ' is-error';
   container.innerHTML = `<p><b>Your session has expired. Sign in again.</b>${draft ? ' Your input is kept and comes back after signing in.' : ''}</p>
-    <button type="button" class="ad-btn primary" data-sign-in>Sign in again</button>`;
+    <button type="button" class="cp-btn primary" data-sign-in>Sign in again</button>`;
   container.querySelector('[data-sign-in]')!.addEventListener('click', () => signInAgain(draft));
 }
 
@@ -113,11 +113,11 @@ const CLOSE_ICON =
 
 const changesHtml = (changes: Change[]): string =>
   changes.length === 0
-    ? '<p class="ad-muted">No changes yet.</p>'
-    : `<table class="ad-changes"><tbody>${changes
+    ? '<p class="cp-muted">No changes yet.</p>'
+    : `<table class="cp-changes"><tbody>${changes
         .map(
           (c) =>
-            `<tr><th scope="row">${esc(c.label)}</th><td class="ad-before">${esc(c.before)}</td><td class="ad-arrow" aria-label="becomes">→</td><td class="ad-after">${esc(c.after)}</td></tr>`,
+            `<tr><th scope="row">${esc(c.label)}</th><td class="cp-before">${esc(c.before)}</td><td class="cp-arrow" aria-label="becomes">→</td><td class="cp-after">${esc(c.after)}</td></tr>`,
         )
         .join('')}</tbody></table>`;
 
@@ -142,28 +142,28 @@ export class ActionDialog {
   ) {
     const id = `ad-${spec.id}`;
     const d = document.createElement('dialog');
-    d.className = 'ad-dialog';
+    d.className = 'cp-dialog';
     d.setAttribute('aria-labelledby', `${id}-title`);
-    d.innerHTML = `<div class="ad-titlebar"><h2 id="${id}-title">${esc(spec.title)}</h2>
-        <button type="button" class="ad-close" data-close aria-label="Close" title="Close">${CLOSE_ICON}</button></div>
-      <form class="ad-form" novalidate>
-        <div class="ad-body"></div>
-        <div class="ad-field"><label for="${id}-comment">Comment <span class="ad-muted">(optional, added to the change log)</span></label>
+    d.innerHTML = `<div class="cp-titlebar"><h2 id="${id}-title">${esc(spec.title)}</h2>
+        <button type="button" class="cp-close" data-close aria-label="Close" title="Close">${CLOSE_ICON}</button></div>
+      <form class="cp-form" novalidate>
+        <div class="cp-body"></div>
+        <div class="cp-field"><label for="${id}-comment">Comment <span class="cp-muted">(optional, added to the change log)</span></label>
           <textarea id="${id}-comment" name="comment" rows="2" maxlength="2000"></textarea></div>
-        <section class="ad-preview" aria-live="polite" aria-labelledby="${id}-preview-title"><h3 id="${id}-preview-title">Preview of changes</h3><div></div></section>
-        <div class="ad-message" role="status" hidden></div>
-        <div class="ad-actions"><button type="button" class="ad-btn" data-close>Cancel</button><button type="submit" class="ad-btn primary">Save</button></div>
+        <section class="cp-preview" aria-live="polite" aria-labelledby="${id}-preview-title"><h3 id="${id}-preview-title">Preview of changes</h3><div></div></section>
+        <div class="cp-message" role="status" hidden></div>
+        <div class="cp-actions"><button type="button" class="cp-btn" data-close>Cancel</button><button type="submit" class="cp-btn primary">Save</button></div>
       </form>
-      <div class="ad-done" role="status" hidden></div>`;
+      <div class="cp-done" role="status" hidden></div>`;
     document.body.append(d);
     this.dialog = d;
     this.form = d.querySelector('form')!;
-    this.body = d.querySelector('.ad-body')!;
+    this.body = d.querySelector('.cp-body')!;
     this.comment = d.querySelector('textarea')!;
-    this.preview = d.querySelector('.ad-preview > div')!;
-    this.message = d.querySelector('.ad-message')!;
+    this.preview = d.querySelector('.cp-preview > div')!;
+    this.message = d.querySelector('.cp-message')!;
     this.save = d.querySelector('button[type="submit"]')!;
-    this.done = d.querySelector('.ad-done')!;
+    this.done = d.querySelector('.cp-done')!;
 
     d.addEventListener('click', (e) => {
       if (e.target instanceof Element && e.target.closest('[data-close]')) d.close();
@@ -199,8 +199,8 @@ export class ActionDialog {
   }
 
   private focusFirst() {
-    const first = this.dialog.querySelector<HTMLElement>('.ad-form:not([hidden]) :is(select, input, textarea):not([disabled]), .ad-done:not([hidden]) button');
-    (first ?? this.dialog.querySelector<HTMLElement>('.ad-close'))?.focus();
+    const first = this.dialog.querySelector<HTMLElement>('.cp-form:not([hidden]) :is(select, input, textarea):not([disabled]), .cp-done:not([hidden]) button');
+    (first ?? this.dialog.querySelector<HTMLElement>('.cp-close'))?.focus();
   }
 
   private reset() {
@@ -219,21 +219,21 @@ export class ActionDialog {
     const plan = this.spec.plan(this.app.state);
     const parts = [changesHtml(plan.changes)];
     if (plan.html) parts.push(plan.html);
-    if (plan.notes?.length) parts.push(listHtml(plan.notes, 'ad-notes'));
-    if (plan.errors.length) parts.push(listHtml(plan.errors, 'ad-errors'));
+    if (plan.notes?.length) parts.push(listHtml(plan.notes, 'cp-notes'));
+    if (plan.errors.length) parts.push(listHtml(plan.errors, 'cp-errors'));
     this.preview.innerHTML = parts.join('');
     this.save.disabled = this.busy || !plan.payload || plan.errors.length > 0 || plan.changes.length === 0;
   }
 
   private clearMessage() {
     this.message.hidden = true;
-    this.message.className = 'ad-message';
+    this.message.className = 'cp-message';
     this.message.innerHTML = '';
   }
 
   private note(text: string, kind: 'info' | 'error' = 'info', extra = '') {
     this.message.hidden = false;
-    this.message.className = `ad-message is-${kind}`;
+    this.message.className = `cp-message is-${kind}`;
     this.message.innerHTML = `<p>${esc(text)}</p>${extra}`;
   }
 
@@ -257,7 +257,7 @@ export class ActionDialog {
           showExpired(this.message, { action: this.spec.id, values: captureValues(this.form) });
           break;
         case 'violations':
-          this.note('The change was not saved:', 'error', listHtml(outcome.violations, 'ad-errors'));
+          this.note('The change was not saved:', 'error', listHtml(outcome.violations, 'cp-errors'));
           break;
         case 'error':
           this.note(outcome.message, 'error');
@@ -276,8 +276,8 @@ export class ActionDialog {
     this.form.hidden = true;
     this.done.hidden = false;
     const link = commitUrl ? ` <a href="${esc(commitUrl)}" target="_blank" rel="noopener noreferrer">View the change on GitHub ↗</a>` : '';
-    this.done.innerHTML = `<p class="ad-success"><b>Saved.</b>${link}</p><p>The site updates in about a minute.</p>
-      <div class="ad-actions"><button type="button" class="ad-btn" data-again>Make another change</button><button type="button" class="ad-btn primary" data-close>Close</button></div>`;
+    this.done.innerHTML = `<p class="cp-success"><b>Saved.</b>${link}</p><p>The site updates in about a minute.</p>
+      <div class="cp-actions"><button type="button" class="cp-btn" data-again>Make another change</button><button type="button" class="cp-btn primary" data-close>Close</button></div>`;
     this.done.querySelector('[data-again]')!.addEventListener('click', () => {
       this.reset();
       this.focusFirst();

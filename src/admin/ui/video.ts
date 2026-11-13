@@ -19,10 +19,10 @@ export function videoAction(): ActionSpec {
         body.innerHTML = '<p>No game has a result yet.</p>';
         return;
       }
-      body.innerHTML = `<div class="ad-field"><label for="video-game">Game</label><select id="video-game" name="game">${gameOptions(games, games[0].game)}</select></div>
-        <div class="ad-field"><label for="video-url">YouTube link</label>
+      body.innerHTML = `<div class="cp-field"><label for="video-game">Game</label><select id="video-game" name="game">${gameOptions(games, games[0].game)}</select></div>
+        <div class="cp-field"><label for="video-url">YouTube link</label>
           <input id="video-url" name="video" type="url" inputmode="url" maxlength="300" autocomplete="off" placeholder="https://youtu.be/…"></div>
-        <p class="ad-hint" id="video-normalized"></p>`;
+        <p class="cp-hint" id="video-normalized"></p>`;
       const select = $<HTMLSelectElement>('#video-game')!;
       const fill = () => ($<HTMLInputElement>('#video-url')!.value = selectedGame(select, state)?.video ?? '');
       select.addEventListener('change', fill);

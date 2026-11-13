@@ -23,13 +23,13 @@ function summaryHtml(m: Match, s: BoxSummary): string {
   const count = Math.max(s.periods[0].length, s.periods[1].length);
   const head = Array.from({ length: count }, (_, i) => `<th scope="col">${i < 4 ? `Q${i + 1}` : `OT${i - 3}`}</th>`).join('');
   const row = (team: string, side: 0 | 1) =>
-    `<tr><th scope="row">${esc(team)}</th>${s.periods[side].map((p) => `<td>${p}</td>`).join('')}<td class="ad-total">${s.totals[side]}</td></tr>`;
+    `<tr><th scope="row">${esc(team)}</th>${s.periods[side].map((p) => `<td>${p}</td>`).join('')}<td class="cp-total">${s.totals[side]}</td></tr>`;
   const scorers = (team: string, side: 0 | 1) =>
     `<li><b>${esc(team)}:</b> ${s.scorers[side].map((p) => `${esc(p.name || `#${p.no}`)} ${p.pts}`).join(', ') || '—'}</li>`;
-  return `<div class="ad-table-wrap"><table class="ad-mini"><caption>Read from the PDF</caption>
+  return `<div class="cp-table-wrap"><table class="cp-mini"><caption>Read from the PDF</caption>
       <thead><tr><th scope="col">Team</th>${head}<th scope="col">Total</th></tr></thead>
       <tbody>${row(m.home, 0)}${row(m.away, 1)}</tbody></table></div>
-    <ul class="ad-scorers"><li class="ad-muted">Top scorers</li>${scorers(m.home, 0)}${scorers(m.away, 1)}</ul>`;
+    <ul class="cp-scorers"><li class="cp-muted">Top scorers</li>${scorers(m.home, 0)}${scorers(m.away, 1)}</ul>`;
 }
 
 /** Publish the statistics PDF of a game with a result, with the box score read from it in the browser. */
@@ -89,11 +89,11 @@ export function statsAction(): ActionSpec {
         body.innerHTML = '<p>No game has a result yet.</p>';
         return;
       }
-      body.innerHTML = `<div class="ad-field"><label for="stats-game">Game</label><select id="stats-game" name="game">${gameOptions(games, games[0].game)}</select></div>
-        <p class="ad-hint" id="stats-current"></p>
-        <div class="ad-field"><label for="stats-file">Statistics PDF <span class="ad-muted">(“Tabellino dettagliato”, at most ${megabytes(MAX_PDF_BYTES)})</span></label>
+      body.innerHTML = `<div class="cp-field"><label for="stats-game">Game</label><select id="stats-game" name="game">${gameOptions(games, games[0].game)}</select></div>
+        <p class="cp-hint" id="stats-current"></p>
+        <div class="cp-field"><label for="stats-file">Statistics PDF <span class="cp-muted">(“Tabellino dettagliato”, at most ${megabytes(MAX_PDF_BYTES)})</span></label>
           <input id="stats-file" type="file" accept="application/pdf,.pdf"></div>
-        <div class="ad-boxscore" hidden><label class="ad-checkbox"><input type="checkbox" name="withoutBoxScore"> Upload the PDF without a box score</label></div>`;
+        <div class="cp-boxscore" hidden><label class="cp-checkbox"><input type="checkbox" name="withoutBoxScore"> Upload the PDF without a box score</label></div>`;
       const fileInput = $<HTMLInputElement>('#stats-file')!;
       fileInput.addEventListener('change', () => void choose(fileInput.files?.[0], changed));
     },
@@ -107,7 +107,7 @@ export function statsAction(): ActionSpec {
       if (!m) return plan;
       const hasBox = state.boxScoreGames.includes(m.game);
       $('#stats-current')!.textContent = `Published now: ${m.stats ? 'statistics PDF' : 'no statistics PDF'}, ${hasBox ? 'box score' : 'no box score'}.`;
-      const optOut = $<HTMLElement>('.ad-boxscore')!;
+      const optOut = $<HTMLElement>('.cp-boxscore')!;
       optOut.hidden = true;
 
       if (fileError) {

@@ -25,12 +25,12 @@ function previewHtml(current: Standings, next: Standings, cells: Set<string>): s
     const changed = cells.has(`${i}:${key}`);
     const title = changed ? ` title="${esc(`was ${before ?? '—'}`)}"` : '';
     const mark = changed ? `<span class="sr-only"> (was ${esc(String(before ?? '—'))})</span>` : '';
-    return `<td class="${changed ? 'ad-changed' : ''}"${title}>${esc(String(value))}${mark}</td>`;
+    return `<td class="${changed ? 'cp-changed' : ''}"${title}>${esc(String(value))}${mark}</td>`;
   };
   const rows = next.rows
     .map((r, i) => `<tr><th scope="row">${i + 1}</th>${cell(i, 'team', r.team)}${STORED_NUMBERS.map((f) => cell(i, f.key as keyof StandingRow, r[f.key as keyof StandingRow])).join('')}</tr>`)
     .join('');
-  return `<div class="ad-table-wrap"><table class="ad-mini ad-standings-preview"><caption>New table, changed cells highlighted</caption>
+  return `<div class="cp-table-wrap"><table class="cp-mini cp-standings-preview"><caption>New table, changed cells highlighted</caption>
     <thead><tr><th scope="col">#</th><th scope="col">Team</th>${STORED_NUMBERS.map((f) => `<th scope="col"><abbr title="${esc(f.title)}">${f.label}</abbr></th>`).join('')}</tr></thead>
     <tbody>${rows}</tbody></table></div>`;
 }
@@ -66,7 +66,7 @@ export function standingsAction(): ActionSpec {
         `<td><input name="${f.key}-${i}" inputmode="${f.key === 'diff' ? 'text' : 'numeric'}" autocomplete="off" size="4" aria-label="${esc(`Row ${i + 1} ${f.label}: ${f.title}`)}"></td>`,
     ).join('');
     return `<tr><th scope="row">${i + 1}</th><td><select name="team-${i}" aria-label="Row ${i + 1} team">${teams}</select></td>${inputs}
-      <td class="ad-order"><button type="button" class="ad-btn small" data-move="-1" data-row="${i}" aria-label="Move row ${i + 1} up"${i === 0 ? ' disabled' : ''}>↑</button><button type="button" class="ad-btn small" data-move="1" data-row="${i}" aria-label="Move row ${i + 1} down"${i === TABLE_SIZE - 1 ? ' disabled' : ''}>↓</button></td></tr>`;
+      <td class="cp-order"><button type="button" class="cp-btn small" data-move="-1" data-row="${i}" aria-label="Move row ${i + 1} up"${i === 0 ? ' disabled' : ''}>↑</button><button type="button" class="cp-btn small" data-move="1" data-row="${i}" aria-label="Move row ${i + 1} down"${i === TABLE_SIZE - 1 ? ' disabled' : ''}>↓</button></td></tr>`;
   }
 
   return {
@@ -75,22 +75,22 @@ export function standingsAction(): ActionSpec {
     render(container, state) {
       body = container;
       const form = formFromStandings(state.standings);
-      body.innerHTML = `<p class="ad-hint">Copy the table from the latest UISP bulletin, in the bulletin's order. Current: ${esc(state.standings.source)}.</p>
-        <div class="ad-grid2">
-          <div class="ad-field"><label for="st-number">Bulletin number (CU)</label><input id="st-number" name="number" inputmode="numeric" autocomplete="off" placeholder="05"></div>
-          <div class="ad-field"><label for="st-date">Bulletin date</label><input id="st-date" name="date" type="date"></div>
+      body.innerHTML = `<p class="cp-hint">Copy the table from the latest UISP bulletin, in the bulletin's order. Current: ${esc(state.standings.source)}.</p>
+        <div class="cp-grid2">
+          <div class="cp-field"><label for="st-number">Bulletin number (CU)</label><input id="st-number" name="number" inputmode="numeric" autocomplete="off" placeholder="05"></div>
+          <div class="cp-field"><label for="st-date">Bulletin date</label><input id="st-date" name="date" type="date"></div>
         </div>
-        <p class="ad-hint" id="st-source"></p>
-        <div class="ad-table-wrap"><table class="ad-standings">
+        <p class="cp-hint" id="st-source"></p>
+        <div class="cp-table-wrap"><table class="cp-standings">
           <thead><tr><th scope="col">#</th><th scope="col">Team</th>${NUMBER_FIELDS.map((f) => `<th scope="col"><abbr title="${esc(f.title)}">${f.label}</abbr></th>`).join('')}<th scope="col">Order</th></tr></thead>
           <tbody>${Array.from({ length: TABLE_SIZE }, (_, i) => rowHtml(i)).join('')}</tbody></table></div>
-        <p class="ad-hint">DC is a check only: it must equal CF − CS and is not stored.</p>`;
+        <p class="cp-hint">DC is a check only: it must equal CF − CS and is not stored.</p>`;
       control('number').value = form.number;
       control('date').value = form.date;
       writeRows(form.rows);
 
       // Listeners go on elements of this rendering: the container itself outlives it.
-      $('.ad-standings')!.addEventListener('click', (e) => {
+      $('.cp-standings')!.addEventListener('click', (e) => {
         const button = e.target instanceof Element ? e.target.closest<HTMLButtonElement>('[data-move]') : null;
         if (!button) return;
         const row = Number(button.dataset.row);

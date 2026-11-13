@@ -35,7 +35,7 @@ function renderStatus(state: AdminState) {
   const last = lastResult(state.matches);
   const postponed = postponedGames(state.matches);
   statusEl.removeAttribute('aria-busy');
-  statusEl.innerHTML = `<dl class="ad-facts">
+  statusEl.innerHTML = `<dl class="cp-facts">
       <div><dt>Signed in as</dt><dd>${esc(state.email)}</dd></div>
       <div><dt>Today</dt><dd>${esc(shortDate(state.today))}</dd></div>
       <div><dt>Last result</dt><dd>${last ? `${esc(gameLabel(last))} · <b>${esc(formatResult(last.result))}</b>` : '—'}</dd></div>
@@ -46,8 +46,8 @@ function renderStatus(state: AdminState) {
 
 function showNotice(text: string, retry?: () => void) {
   noticeEl.hidden = false;
-  noticeEl.className = 'ad-message is-error';
-  noticeEl.innerHTML = `<p>${esc(text)}</p>${retry ? '<button type="button" class="ad-btn" data-retry>Try again</button>' : ''}`;
+  noticeEl.className = 'cp-message is-error';
+  noticeEl.innerHTML = `<p>${esc(text)}</p>${retry ? '<button type="button" class="cp-btn" data-retry>Try again</button>' : ''}`;
   noticeEl.querySelector('[data-retry]')?.addEventListener('click', retry!);
 }
 

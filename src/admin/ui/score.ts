@@ -52,21 +52,21 @@ export function scoreAction(): ActionSpec {
         body.innerHTML = '<p>No game is dated today or earlier.</p>';
         return;
       }
-      body.innerHTML = `<div class="ad-field"><label for="score-game">Game</label><select id="score-game" name="game">${gameOptions(games, defaultScoreGame(games)?.game)}</select></div>
-        <p class="ad-hint" id="score-mode"></p>
-        <fieldset class="ad-fieldset"><legend>Final score</legend>
-          <div class="ad-final">
+      body.innerHTML = `<div class="cp-field"><label for="score-game">Game</label><select id="score-game" name="game">${gameOptions(games, defaultScoreGame(games)?.game)}</select></div>
+        <p class="cp-hint" id="score-mode"></p>
+        <fieldset class="cp-fieldset"><legend>Final score</legend>
+          <div class="cp-final">
             <label><span data-team="home"></span><input name="home" inputmode="numeric" autocomplete="off" size="4"></label>
             <span aria-hidden="true">–</span>
             <label><span data-team="away"></span><input name="away" inputmode="numeric" autocomplete="off" size="4"></label>
           </div>
         </fieldset>
-        <fieldset class="ad-fieldset" id="score-periods"><legend>Points per period <span class="ad-muted">(optional: leave all empty when only the final score is known)</span></legend>
-          <table class="ad-periods"><thead><tr><th scope="col">Period</th><th scope="col" data-team="home"></th><th scope="col" data-team="away"></th></tr></thead><tbody></tbody></table>
-          <div class="ad-inline"><button type="button" class="ad-btn small" data-add-ot>Add overtime</button><button type="button" class="ad-btn small" data-remove-ot>Remove last overtime</button></div>
-          <p class="ad-check" id="score-check" aria-live="polite"></p>
+        <fieldset class="cp-fieldset" id="score-periods"><legend>Points per period <span class="cp-muted">(optional: leave all empty when only the final score is known)</span></legend>
+          <table class="cp-periods"><thead><tr><th scope="col">Period</th><th scope="col" data-team="home"></th><th scope="col" data-team="away"></th></tr></thead><tbody></tbody></table>
+          <div class="cp-inline"><button type="button" class="cp-btn small" data-add-ot>Add overtime</button><button type="button" class="cp-btn small" data-remove-ot>Remove last overtime</button></div>
+          <p class="cp-check" id="score-check" aria-live="polite"></p>
         </fieldset>
-        <div class="ad-boxscore" hidden><label class="ad-checkbox"><input type="checkbox" name="removeBoxScore"> Remove the published box score if it does not match the new score</label></div>`;
+        <div class="cp-boxscore" hidden><label class="cp-checkbox"><input type="checkbox" name="removeBoxScore"> Remove the published box score if it does not match the new score</label></div>`;
 
       const select = $<HTMLSelectElement>('#score-game')!;
       select.addEventListener('change', () => fill(selectedGame(select, state)!));
@@ -112,7 +112,7 @@ export function scoreAction(): ActionSpec {
 
       const hasBox = state.boxScoreGames.includes(m.game);
       const changing = reading.result !== undefined && !sameResult(m.result, reading.result);
-      const boxRow = $<HTMLElement>('.ad-boxscore')!;
+      const boxRow = $<HTMLElement>('.cp-boxscore')!;
       boxRow.hidden = !(hasBox && changing);
       const removeBox = !boxRow.hidden && input('removeBoxScore').checked;
 
