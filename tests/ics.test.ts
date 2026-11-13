@@ -1,7 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { buildIcs, foldLine, escapeText, ICS_SEQUENCE_BASE } from '../src/calendar/ics.ts';
-import { MATCHES } from '../src/data/fixtures.ts';
+import { MATCHES as LIVE_MATCHES } from '../src/data/fixtures.ts';
+import { MATCHES } from './fixtures/data.ts';
 import type { Match } from '../src/data/types.ts';
 
 const NOW = new Date(Date.UTC(2026, 9, 11, 15, 30, 0));
@@ -65,7 +66,7 @@ describe('events', () => {
   it('keeps the UIDs of the calendar already published, so imports update instead of duplicating', () => {
     const published = readFileSync(new URL('./fixtures/published-2026-10-11.ics', import.meta.url), 'utf8');
     const uids = (text: string) => events(text).map((ev) => prop(ev, 'UID')).sort();
-    expect(uids(ics)).toEqual(uids(published));
+    expect(uids(buildIcs(LIVE_MATCHES, { now: NOW }))).toEqual(uids(published));
   });
 
   it('starts at the bulletin time in Europe/Rome and lasts two hours', () => {

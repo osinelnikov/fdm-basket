@@ -1,8 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { MATCHES } from '../src/data/fixtures.ts';
+import { MATCHES } from './fixtures/data.ts';
 import type { Match } from '../src/data/types.ts';
 import { MESSAGES } from '../src/i18n/index.ts';
 import { matchCard } from '../src/ui/matches.ts';
+
+// matchCard offers the box score only for games whose live box score file exists, so the cards below use such a game;
+// the admin area may remove every box score, and then the tests that need one are skipped.
+const BOX_GAMES = Object.keys(import.meta.glob('../src/data/boxscores/*.json')).map((path) => Number(/(\d+)\.json$/.exec(path)![1]));
+const BOX_GAME = BOX_GAMES[0] as number | undefined;
 
 // Own data: a real game with a result set here, so entering real links in fixtures.ts changes nothing.
 const base: Match = { ...MATCHES.find((m) => m.game === 310)!, result: { home: 72, away: 57 }, video: undefined, stats: undefined };
@@ -21,10 +26,10 @@ describe('video and statistics icons on a match card', () => {
     expect(html).not.toContain('class="media-link pdf"');
   });
 
-  it('opens the box score dialog from a game that has one, labelled in the page language', () => {
-    const html = matchCard({ ...base, stats: '/stats/310.pdf' }, itCtx);
-    expect(html).toContain('<button type="button" class="media-link box" data-boxscore="310" aria-haspopup="dialog"');
-    expect(html).toContain('aria-label="Tabellino della gara n° 310"');
+  it.skipIf(BOX_GAME === undefined)('opens the box score dialog from a game that has one, labelled in the page language', () => {
+    const html = matchCard({ ...base, game: BOX_GAME!, stats: `/stats/${BOX_GAME}.pdf` }, itCtx);
+    expect(html).toContain(`<button type="button" class="media-link box" data-boxscore="${BOX_GAME}" aria-haspopup="dialog"`);
+    expect(html).toContain(`aria-label="Tabellino della gara n° ${BOX_GAME}"`);
     expect(html).not.toContain('download');
     expect(html).not.toContain('class="media-link pdf"');
     expect(html).not.toContain('class="media-link yt"');
@@ -37,8 +42,8 @@ describe('video and statistics icons on a match card', () => {
     expect(html).not.toContain('data-boxscore');
   });
 
-  it('shows both icons, video first', () => {
-    const html = matchCard({ ...base, video: 'https://www.youtube.com/watch?v=abc123', stats: '/stats/310.pdf' }, enCtx);
+  it.skipIf(BOX_GAME === undefined)('shows both icons, video first', () => {
+    const html = matchCard({ ...base, game: BOX_GAME!, video: 'https://www.youtube.com/watch?v=abc123', stats: `/stats/${BOX_GAME}.pdf` }, enCtx);
     expect(html.indexOf('media-link yt')).toBeGreaterThan(-1);
     expect(html.indexOf('media-link yt')).toBeLessThan(html.indexOf('media-link box'));
   });

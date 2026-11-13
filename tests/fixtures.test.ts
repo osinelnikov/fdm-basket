@@ -1,6 +1,7 @@
 import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { MATCHES, MONTH_THEMES, TEAMS, VENUES } from '../src/data/fixtures.ts';
+import { validateMatches, type DataContext } from '../src/data/validate.ts';
 import type { TeamId } from '../src/data/types.ts';
 
 // Every FDM row of Serie A/2 "Tirreno Nord", copied from the bulletin CU 01 (11/10/2026), pp. 10–11.
@@ -55,24 +56,32 @@ function parsePairing(text: string): [TeamId, TeamId] {
 
 const OPPONENTS: TeamId[] = ['Perignano', 'CEFA Castelnuovo', 'San Miniato', 'Valdera', 'Pisces Lucca', 'La Perla'];
 
+const ctx: DataContext = {
+  today: new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome' }).format(new Date()),
+  teams: TEAMS,
+  venues: VENUES,
+  monthThemes: MONTH_THEMES,
+  statsExists: (path) => existsSync(new URL(`../public${path}`, import.meta.url)),
+};
+
 describe('fixtures match bulletin CU 01', () => {
   it('lists exactly the FDM games of the bulletin', () => {
     expect(MATCHES.map((m) => m.game).sort()).toEqual(CU01.map(([n]) => n).sort());
   });
 
+  // A rescheduled game (revision >= 1) keeps its game number and pairing but no longer has the bulletin date and time.
   it.each(CU01)('game %i has the bulletin date, time and teams', (game, date, time, pairing) => {
     const m = MATCHES.find((x) => x.game === game)!;
     const [home, away] = parsePairing(pairing);
-    expect({ date: m.date, time: m.time, home: m.home, away: m.away }).toEqual({ date, time, home, away });
+    if (m.revision) {
+      expect({ home: m.home, away: m.away }).toEqual({ home, away });
+    } else {
+      expect({ date: m.date, time: m.time, home: m.home, away: m.away }).toEqual({ date, time, home, away });
+    }
   });
 });
 
 describe('fixtures are internally consistent', () => {
-  it('is sorted by date and time', () => {
-    const keys = MATCHES.map((m) => m.date + m.time);
-    expect(keys).toEqual([...keys].sort());
-  });
-
   it.each(['FDM A', 'FDM B'] as const)('%s plays 14 games, every opponent once at home and once away', (team) => {
     const side = team === 'FDM A' ? 'a' : 'b';
     const games = MATCHES.filter((m) => m.home === team || m.away === team);
@@ -91,81 +100,11 @@ describe('fixtures are internally consistent', () => {
     expect(derbies.every((m) => m.sides.length === 2)).toBe(true);
   });
 
-  it('plays home games at Ugo Guidi and away games at the opponent venue', () => {
-    const venueOf: Record<string, string> = {
-      Perignano: 'perignano', 'CEFA Castelnuovo': 'cefa', 'San Miniato': 'sanminiato',
-      Valdera: 'valdera', 'Pisces Lucca': 'pisces', 'La Perla': 'laperla',
-    };
-    for (const m of MATCHES) {
-      const expected = m.home.startsWith('FDM') ? 'fdm' : venueOf[m.home];
-      expect(m.venue, `game ${m.game}`).toBe(expected);
-    }
-  });
-
-  it('never schedules one FDM side twice on the same day', () => {
-    for (const side of ['a', 'b'] as const) {
-      const days = MATCHES.filter((m) => m.sides.includes(side)).map((m) => m.date);
-      expect(new Set(days).size).toBe(days.length);
-    }
-  });
-
   it('stores team names exactly as printed in the bulletin', () => {
     for (const [bulletin, id] of BULLETIN_NAMES) expect(TEAMS[id].bulletinName).toBe(bulletin);
   });
 
-  it('references only known teams, venues and month themes', () => {
-    for (const m of MATCHES) {
-      expect(TEAMS[m.home]).toBeDefined();
-      expect(TEAMS[m.away]).toBeDefined();
-      expect(VENUES[m.venue]).toBeDefined();
-      expect(MONTH_THEMES[m.date.slice(0, 7)], `theme for ${m.date}`).toBeDefined();
-    }
-  });
-});
-
-describe('results', () => {
-  const played = MATCHES.filter((m) => m.result);
-  const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
-
-  it.each(played.map((m) => [m.game, m] as const))('game %i: final score is valid, periods (when known) add up to it', (_, m) => {
-    const r = m.result!;
-    expect(Number.isInteger(r.home) && r.home >= 0 && Number.isInteger(r.away) && r.away >= 0).toBe(true);
-    if (!r.periods) return;
-    expect(r.periods.length).toBeGreaterThanOrEqual(4);
-    for (const [h, a] of r.periods) {
-      expect(Number.isInteger(h) && h >= 0 && Number.isInteger(a) && a >= 0).toBe(true);
-    }
-    expect(sum(r.periods.map(([h]) => h))).toBe(r.home);
-    expect(sum(r.periods.map(([, a]) => a))).toBe(r.away);
-  });
-
-  it('has no result, video or statistics for a postponed game', () => {
-    for (const m of MATCHES.filter((x) => x.postponed)) {
-      expect({ game: m.game, result: m.result, video: m.video, stats: m.stats }).toEqual({ game: m.game, result: undefined, video: undefined, stats: undefined });
-    }
-  });
-
-  it('has results only for games that have already been played', () => {
-    const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome' }).format(new Date());
-    for (const m of played) expect(m.date <= today, `game ${m.game} on ${m.date}`).toBe(true);
-  });
-});
-
-describe('video and statistics', () => {
-  const YOUTUBE_HOSTS = ['www.youtube.com', 'youtube.com', 'm.youtube.com', 'youtu.be'];
-
-  it('are given only for games with a result', () => {
-    for (const m of MATCHES.filter((x) => x.video || x.stats)) expect(m.result, `game ${m.game}`).toBeDefined();
-  });
-
-  it.each(MATCHES.filter((m) => m.video).map((m) => [m.game, m.video!] as const))('game %i: video is an https YouTube link', (_, video) => {
-    const url = new URL(video);
-    expect(url.protocol).toBe('https:');
-    expect(YOUTUBE_HOSTS).toContain(url.hostname);
-  });
-
-  it.each(MATCHES.filter((m) => m.stats).map((m) => [m.game, m.stats!] as const))('game %i: statistics PDF is in public/stats', (game, stats) => {
-    expect(stats).toBe(`/stats/${game}.pdf`);
-    expect(existsSync(new URL(`../public${stats}`, import.meta.url)), `public${stats}`).toBe(true);
+  it('satisfies the data rules', () => {
+    expect(validateMatches(MATCHES, ctx)).toEqual([]);
   });
 });

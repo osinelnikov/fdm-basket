@@ -1,0 +1,1200 @@
+{
+  "game": 310,
+  "referees": [
+    "L LUCCHESI",
+    "N NATALINI"
+  ],
+  "spectators": 15,
+  "home": {
+    "players": [
+      {
+        "no": "3",
+        "name": "A MONTINI",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "16:33",
+          "pts": 4,
+          "fg2": {
+            "made": 2,
+            "att": 5
+          },
+          "fg3": {
+            "made": 0,
+            "att": 3
+          },
+          "fg": {
+            "made": 2,
+            "att": 8
+          },
+          "ft": {
+            "made": 0,
+            "att": 2
+          },
+          "oreb": 1,
+          "dreb": 0,
+          "reb": 1,
+          "pf": 3,
+          "fd": 2,
+          "stl": 3,
+          "tov": 2,
+          "ast": 1,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": -1,
+          "plusMinus": 9
+        }
+      },
+      {
+        "no": "5",
+        "name": "A BERTUCCELLI",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "11:54",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 3
+          },
+          "fg3": {
+            "made": 0,
+            "att": 4
+          },
+          "fg": {
+            "made": 0,
+            "att": 7
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 1,
+          "reb": 1,
+          "pf": 2,
+          "fd": 0,
+          "stl": 2,
+          "tov": 1,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": -5,
+          "plusMinus": 6
+        }
+      },
+      {
+        "no": "6",
+        "name": "G D'ANGIOLO",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "30:40",
+          "pts": 15,
+          "fg2": {
+            "made": 3,
+            "att": 7
+          },
+          "fg3": {
+            "made": 2,
+            "att": 6
+          },
+          "fg": {
+            "made": 5,
+            "att": 13
+          },
+          "ft": {
+            "made": 3,
+            "att": 4
+          },
+          "oreb": 3,
+          "dreb": 7,
+          "reb": 10,
+          "pf": 3,
+          "fd": 4,
+          "stl": 0,
+          "tov": 2,
+          "ast": 6,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 20,
+          "plusMinus": 12
+        }
+      },
+      {
+        "no": "7",
+        "name": "A GIOVINAZZO",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "25:02",
+          "pts": 10,
+          "fg2": {
+            "made": 3,
+            "att": 7
+          },
+          "fg3": {
+            "made": 1,
+            "att": 5
+          },
+          "fg": {
+            "made": 4,
+            "att": 12
+          },
+          "ft": {
+            "made": 1,
+            "att": 1
+          },
+          "oreb": 0,
+          "dreb": 4,
+          "reb": 4,
+          "pf": 2,
+          "fd": 1,
+          "stl": 0,
+          "tov": 3,
+          "ast": 1,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 4,
+          "plusMinus": 11
+        }
+      },
+      {
+        "no": "10",
+        "name": "M MORABITO",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "11:08",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 4
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 0,
+            "att": 4
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 2,
+          "dreb": 0,
+          "reb": 2,
+          "pf": 0,
+          "fd": 0,
+          "stl": 0,
+          "tov": 1,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": -3,
+          "plusMinus": -2
+        }
+      },
+      {
+        "no": "11",
+        "name": "A ARRIGO",
+        "starter": true,
+        "captain": true,
+        "stats": {
+          "min": "10:09",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 1
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 0,
+            "att": 1
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 2,
+          "dreb": 1,
+          "reb": 3,
+          "pf": 1,
+          "fd": 0,
+          "stl": 0,
+          "tov": 1,
+          "ast": 1,
+          "blk": 1,
+          "blkAgainst": 0,
+          "eff": 3,
+          "plusMinus": 7
+        }
+      },
+      {
+        "no": "17",
+        "name": "P GATTI",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "15:01",
+          "pts": 7,
+          "fg2": {
+            "made": 3,
+            "att": 4
+          },
+          "fg3": {
+            "made": 0,
+            "att": 2
+          },
+          "fg": {
+            "made": 3,
+            "att": 6
+          },
+          "ft": {
+            "made": 1,
+            "att": 1
+          },
+          "oreb": 1,
+          "dreb": 2,
+          "reb": 3,
+          "pf": 3,
+          "fd": 1,
+          "stl": 2,
+          "tov": 0,
+          "ast": 2,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 11,
+          "plusMinus": 9
+        }
+      },
+      {
+        "no": "19",
+        "name": "G ADESSI",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "13:29",
+          "pts": 12,
+          "fg2": {
+            "made": 6,
+            "att": 10
+          },
+          "fg3": {
+            "made": 0,
+            "att": 2
+          },
+          "fg": {
+            "made": 6,
+            "att": 12
+          },
+          "ft": {
+            "made": 0,
+            "att": 3
+          },
+          "oreb": 4,
+          "dreb": 0,
+          "reb": 4,
+          "pf": 0,
+          "fd": 3,
+          "stl": 1,
+          "tov": 1,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 7,
+          "plusMinus": 10
+        }
+      },
+      {
+        "no": "21",
+        "name": "E SCALABRINI",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "16:17",
+          "pts": 4,
+          "fg2": {
+            "made": 2,
+            "att": 4
+          },
+          "fg3": {
+            "made": 0,
+            "att": 1
+          },
+          "fg": {
+            "made": 2,
+            "att": 5
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 1,
+          "dreb": 3,
+          "reb": 4,
+          "pf": 1,
+          "fd": 1,
+          "stl": 0,
+          "tov": 0,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 5,
+          "plusMinus": 7
+        }
+      },
+      {
+        "no": "22",
+        "name": "S GIORGI",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "23:43",
+          "pts": 12,
+          "fg2": {
+            "made": 4,
+            "att": 7
+          },
+          "fg3": {
+            "made": 0,
+            "att": 1
+          },
+          "fg": {
+            "made": 4,
+            "att": 8
+          },
+          "ft": {
+            "made": 4,
+            "att": 5
+          },
+          "oreb": 6,
+          "dreb": 9,
+          "reb": 15,
+          "pf": 2,
+          "fd": 3,
+          "stl": 4,
+          "tov": 3,
+          "ast": 0,
+          "blk": 1,
+          "blkAgainst": 0,
+          "eff": 24,
+          "plusMinus": 9
+        }
+      },
+      {
+        "no": "33",
+        "name": "R VITALI",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "14:50",
+          "pts": 5,
+          "fg2": {
+            "made": 1,
+            "att": 3
+          },
+          "fg3": {
+            "made": 1,
+            "att": 2
+          },
+          "fg": {
+            "made": 2,
+            "att": 5
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 1,
+          "dreb": 1,
+          "reb": 2,
+          "pf": 3,
+          "fd": 0,
+          "stl": 0,
+          "tov": 2,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 2,
+          "plusMinus": -2
+        }
+      },
+      {
+        "no": "81",
+        "name": "S CAGNONI",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "11:14",
+          "pts": 3,
+          "fg2": {
+            "made": 1,
+            "att": 3
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 1,
+            "att": 3
+          },
+          "ft": {
+            "made": 1,
+            "att": 2
+          },
+          "oreb": 3,
+          "dreb": 1,
+          "reb": 4,
+          "pf": 2,
+          "fd": 1,
+          "stl": 0,
+          "tov": 1,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 3,
+          "plusMinus": -1
+        }
+      }
+    ],
+    "team": {
+      "oreb": 2,
+      "dreb": 2,
+      "reb": 4,
+      "pf": 0,
+      "tov": 0
+    },
+    "totals": {
+      "min": "200:00",
+      "pts": 72,
+      "fg2": {
+        "made": 25,
+        "att": 58
+      },
+      "fg3": {
+        "made": 4,
+        "att": 26
+      },
+      "fg": {
+        "made": 29,
+        "att": 84
+      },
+      "ft": {
+        "made": 10,
+        "att": 18
+      },
+      "oreb": 26,
+      "dreb": 31,
+      "reb": 57,
+      "pf": 22,
+      "fd": 16,
+      "stl": 12,
+      "tov": 17,
+      "ast": 11,
+      "blk": 2,
+      "blkAgainst": 0,
+      "eff": 74,
+      "plusMinus": 15
+    },
+    "periods": [
+      {
+        "min": "50:00",
+        "pts": 16,
+        "fg2": {
+          "made": 4,
+          "att": 15
+        },
+        "fg3": {
+          "made": 1,
+          "att": 6
+        },
+        "fg": {
+          "made": 5,
+          "att": 21
+        },
+        "ft": {
+          "made": 5,
+          "att": 8
+        },
+        "oreb": 7,
+        "dreb": 5,
+        "reb": 12,
+        "pf": 3,
+        "fd": 5,
+        "stl": 5,
+        "tov": 3,
+        "ast": 2,
+        "blk": 0,
+        "blkAgainst": 0,
+        "eff": 13,
+        "plusMinus": 3
+      },
+      {
+        "min": "50:00",
+        "pts": 23,
+        "fg2": {
+          "made": 8,
+          "att": 14
+        },
+        "fg3": {
+          "made": 1,
+          "att": 7
+        },
+        "fg": {
+          "made": 9,
+          "att": 21
+        },
+        "ft": {
+          "made": 4,
+          "att": 7
+        },
+        "oreb": 8,
+        "dreb": 8,
+        "reb": 16,
+        "pf": 9,
+        "fd": 6,
+        "stl": 4,
+        "tov": 7,
+        "ast": 5,
+        "blk": 1,
+        "blkAgainst": 0,
+        "eff": 27,
+        "plusMinus": 8
+      },
+      {
+        "min": "50:00",
+        "pts": 19,
+        "fg2": {
+          "made": 6,
+          "att": 13
+        },
+        "fg3": {
+          "made": 2,
+          "att": 10
+        },
+        "fg": {
+          "made": 8,
+          "att": 23
+        },
+        "ft": {
+          "made": 1,
+          "att": 2
+        },
+        "oreb": 8,
+        "dreb": 8,
+        "reb": 16,
+        "pf": 6,
+        "fd": 3,
+        "stl": 1,
+        "tov": 2,
+        "ast": 4,
+        "blk": 0,
+        "blkAgainst": 0,
+        "eff": 22,
+        "plusMinus": 6
+      },
+      {
+        "min": "50:00",
+        "pts": 14,
+        "fg2": {
+          "made": 7,
+          "att": 16
+        },
+        "fg3": {
+          "made": 0,
+          "att": 3
+        },
+        "fg": {
+          "made": 7,
+          "att": 19
+        },
+        "ft": {
+          "made": 0,
+          "att": 1
+        },
+        "oreb": 3,
+        "dreb": 10,
+        "reb": 13,
+        "pf": 4,
+        "fd": 2,
+        "stl": 2,
+        "tov": 5,
+        "ast": 0,
+        "blk": 1,
+        "blkAgainst": 0,
+        "eff": 12,
+        "plusMinus": -2
+      }
+    ],
+    "running": [
+      7,
+      16,
+      25,
+      39,
+      47,
+      58,
+      66,
+      72
+    ],
+    "extras": {
+      "pointsOffTurnovers": 20,
+      "fastBreak": 16,
+      "secondChance": 23,
+      "paint": 44,
+      "starters": {
+        "pts": 36,
+        "reb": 21
+      },
+      "bench": {
+        "pts": 36,
+        "reb": 32
+      }
+    }
+  },
+  "away": {
+    "players": [
+      {
+        "no": "0",
+        "name": "M BECONCINI",
+        "starter": true,
+        "captain": true,
+        "stats": {
+          "min": "32:49",
+          "pts": 10,
+          "fg2": {
+            "made": 3,
+            "att": 7
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 3,
+            "att": 7
+          },
+          "ft": {
+            "made": 4,
+            "att": 7
+          },
+          "oreb": 0,
+          "dreb": 4,
+          "reb": 4,
+          "pf": 1,
+          "fd": 5,
+          "stl": 0,
+          "tov": 2,
+          "ast": 1,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 6,
+          "plusMinus": -11
+        }
+      },
+      {
+        "no": "3",
+        "name": "F GENUA",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "29:21",
+          "pts": 1,
+          "fg2": {
+            "made": 0,
+            "att": 1
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 0,
+            "att": 1
+          },
+          "ft": {
+            "made": 1,
+            "att": 2
+          },
+          "oreb": 0,
+          "dreb": 4,
+          "reb": 4,
+          "pf": 3,
+          "fd": 3,
+          "stl": 1,
+          "tov": 4,
+          "ast": 1,
+          "blk": 0,
+          "blkAgainst": 1,
+          "eff": 1,
+          "plusMinus": -11
+        }
+      },
+      {
+        "no": "4",
+        "name": "F BECONCINI",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "14:13",
+          "pts": 2,
+          "fg2": {
+            "made": 0,
+            "att": 0
+          },
+          "fg3": {
+            "made": 0,
+            "att": 1
+          },
+          "fg": {
+            "made": 0,
+            "att": 1
+          },
+          "ft": {
+            "made": 2,
+            "att": 2
+          },
+          "oreb": 0,
+          "dreb": 0,
+          "reb": 0,
+          "pf": 5,
+          "fd": 1,
+          "stl": 0,
+          "tov": 5,
+          "ast": 2,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": -2,
+          "plusMinus": -20
+        }
+      },
+      {
+        "no": "6",
+        "name": "E PANCRAZI",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "25:01",
+          "pts": 12,
+          "fg2": {
+            "made": 2,
+            "att": 4
+          },
+          "fg3": {
+            "made": 2,
+            "att": 5
+          },
+          "fg": {
+            "made": 4,
+            "att": 9
+          },
+          "ft": {
+            "made": 2,
+            "att": 4
+          },
+          "oreb": 1,
+          "dreb": 3,
+          "reb": 4,
+          "pf": 0,
+          "fd": 4,
+          "stl": 0,
+          "tov": 4,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 5,
+          "plusMinus": -8
+        }
+      },
+      {
+        "no": "10",
+        "name": "A FAVILLI",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "06:37",
+          "pts": 5,
+          "fg2": {
+            "made": 1,
+            "att": 1
+          },
+          "fg3": {
+            "made": 1,
+            "att": 2
+          },
+          "fg": {
+            "made": 2,
+            "att": 3
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 1,
+          "reb": 1,
+          "pf": 1,
+          "fd": 0,
+          "stl": 0,
+          "tov": 1,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 4,
+          "plusMinus": 4
+        }
+      },
+      {
+        "no": "13",
+        "name": "D CALO",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "35:06",
+          "pts": 11,
+          "fg2": {
+            "made": 1,
+            "att": 3
+          },
+          "fg3": {
+            "made": 2,
+            "att": 13
+          },
+          "fg": {
+            "made": 3,
+            "att": 16
+          },
+          "ft": {
+            "made": 3,
+            "att": 3
+          },
+          "oreb": 0,
+          "dreb": 7,
+          "reb": 7,
+          "pf": 2,
+          "fd": 4,
+          "stl": 0,
+          "tov": 4,
+          "ast": 1,
+          "blk": 0,
+          "blkAgainst": 1,
+          "eff": 2,
+          "plusMinus": -5
+        }
+      },
+      {
+        "no": "23",
+        "name": "A MANCINI",
+        "starter": true,
+        "captain": false,
+        "stats": {
+          "min": "30:07",
+          "pts": 14,
+          "fg2": {
+            "made": 6,
+            "att": 10
+          },
+          "fg3": {
+            "made": 0,
+            "att": 1
+          },
+          "fg": {
+            "made": 6,
+            "att": 11
+          },
+          "ft": {
+            "made": 2,
+            "att": 4
+          },
+          "oreb": 2,
+          "dreb": 3,
+          "reb": 5,
+          "pf": 0,
+          "fd": 3,
+          "stl": 2,
+          "tov": 4,
+          "ast": 1,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 11,
+          "plusMinus": -14
+        }
+      },
+      {
+        "no": "26",
+        "name": "S STALLONE",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "20:26",
+          "pts": 2,
+          "fg2": {
+            "made": 0,
+            "att": 2
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 0,
+            "att": 2
+          },
+          "ft": {
+            "made": 2,
+            "att": 2
+          },
+          "oreb": 0,
+          "dreb": 5,
+          "reb": 5,
+          "pf": 1,
+          "fd": 2,
+          "stl": 0,
+          "tov": 1,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 4,
+          "plusMinus": -8
+        }
+      },
+      {
+        "no": "99",
+        "name": "A MARRIOCI",
+        "starter": false,
+        "captain": false,
+        "stats": {
+          "min": "06:20",
+          "pts": 0,
+          "fg2": {
+            "made": 0,
+            "att": 1
+          },
+          "fg3": {
+            "made": 0,
+            "att": 0
+          },
+          "fg": {
+            "made": 0,
+            "att": 1
+          },
+          "ft": {
+            "made": 0,
+            "att": 0
+          },
+          "oreb": 0,
+          "dreb": 1,
+          "reb": 1,
+          "pf": 3,
+          "fd": 0,
+          "stl": 0,
+          "tov": 0,
+          "ast": 0,
+          "blk": 0,
+          "blkAgainst": 0,
+          "eff": 0,
+          "plusMinus": -2
+        }
+      }
+    ],
+    "team": {
+      "oreb": 2,
+      "dreb": 6,
+      "reb": 8,
+      "pf": 0,
+      "tov": 1
+    },
+    "totals": {
+      "min": "200:00",
+      "pts": 57,
+      "fg2": {
+        "made": 13,
+        "att": 29
+      },
+      "fg3": {
+        "made": 5,
+        "att": 22
+      },
+      "fg": {
+        "made": 18,
+        "att": 51
+      },
+      "ft": {
+        "made": 16,
+        "att": 24
+      },
+      "oreb": 5,
+      "dreb": 34,
+      "reb": 39,
+      "pf": 16,
+      "fd": 22,
+      "stl": 3,
+      "tov": 26,
+      "ast": 6,
+      "blk": 0,
+      "blkAgainst": 2,
+      "eff": 38,
+      "plusMinus": -15
+    },
+    "periods": [
+      {
+        "min": "50:00",
+        "pts": 13,
+        "fg2": {
+          "made": 4,
+          "att": 7
+        },
+        "fg3": {
+          "made": 1,
+          "att": 5
+        },
+        "fg": {
+          "made": 5,
+          "att": 12
+        },
+        "ft": {
+          "made": 2,
+          "att": 2
+        },
+        "oreb": 2,
+        "dreb": 11,
+        "reb": 13,
+        "pf": 5,
+        "fd": 3,
+        "stl": 1,
+        "tov": 9,
+        "ast": 3,
+        "blk": 0,
+        "blkAgainst": 0,
+        "eff": 14,
+        "plusMinus": -3
+      },
+      {
+        "min": "50:00",
+        "pts": 15,
+        "fg2": {
+          "made": 2,
+          "att": 7
+        },
+        "fg3": {
+          "made": 1,
+          "att": 4
+        },
+        "fg": {
+          "made": 3,
+          "att": 11
+        },
+        "ft": {
+          "made": 8,
+          "att": 11
+        },
+        "oreb": 1,
+        "dreb": 5,
+        "reb": 6,
+        "pf": 6,
+        "fd": 9,
+        "stl": 1,
+        "tov": 9,
+        "ast": 1,
+        "blk": 0,
+        "blkAgainst": 1,
+        "eff": 3,
+        "plusMinus": -8
+      },
+      {
+        "min": "50:00",
+        "pts": 13,
+        "fg2": {
+          "made": 2,
+          "att": 4
+        },
+        "fg3": {
+          "made": 2,
+          "att": 7
+        },
+        "fg": {
+          "made": 4,
+          "att": 11
+        },
+        "ft": {
+          "made": 3,
+          "att": 6
+        },
+        "oreb": 0,
+        "dreb": 8,
+        "reb": 8,
+        "pf": 3,
+        "fd": 6,
+        "stl": 1,
+        "tov": 3,
+        "ast": 0,
+        "blk": 0,
+        "blkAgainst": 0,
+        "eff": 9,
+        "plusMinus": -6
+      },
+      {
+        "min": "50:00",
+        "pts": 16,
+        "fg2": {
+          "made": 5,
+          "att": 11
+        },
+        "fg3": {
+          "made": 1,
+          "att": 6
+        },
+        "fg": {
+          "made": 6,
+          "att": 17
+        },
+        "ft": {
+          "made": 3,
+          "att": 5
+        },
+        "oreb": 2,
+        "dreb": 10,
+        "reb": 12,
+        "pf": 2,
+        "fd": 4,
+        "stl": 0,
+        "tov": 5,
+        "ast": 2,
+        "blk": 0,
+        "blkAgainst": 1,
+        "eff": 12,
+        "plusMinus": 2
+      }
+    ],
+    "running": [
+      11,
+      13,
+      18,
+      28,
+      36,
+      41,
+      49,
+      57
+    ],
+    "extras": {
+      "pointsOffTurnovers": 9,
+      "fastBreak": 5,
+      "secondChance": 0,
+      "paint": 22,
+      "starters": {
+        "pts": 41,
+        "reb": 21
+      },
+      "bench": {
+        "pts": 16,
+        "reb": 10
+      }
+    }
+  }
+}

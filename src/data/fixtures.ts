@@ -1,4 +1,5 @@
 import type { Match, MonthTheme, Team, TeamId, Venue, VenueId } from './types.ts';
+import matches from './matches.json' with { type: 'json' };
 
 /**
  * Source: UISP Pallacanestro Pisa–Lucca–Livorno, Comunicato Ufficiale N° 01
@@ -34,49 +35,8 @@ export const VENUES: Record<VenueId, Venue> = {
   pisces: { name: 'Palestra Scuola Elementare Sardi', address: 'Via Provinciale di Sant’Alessio, Sant’Alessio, Lucca (LU)', lat: 43.8617, lon: 10.4893, approximate: true },
 };
 
-export const MATCHES: Match[] = [
-  { game: 300, date: '2026-10-14', time: '21:00', home: 'FDM A', away: 'FDM B', venue: 'fdm', sides: ['a', 'b'], derby: true,
-    result: { home: 74, away: 31, periods: [[18, 8], [12, 7], [22, 12], [22, 4]] } },
-  { game: 306, date: '2026-10-21', time: '21:00', home: 'FDM B', away: 'Perignano', venue: 'fdm', sides: ['b'],
-    result: { home: 52, away: 67, periods: [[6, 15], [14, 13], [15, 22], [17, 17]] },
-    video: 'https://youtu.be/vVL2MNFi9Jo', stats: '/stats/306.pdf' },
-  { game: 304, date: '2026-10-22', time: '21:30', home: 'Valdera', away: 'FDM A', venue: 'valdera', sides: ['a'],
-    result: { home: 33, away: 54, periods: [[6, 23], [8, 11], [8, 10], [11, 10]] } },
-  { game: 310, date: '2026-10-28', time: '21:00', home: 'FDM A', away: 'Perignano', venue: 'fdm', sides: ['a'],
-    result: { home: 72, away: 57, periods: [[16, 13], [23, 15], [19, 13], [14, 16]] },
-    video: 'https://youtu.be/Oz_boF16vpA', stats: '/stats/310.pdf' },
-  { game: 309, date: '2026-10-29', time: '21:45', home: 'CEFA Castelnuovo', away: 'FDM B', venue: 'cefa', sides: ['b'],
-    result: { home: 69, away: 33, periods: [[22, 8], [11, 5], [24, 10], [12, 10]] },
-    video: 'https://youtu.be/gIHmnAQJUY8', stats: '/stats/309.pdf'
-  },
-  { game: 314, date: '2026-11-02', time: '21:30', home: 'Pisces Lucca', away: 'FDM A', venue: 'pisces', sides: ['a'],
-    result: { home: 71, away: 46, periods: [[18, 13], [15, 7], [14, 21], [24, 5]] },
-    video: 'https://youtu.be/EDdn8abSB10', stats: '/stats/314.pdf'
-  },
-  { game: 315, date: '2026-11-04', time: '21:00', home: 'FDM B', away: 'San Miniato', venue: 'fdm', sides: ['b'],
-    result: { home: 35, away: 76, periods: [[6, 15], [9, 23], [11, 20], [9, 18]] },
-    video: 'https://youtu.be/IpiUVfIJ5z4'
-  },
-  { game: 317, date: '2026-11-11', time: '21:00', home: 'FDM A', away: 'CEFA Castelnuovo', venue: 'fdm', sides: ['a'], postponed: true },
-  { game: 319, date: '2026-11-12', time: '21:30', home: 'Valdera', away: 'FDM B', venue: 'valdera', sides: ['b'], postponed: true },
-  { game: 321, date: '2026-11-16', time: '21:30', home: 'La Perla', away: 'FDM A', venue: 'laperla', sides: ['a'] },
-  { game: 320, date: '2026-11-18', time: '21:00', home: 'FDM B', away: 'Pisces Lucca', venue: 'fdm', sides: ['b'] },
-  { game: 324, date: '2026-11-23', time: '21:30', home: 'La Perla', away: 'FDM B', venue: 'laperla', sides: ['b'] },
-  { game: 325, date: '2026-11-25', time: '21:00', home: 'FDM A', away: 'San Miniato', venue: 'fdm', sides: ['a'] },
-  { game: 402, date: '2026-12-02', time: '21:00', home: 'FDM B', away: 'FDM A', venue: 'fdm', sides: ['a', 'b'], derby: true },
-  { game: 406, date: '2026-12-09', time: '21:00', home: 'FDM A', away: 'Valdera', venue: 'fdm', sides: ['a'] },
-  { game: 405, date: '2026-12-11', time: '21:30', home: 'Perignano', away: 'FDM B', venue: 'perignano', sides: ['b'] },
-  { game: 411, date: '2026-12-16', time: '21:00', home: 'FDM B', away: 'CEFA Castelnuovo', venue: 'fdm', sides: ['b'] },
-  { game: 410, date: '2026-12-18', time: '21:30', home: 'Perignano', away: 'FDM A', venue: 'perignano', sides: ['a'] },
-  { game: 413, date: '2027-01-12', time: '21:45', home: 'San Miniato', away: 'FDM B', venue: 'sanminiato', sides: ['b'] },
-  { game: 412, date: '2027-01-13', time: '21:00', home: 'FDM A', away: 'Pisces Lucca', venue: 'fdm', sides: ['a'] },
-  { game: 418, date: '2027-01-20', time: '21:00', home: 'FDM B', away: 'Valdera', venue: 'fdm', sides: ['b'] },
-  { game: 419, date: '2027-01-21', time: '21:45', home: 'CEFA Castelnuovo', away: 'FDM A', venue: 'cefa', sides: ['a'] },
-  { game: 422, date: '2027-01-25', time: '21:30', home: 'Pisces Lucca', away: 'FDM B', venue: 'pisces', sides: ['b'] },
-  { game: 421, date: '2027-01-27', time: '21:00', home: 'FDM A', away: 'La Perla', venue: 'fdm', sides: ['a'] },
-  { game: 426, date: '2027-02-02', time: '21:45', home: 'San Miniato', away: 'FDM A', venue: 'sanminiato', sides: ['a'] },
-  { game: 425, date: '2027-02-03', time: '21:00', home: 'FDM B', away: 'La Perla', venue: 'fdm', sides: ['b'] },
-];
+// Data checks live in tests; the JSON literals only widen to string, hence the cast.
+export const MATCHES = matches as Match[];
 
 export const MONTH_THEMES: Record<string, MonthTheme> = {
   '2026-10': { theme: 'oct', emoji: '🍂' },

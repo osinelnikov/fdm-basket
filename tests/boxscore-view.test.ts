@@ -1,12 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { MATCHES } from '../src/data/fixtures.ts';
+import { BOX_SCORES, MATCHES } from './fixtures/data.ts';
 import type { BoxScore, Match } from '../src/data/types.ts';
 import { MESSAGES } from '../src/i18n/index.ts';
 import { boxScoreHash, boxScoreHtml, defaultBoxTab, gameFromHash, hasBoxScore } from '../src/ui/boxscore.ts';
 import { esc } from '../src/ui/format.ts';
 
-const files = import.meta.glob<BoxScore>('../src/data/boxscores/*.json', { eager: true, import: 'default' });
-const box = (game: number): BoxScore => Object.entries(files).find(([path]) => path.endsWith(`/${game}.json`))![1];
+const box = (game: number): BoxScore => BOX_SCORES[game];
 const match = (game: number): Match => MATCHES.find((m) => m.game === game)!;
 const itCtx = { lang: 'it' as const, t: MESSAGES.it };
 const enCtx = { lang: 'en' as const, t: MESSAGES.en };
@@ -15,22 +14,28 @@ const enCtx = { lang: 'en' as const, t: MESSAGES.en };
 const rowOf = (html: string, name: string): string => html.split('<tr').find((r) => r.includes(`>${esc(name)}`))!;
 const cells = (row: string): string[] => [...row.matchAll(/<t[dh][^>]*>(.*?)<\/t[dh]>/gs)].map((c) => c[1].replace(/<[^>]+>/g, ''));
 
+// hasBoxScore reads the live box score files, which the admin area adds to and removes, so these tests follow
+// the files present and skip what needs a box score when there is none.
+const LIVE_BOX_GAMES = Object.keys(import.meta.glob('../src/data/boxscores/*.json')).map((path) => Number(/(\d+)\.json$/.exec(path)![1]));
+
 describe('box score availability', () => {
   it('is known for the games with data only', () => {
-    expect(hasBoxScore(310)).toBe(true);
-    expect(hasBoxScore(306)).toBe(true);
+    for (const game of LIVE_BOX_GAMES) expect(hasBoxScore(game), String(game)).toBe(true);
     expect(hasBoxScore(999)).toBe(false);
   });
 });
 
 describe('box score link', () => {
-  it('names the game in the address fragment and reads it back', () => {
+  it('names the game in the address fragment', () => {
     expect(boxScoreHash(310)).toBe('#box-310');
-    expect(gameFromHash(boxScoreHash(310))).toBe(310);
+  });
+
+  it.skipIf(LIVE_BOX_GAMES.length === 0)('reads the game back from the address fragment', () => {
+    expect(gameFromHash(boxScoreHash(LIVE_BOX_GAMES[0]))).toBe(LIVE_BOX_GAMES[0]);
   });
 
   it('ignores fragments of games without a box score and other fragments', () => {
-    for (const hash of ['#box-999', '#box-', '#box-310x', '#box-3a10', '#calendar', '']) expect(gameFromHash(hash), hash).toBeUndefined();
+    for (const hash of ['#box-999', '#box-', `#box-${LIVE_BOX_GAMES[0] ?? 310}x`, '#box-3a10', '#calendar', '']) expect(gameFromHash(hash), hash).toBeUndefined();
   });
 });
 

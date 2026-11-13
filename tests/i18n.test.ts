@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { gcalUrl } from '../src/calendar/gcal.ts';
-import { MATCHES, MONTH_THEMES } from '../src/data/fixtures.ts';
+import { MONTH_THEMES } from '../src/data/fixtures.ts';
+import { MATCHES } from './fixtures/data.ts';
 import { LANGS, MESSAGES, resolveLang, teamName } from '../src/i18n/index.ts';
 import { formatDate } from '../src/ui/format.ts';
 

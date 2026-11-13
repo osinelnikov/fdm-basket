@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { MATCHES } from '../src/data/fixtures.ts';
+import { MATCHES } from './fixtures/data.ts';
 import type { Match } from '../src/data/types.ts';
 import { addHours, isAway, matchesFilter, monthKey, nextMatch } from '../src/domain.ts';
 import { gcalUrl } from '../src/calendar/gcal.ts';
