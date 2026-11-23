@@ -130,6 +130,13 @@ describe('validateStandings', () => {
     expect(check(standingsWith((s) => { s.rows.find((r) => r.team === 'FDM A')!.played += 1; }))).toContainEqual(expect.stringContaining('FDM A: table has 5 games, results have 4'));
   });
 
+  it('names the game whose score is missing and the postponed games it does not count', () => {
+    // A bulletin of 16 Nov counting game 321 (La Perla–FDM A) of that day; game 317 of 11 Nov is postponed.
+    const s = standingsWith((t) => { t.date = '2026-11-16'; t.rows.find((r) => r.team === 'FDM A')!.played += 1; });
+    expect(check(s)).toContainEqual(
+      'FDM A: table has 5 games, results have 4 (300, 304, 310, 314); no score yet for game 321; postponed game 317 is not counted');
+  });
+
   describe('a table that does not count the latest FDM result yet', () => {
     // A bulletin of 16 Nov published before game 321 (La Perla–FDM A) of that evening was played.
     const later = (change?: (s: Standings) => void) => standingsWith((s) => { s.date = '2026-11-16'; change?.(s); });

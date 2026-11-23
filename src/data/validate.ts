@@ -165,7 +165,15 @@ export function validateStandings(standings: Standings, matches: readonly Match[
       .filter((m) => m.result && m.date <= standings.date && (m.home === team || m.away === team))
       .sort((a, b) => (a.date + a.time < b.date + b.time ? -1 : a.date + a.time > b.date + b.time ? 1 : 0));
     if (!isCount(r.played) || r.played > results.length) {
-      out.push(`${team}: table has ${r.played} games, results have ${results.length}`);
+      // Say which of the team's games up to the bulletin date lack a score, and that postponed ones never count.
+      const unscored = matches.filter((m) => !m.result && m.date <= standings.date && (m.home === team || m.away === team));
+      const games = (list: Match[]) => list.map((m) => m.game).join(', ');
+      const missing = unscored.filter((m) => !m.postponed);
+      const postponed = unscored.filter((m) => m.postponed);
+      const parts = [`${team}: table has ${r.played} games, results have ${results.length} (${games(results) || 'none'})`];
+      if (missing.length) parts.push(`no score yet for game${missing.length > 1 ? 's' : ''} ${games(missing)}`);
+      if (postponed.length) parts.push(`postponed game${postponed.length > 1 ? 's' : ''} ${games(postponed)} ${postponed.length > 1 ? 'are' : 'is'} not counted`);
+      out.push(parts.join('; '));
       continue;
     }
     const counted = results.slice(0, r.played);
