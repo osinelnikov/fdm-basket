@@ -1,6 +1,3 @@
-import '../styles.css';
-import './learn.css';
-import './zone-board.css';
 import { MESSAGES, type Lang } from '../i18n/index.ts';
 import { applyStaticTexts } from '../ui/i18n-dom.ts';
 import { startPageLang } from './page-lang.ts';

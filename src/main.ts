@@ -1,4 +1,3 @@
-import './styles.css';
 import { MATCHES } from './data/fixtures.ts';
 import { type Filter, isAway } from './domain.ts';
 import { type Lang, MESSAGES, resolveLang } from './i18n/index.ts';

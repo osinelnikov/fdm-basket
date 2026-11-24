@@ -1,5 +1,3 @@
-import '../styles.css';
-import './learn.css';
 import { type Lang, MESSAGES } from '../i18n/index.ts';
 import { applyStaticTexts } from '../ui/i18n-dom.ts';
 import { MATERIALS, materialHref } from './materials.ts';

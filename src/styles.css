@@ -329,6 +329,8 @@ dialog.boxscore::backdrop{background:rgba(8,14,26,.62)}
 
 /* Keep view transitions short */
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.22s}
+/* Moving between the site's pages cross-fades instead of showing the next page being drawn */
+@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}
 
 @media (prefers-reduced-motion:reduce){
   .tag.next::before{animation:none}
