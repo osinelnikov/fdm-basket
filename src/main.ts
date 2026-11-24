@@ -1,4 +1,3 @@
-import './styles.css';
 import { MATCHES } from './data/fixtures.ts';
 import { type Filter, isAway } from './domain.ts';
 import { type Lang, MESSAGES, resolveLang } from './i18n/index.ts';
@@ -39,6 +38,10 @@ function select(filter: Filter, fitMap = true): void {
   venueMap.show(filter, fitMap);
 }
 
+const learnLink = document.querySelector<HTMLAnchorElement>('#learn-link')!;
+// The section opens in the language being read, even when it was chosen by ?lang= and never saved
+const syncLearnLink = (): void => learnLink.setAttribute('href', `/learn/?lang=${state.lang}`);
+
 function setLang(lang: Lang): void {
   if (lang === state.lang) return;
   state.lang = lang;
@@ -46,6 +49,7 @@ function setLang(lang: Lang): void {
   const url = new URL(location.href);
   url.searchParams.set('lang', lang);
   history.replaceState(null, '', url);
+  syncLearnLink();
   withSmoothTransition(() => {
     applyStaticTexts(lang);
     resetCalendarStatus();
@@ -67,10 +71,13 @@ document.querySelector('#collapse-all')!.addEventListener('click', () => setAllM
 
 renderLangSwitch(document.querySelector<HTMLElement>('#lang-switch')!, setLang);
 applyStaticTexts(state.lang);
+syncLearnLink();
 renderStandings(standingsTable, standingsSource, context());
 renderMatches(root, context());
 select('all');
 setupCalendarCard(context);
+// The page is drawn in the viewer's language: reveal it (styles.css keeps it hidden until then)
+document.documentElement.dataset.ready = '';
 
 // A shared link such as /#box-310 opens that game's box score; an address that no longer names it closes the dialog.
 function openFromHash(): void {

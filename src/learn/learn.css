@@ -1,0 +1,23 @@
+/* Coaching materials section, built on the site's tokens from styles.css */
+.hero-compact{padding:26px 34px 30px}
+.hero-compact h1{margin-top:8px}
+/* Section name on a material page, where the page's own h1 is the material's title: same type as the section page's h1 */
+.hero-title{font-size:clamp(28px,5vw,46px);line-height:1.08;margin:8px 0 10px;font-weight:900;letter-spacing:-.02em}
+/* Inside the board's grid the page's own body type and focus ring must not reach the site header; the ring reset stays weaker than the switch's shadow on the chosen language */
+.page-grid>.hero{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.45}
+.page-grid>.hero :where(:focus-visible){box-shadow:none}
+.learn-home{position:relative;display:inline-block;margin-top:10px;color:#fff;font-size:13px;font-weight:700;text-decoration:none;opacity:.85}
+.learn-home:hover{opacity:1;text-decoration:underline}
+.learn-home:focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:4px}
+.materials{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.material-card{display:flex;flex-direction:column;gap:10px;padding:20px 22px;background:var(--card);color:var(--text);border:1px solid var(--line);border-left:5px solid var(--brand-2);border-radius:var(--radius);box-shadow:var(--shadow);text-decoration:none;transition:transform .18s,box-shadow .18s}
+.material-card:hover{transform:translateY(-2px)}
+.material-card:focus-visible{outline:3px solid var(--brand-2);outline-offset:2px}
+.material-card h2{margin:0;font-size:19px;font-weight:800;letter-spacing:-.01em}
+.material-card p{margin:0;font-size:14px;color:var(--muted);line-height:1.55}
+.material-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:6px}
+.material-langs{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.material-langs li{border-radius:7px;padding:4px 9px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--tag-bg);color:var(--tag-fg)}
+.material-open{font-size:14px;font-weight:800;color:var(--link);white-space:nowrap}
+@media (max-width:600px){.hero-compact{padding:22px 20px 24px}.materials{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.material-card{transition:none}.material-card:hover{transform:none}}

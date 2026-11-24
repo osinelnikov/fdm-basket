@@ -21,6 +21,25 @@ function calendarFeed(): Plugin {
   };
 }
 
+/**
+ * Keeps `blocking="render"` of a page's entry script in the build, where Vite rewrites the tag without it:
+ * the browser then waits for the script that draws the page in the viewer's language before its first paint.
+ */
+function renderBlockingEntry(): Plugin {
+  return {
+    name: 'fdm-render-blocking-entry',
+    apply: 'build',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html, ctx) {
+        const source = readFileSync(ctx.filename, 'utf8');
+        if (!/<script\b[^>]*type="module"[^>]*blocking="render"/.test(source)) return html;
+        return html.replace(/<script type="module"(?![^>]*\bblocking=)/, '<script type="module" blocking="render"');
+      },
+    },
+  };
+}
+
 const fromRoot = (path: string) => fileURLToPath(new URL(path, import.meta.url));
 
 /** A Fetch API request from a Node one, body read in full. */
@@ -88,10 +107,17 @@ function devAdminApi(): Plugin {
 }
 
 export default defineConfig({
-  plugins: [calendarFeed(), devAdminApi()],
+  plugins: [calendarFeed(), devAdminApi(), renderBlockingEntry()],
   build: {
     target: 'es2022',
     // The public site and the owner's admin page are separate entries, so no admin code reaches the site.
-    rolldownOptions: { input: { main: fromRoot('./index.html'), admin: fromRoot('./admin/index.html') } },
+    rolldownOptions: {
+      input: {
+        main: fromRoot('./index.html'),
+        admin: fromRoot('./admin/index.html'),
+        learn: fromRoot('./learn/index.html'),
+        zoneTactics: fromRoot('./learn/zone-tactics/index.html'),
+      },
+    },
   },
 });

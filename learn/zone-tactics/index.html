@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basketball Zone Defense &amp; Attack Tactics Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Interactive half-court simulator for zone rotations, bumping mechanics, high-post coverage, and offensive zone-breaking alignments.">
+  <link rel="icon" href="/logos/fdm.png">
+  <link rel="stylesheet" href="/src/styles.css">
+  <link rel="stylesheet" href="/src/learn/learn.css">
+  <link rel="stylesheet" href="/src/learn/zone-board.css">
+  <script type="module" src="/src/learn/zone-board.ts" blocking="render"></script>
+</head>
+<body>
+  <div class="page-grid">
+    <!-- Site header, as on /learn/ -->
+    <header class="hero hero-compact">
+      <div class="hero-top">
+        <div class="eyebrow" data-i18n="eyebrow">UISP · Serie A/2 · Tirreno Nord · Season 2026/27</div>
+        <div class="lang-switch" id="lang-switch" role="group" aria-label="Language" data-i18n-aria="langSwitch"></div>
+      </div>
+      <a class="learn-home" id="learn-back" href="/learn/" data-i18n="learnBack">← Coaching materials</a>
+      <p class="hero-title" data-i18n="learnHeading">Coaching materials</p>
+    </header>
+
+    <!-- Dossier Header -->
+    <div>
+      <div class="dossier-bar">
+        <div class="dossier-bar-left">
+          <span class="dossier-pill" id="ui-badge">TACTICAL SIMULATOR</span>
+          <span class="dossier-meta" id="ui-meta">ZONE SYSTEMS · 2-1-2 · 2-3 · 3-2 · 1-3-1</span>
+        </div>
+      </div>
+
+      <div class="title-block">
+        <h1 id="ui-title">Basketball Zone Defense &amp; Attack Tactics Board</h1>
+        <p class="standfirst" id="ui-subtitle">Interactive half-court simulator for zone rotations, bumping mechanics, high-post coverage, and offensive zone-breaking alignments.</p>
+      </div>
+    </div>
+
+    <!-- Control Deck -->
+    <section class="control-deck" aria-label="Tactical controls">
+      <div class="control-group">
+        <span class="control-label" id="lbl-defense">
+          <!-- Icons from Lucide (https://lucide.dev), ISC License, Copyright (c) Lucide Contributors -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;" class="lucide lucide-shield"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>
+          <span id="txt-lbl-defense">Defensive System</span>
+        </span>
+        <div class="btn-group seg-track has-thumb" id="grp-defense">
+          <span class="seg-thumb" aria-hidden="true"></span>
+          <button type="button" class="seg-btn" id="def-212" aria-pressed="true" data-action="setDefense" data-value="212">2-1-2 Zone</button>
+          <button type="button" class="seg-btn" id="def-23" aria-pressed="false" data-action="setDefense" data-value="23">2-3 Zone</button>
+          <button type="button" class="seg-btn" id="def-32" aria-pressed="false" data-action="setDefense" data-value="32">3-2 Zone</button>
+          <button type="button" class="seg-btn" id="def-131" aria-pressed="false" data-action="setDefense" data-value="131">1-3-1 Zone</button>
+          <button type="button" class="seg-btn buzz-btn" id="btn-buzz" aria-pressed="false" data-action="toggleBuzz">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;" class="lucide lucide-zap"><path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z"></path></svg>
+            <span id="txt-btn-buzz">Buzz Pressure</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <span class="control-label" id="lbl-offense">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;" class="lucide lucide-crosshair"><circle cx="12" cy="12" r="10"></circle><line x1="22" x2="18" y1="12" y2="12"></line><line x1="6" x2="2" y1="12" y2="12"></line><line x1="12" x2="12" y1="6" y2="2"></line><line x1="12" x2="12" y1="22" y2="18"></line></svg>
+          <span id="txt-lbl-offense">Offensive Attack Scheme</span>
+        </span>
+        <div class="btn-group seg-track has-thumb" id="grp-offense">
+          <span class="seg-thumb" aria-hidden="true"></span>
+          <button type="button" class="seg-btn offense-btn" id="off-overload" aria-pressed="true" data-action="setOffense" data-value="overload">1-3-1 Overload</button>
+          <button type="button" class="seg-btn offense-btn" id="off-hilo" aria-pressed="false" data-action="setOffense" data-value="hilo">High-Low Attack</button>
+          <button type="button" class="seg-btn offense-btn" id="off-gap" aria-pressed="false" data-action="setOffense" data-value="gap">3-Out 2-In &amp; Gap</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <span class="control-label" id="lbl-overlays">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;" class="lucide lucide-layers"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg>
+          <span id="txt-lbl-overlays">Court Overlays</span>
+        </span>
+        <div class="btn-group seg-track" id="grp-overlays">
+          <button type="button" class="seg-btn overlay-btn" id="ov-zones" aria-pressed="true" data-action="toggleOverlay" data-value="zones">Coverage Zones</button>
+          <button type="button" class="seg-btn overlay-btn" id="ov-rotations" aria-pressed="true" data-action="toggleOverlay" data-value="rotations">Rotation Arrows</button>
+          <button type="button" class="seg-btn overlay-btn" id="ov-lanes" aria-pressed="true" data-action="toggleOverlay" data-value="lanes">Passing Lanes</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Primary Simulator Workspace -->
+    <main class="simulator-grid">
+      <!-- Left: Interactive Half-Court -->
+      <section class="figure-card" aria-label="Interactive basketball half-court">
+        <div class="card-header">
+          <h2 class="card-title" id="court-card-title">Half-Court Simulator</h2>
+          <div class="btn-group">
+            <span class="tag-chip tag-teal" id="badge-matchup">2-1-2 vs 1-3-1 Overload</span>
+            <span class="tag-chip tag-gold" id="badge-ball">Ball: Top of Key</span>
+          </div>
+        </div>
+
+        <div class="court-frame">
+          <svg id="court-svg" class="court-svg" viewBox="0 0 600 475" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="court-card-title">
+            <defs>
+              <marker id="arrow-def" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--arrow-rot)" />
+              </marker>
+              <marker id="arrow-pass" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--arrow-pass)" />
+              </marker>
+              <!-- Hardwood: two plank rows per tile with staggered butt joints -->
+              <pattern id="court-planks" width="120" height="36" patternUnits="userSpaceOnUse">
+                <rect width="120" height="36" fill="var(--court-wood)" />
+                <rect y="18" width="120" height="18" fill="var(--court-wood-alt)" opacity="0.28" />
+                <rect y="17.5" width="120" height="0.75" fill="var(--court-line)" opacity="0.12" />
+                <rect y="35.5" width="120" height="0.75" fill="var(--court-line)" opacity="0.12" />
+                <rect x="44" width="0.75" height="18" fill="var(--court-line)" opacity="0.1" />
+                <rect x="104" y="18" width="0.75" height="18" fill="var(--court-line)" opacity="0.1" />
+              </pattern>
+              <radialGradient id="court-vignette" cx="50%" cy="40%" r="75%">
+                <stop offset="60%" stop-color="#17181a" stop-opacity="0" />
+                <stop offset="100%" stop-color="#17181a" stop-opacity="0.12" />
+              </radialGradient>
+              <!-- Coverage: each area in its defender's teal, denser at the defender and fading toward the edge -->
+              <radialGradient id="zone-fill-D1">
+                <stop offset="0%" stop-color="var(--def-1)" stop-opacity="0.22" />
+                <stop offset="70%" stop-color="var(--def-1)" stop-opacity="0.08" />
+                <stop offset="100%" stop-color="var(--def-1)" stop-opacity="0.03" />
+              </radialGradient>
+              <radialGradient id="zone-fill-D2">
+                <stop offset="0%" stop-color="var(--def-2)" stop-opacity="0.22" />
+                <stop offset="70%" stop-color="var(--def-2)" stop-opacity="0.08" />
+                <stop offset="100%" stop-color="var(--def-2)" stop-opacity="0.03" />
+              </radialGradient>
+              <radialGradient id="zone-fill-D3">
+                <stop offset="0%" stop-color="var(--def-3)" stop-opacity="0.22" />
+                <stop offset="70%" stop-color="var(--def-3)" stop-opacity="0.08" />
+                <stop offset="100%" stop-color="var(--def-3)" stop-opacity="0.03" />
+              </radialGradient>
+              <radialGradient id="zone-fill-D4">
+                <stop offset="0%" stop-color="var(--def-4)" stop-opacity="0.22" />
+                <stop offset="70%" stop-color="var(--def-4)" stop-opacity="0.08" />
+                <stop offset="100%" stop-color="var(--def-4)" stop-opacity="0.03" />
+              </radialGradient>
+              <radialGradient id="zone-fill-D5">
+                <stop offset="0%" stop-color="var(--def-5)" stop-opacity="0.22" />
+                <stop offset="70%" stop-color="var(--def-5)" stop-opacity="0.08" />
+                <stop offset="100%" stop-color="var(--def-5)" stop-opacity="0.03" />
+              </radialGradient>
+              <!-- Token volume: a soft highlight from the upper left, laid over each defender's own teal -->
+              <radialGradient id="token-gloss" cx="35%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22" />
+                <stop offset="65%" stop-color="#ffffff" stop-opacity="0" />
+              </radialGradient>
+              <radialGradient id="token-off" cx="35%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#d06d5b" />
+                <stop offset="65%" stop-color="var(--off-fill)" />
+              </radialGradient>
+              <radialGradient id="ball-grad" cx="35%" cy="30%" r="75%">
+                <stop offset="0%" stop-color="#f6b35a" />
+                <stop offset="55%" stop-color="var(--ball-fill)" />
+                <stop offset="100%" stop-color="#9a5205" />
+              </radialGradient>
+              <filter id="soft-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="2" />
+              </filter>
+            </defs>
+
+            <!-- Hardwood Floor -->
+            <rect x="0" y="0" width="600" height="475" fill="url(#court-planks)" />
+            <!-- Subtle plank bands -->
+            <rect x="25" y="28" width="550" height="428" fill="var(--court-wood-alt)" opacity="0.2" />
+            <!-- Soft vignette keeps the eye on the half-court -->
+            <rect x="0" y="0" width="600" height="475" fill="url(#court-vignette)" pointer-events="none" />
+
+            <!-- The Paint / Key -->
+            <rect x="216" y="28" width="168" height="190" fill="var(--court-paint)" stroke="var(--court-line)" stroke-width="2" />
+            <!-- Free throw circle -->
+            <path d="M 236 218 A 64 64 0 0 0 364 218" fill="none" stroke="var(--court-line)" stroke-width="2" />
+            <path d="M 236 218 A 64 64 0 0 1 364 218" fill="none" stroke="var(--court-line)" stroke-width="2" stroke-dasharray="6 6" />
+            <!-- Lane hash marks / blocks -->
+            <rect x="208" y="90" width="8" height="10" fill="var(--court-line)" />
+            <rect x="384" y="90" width="8" height="10" fill="var(--court-line)" />
+            <line x1="208" y1="126" x2="216" y2="126" stroke="var(--court-line)" stroke-width="2" />
+            <line x1="384" y1="126" x2="392" y2="126" stroke="var(--court-line)" stroke-width="2" />
+            <line x1="208" y1="158" x2="216" y2="158" stroke="var(--court-line)" stroke-width="2" />
+            <line x1="384" y1="158" x2="392" y2="158" stroke="var(--court-line)" stroke-width="2" />
+            <line x1="208" y1="190" x2="216" y2="190" stroke="var(--court-line)" stroke-width="2" />
+            <line x1="384" y1="190" x2="392" y2="190" stroke="var(--court-line)" stroke-width="2" />
+
+            <!-- Restricted Area -->
+            <path d="M 260 60 A 40 40 0 0 0 340 60" fill="none" stroke="var(--court-line)" stroke-width="2" />
+
+            <!-- 3-Point Arc & Corner Lines -->
+            <line x1="64" y1="28" x2="64" y2="148" stroke="var(--court-line)" stroke-width="2.2" />
+            <line x1="536" y1="28" x2="536" y2="148" stroke="var(--court-line)" stroke-width="2.2" />
+            <path d="M 64 148 A 252 252 0 0 0 536 148" fill="none" stroke="var(--court-line)" stroke-width="2.2" />
+
+            <!-- Outer Court Boundary & Half-Court Line -->
+            <rect x="25" y="28" width="550" height="428" fill="none" stroke="var(--court-line)" stroke-width="2.5" />
+            <path d="M 242 456 A 58 58 0 0 1 358 456" fill="none" stroke="var(--court-line)" stroke-width="2" />
+            <!-- Volleyball / Buzz reference dashed line -->
+            <line id="buzz-line" x1="25" y1="322" x2="575" y2="322" stroke="var(--tertiary)" stroke-width="1.5" stroke-dasharray="5 5" opacity="0" />
+            <text id="buzz-line-label" x="34" y="316" fill="var(--tertiary)" font-family="var(--font-label)" font-size="10" font-weight="600" opacity="0">VOLLEYBALL LINE (BUZZ PICKUP)</text>
+
+            <!-- Backboard & Rim -->
+            <line x1="268" y1="45" x2="332" y2="45" stroke="var(--on-surface)" stroke-width="3.5" />
+            <line x1="300" y1="45" x2="300" y2="51" stroke="var(--on-surface)" stroke-width="2.5" />
+            <circle cx="300" cy="60" r="9" fill="none" stroke="var(--court-hoop)" stroke-width="3" />
+
+            <!-- Court Zone Annotations -->
+            <g id="court-annotations" font-family="var(--font-label)" font-size="10" font-weight="600" fill="var(--court-line)" opacity="0.72" text-anchor="middle">
+              <text id="ann-highpost" x="300" y="236">HIGH POST</text>
+              <text id="ann-shortcorner" x="454" y="54">SHORT CORNER</text>
+              <text id="ann-paint" x="300" y="148">PAINT</text>
+            </g>
+
+            <!-- Layer 1: Defensive Coverage Bubbles -->
+            <g id="layer-zones"></g>
+
+            <!-- Layer 2: Passing Lanes -->
+            <g id="layer-lanes"></g>
+
+            <!-- Layer 3: Rotation & Movement Arrows -->
+            <g id="layer-rotations"></g>
+
+            <!-- Layer 4: Clickable Ball Location Hotspots -->
+            <g id="layer-hotspots"></g>
+
+            <!-- Layer 5: Offensive Tokens O1-O5 -->
+            <g id="layer-offense"></g>
+
+            <!-- Layer 6: Defensive Tokens D1-D5 -->
+            <g id="layer-defense"></g>
+
+            <!-- Layer 7: Basketball Token -->
+            <g id="ball-token" class="ball-token" transform="translate(300, 345)">
+              <g id="ball-y" class="ball-y">
+                <ellipse class="ball-shadow" cx="1" cy="11" rx="9" ry="3" fill="var(--ball-seam)" opacity="0.25" filter="url(#soft-shadow)" />
+                <g class="ball-body">
+                  <circle cx="0" cy="0" r="10.5" fill="url(#ball-grad)" stroke="var(--ball-seam)" stroke-opacity="0.8" stroke-width="1.5" />
+                  <path d="M -9.5 0 Q 0 -4 9.5 0 M 0 -9.5 L 0 9.5" fill="none" stroke="var(--ball-seam)" stroke-width="1.2" />
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Quick Ball Spot Pills -->
+        <div class="spot-bar seg-track has-thumb" id="grp-spots" role="group" aria-label="Ball location selector">
+          <span class="seg-thumb" aria-hidden="true"></span>
+          <button type="button" class="spot-btn" id="spot-top" aria-pressed="true" data-action="setBallSpot" data-value="top">Top of Key</button>
+          <button type="button" class="spot-btn" id="spot-r_wing" aria-pressed="false" data-action="setBallSpot" data-value="r_wing">Right Wing</button>
+          <button type="button" class="spot-btn" id="spot-l_wing" aria-pressed="false" data-action="setBallSpot" data-value="l_wing">Left Wing</button>
+          <button type="button" class="spot-btn" id="spot-r_corner" aria-pressed="false" data-action="setBallSpot" data-value="r_corner">Right Corner</button>
+          <button type="button" class="spot-btn" id="spot-l_corner" aria-pressed="false" data-action="setBallSpot" data-value="l_corner">Left Corner</button>
+          <button type="button" class="spot-btn" id="spot-high_post" aria-pressed="false" data-action="setBallSpot" data-value="high_post">High Post</button>
+          <button type="button" class="spot-btn" id="spot-short_corner" aria-pressed="false" data-action="setBallSpot" data-value="short_corner">Short Corner</button>
+        </div>
+
+        <!-- Possession Sequence Simulator -->
+        <div class="sequence-bar">
+          <div class="seq-controls">
+            <button type="button" class="action-btn primary" id="btn-play-seq" data-action="toggleSequencePlay">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;" class="lucide lucide-play"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path></svg>
+              <span id="txt-play-seq">Play Ball Reversal Demo</span>
+              <span class="seq-progress" id="seq-progress" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="action-btn" id="btn-step-seq" data-action="stepSequence">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;" class="lucide lucide-skip-forward"><path d="M21 4v16"></path><path d="M6.029 4.285A2 2 0 0 0 3 6v12a2 2 0 0 0 3.029 1.715l9.997-5.998a2 2 0 0 0 .003-3.432z"></path></svg>
+              <span id="txt-step-seq">Next Pass</span>
+            </button>
+            <button type="button" class="action-btn" id="btn-reset" data-action="resetBoard">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;" class="lucide lucide-rotate-ccw"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+              <span id="txt-reset">Reset</span>
+            </button>
+          </div>
+          <span class="dossier-meta" id="seq-status">Click any spot on court or token to inspect</span>
+        </div>
+
+        <!-- Legend -->
+        <div class="court-legend">
+          <span class="legend-item"><span class="swatch-def-set" aria-hidden="true"><span class="swatch-circle swatch-def" style="--swatch: var(--def-1)"></span><span class="swatch-circle swatch-def" style="--swatch: var(--def-2)"></span><span class="swatch-circle swatch-def" style="--swatch: var(--def-3)"></span><span class="swatch-circle swatch-def" style="--swatch: var(--def-4)"></span><span class="swatch-circle swatch-def" style="--swatch: var(--def-5)"></span></span><span id="leg-def">D1–D5 Defenders</span></span>
+          <span class="legend-item"><span class="swatch-circle swatch-off"></span><span id="leg-off">O1–O5 Offense</span></span>
+          <span class="legend-item"><span class="swatch-circle swatch-ball"></span><span id="leg-ball">Basketball</span></span>
+          <span class="legend-item"><span class="swatch-rot"></span><span id="leg-rot">Defensive Shift</span></span>
+          <span class="legend-item"><span class="swatch-pass"></span><span id="leg-pass">Passing Read</span></span>
+        </div>
+      </section>
+
+      <!-- Right: Live Tactical Coaching Dossier -->
+      <aside class="figure-card" aria-label="Live tactical coaching guide">
+        <div class="card-header">
+          <h2 class="card-title" id="coach-card-title">Live Tactical Briefing</h2>
+          <span class="tag-chip tag-red" id="badge-focus-role">System Readout</span>
+        </div>
+
+        <div class="coaching-stack">
+          <div class="tactical-item">
+            <span class="index-num">01</span>
+            <div>
+              <h3 id="coach-h-onball">Primary On-Ball Defender</h3>
+              <p id="coach-p-onball"></p>
+            </div>
+          </div>
+
+          <div class="tactical-item">
+            <span class="index-num">02</span>
+            <div>
+              <h3 id="coach-h-help">Paint Anchor &amp; Help Rotation</h3>
+              <p id="coach-p-help"></p>
+            </div>
+          </div>
+
+          <div class="tactical-item">
+            <span class="index-num">03</span>
+            <div>
+              <h3 id="coach-h-weak">Weak-Side Denial &amp; Rebounding</h3>
+              <p id="coach-p-weak"></p>
+            </div>
+          </div>
+
+          <div class="tactical-item">
+            <span class="index-num">04</span>
+            <div>
+              <h3 id="coach-h-offense">Offensive Read &amp; Counter</h3>
+              <p id="coach-p-offense"></p>
+            </div>
+          </div>
+
+          <!-- Interactive Player Inspector -->
+          <div class="aside-box" id="player-inspector">
+            <div class="aside-box-header">
+              <h3 class="aside-box-title" id="insp-title">Player Role Spotlight</h3>
+              <span class="tag-chip tag-teal" id="insp-badge">D5 · Center</span>
+            </div>
+            <p id="insp-body"></p>
+          </div>
+
+          <!-- System Summary Box -->
+          <div class="aside-box">
+            <div class="aside-box-header">
+              <h3 class="aside-box-title" id="sys-note-title">System Profile &amp; Key Risk</h3>
+            </div>
+            <p id="sys-note-body"></p>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Section 01: Core Zone Rules -->
+    <section aria-labelledby="sec-rules-title">
+      <div class="section-divider">
+        <span class="dossier-pill" id="sec-rules-pill">01</span>
+        <h2 id="sec-rules-title">Four Non-Negotiable Zone Rules &amp; Coaching Nuances</h2>
+      </div>
+      <div class="card-grid" id="rules-grid" style="margin-top: var(--space-md);"></div>
+    </section>
+
+    <!-- Section 02: Comparative Matrix -->
+    <section aria-labelledby="sec-matrix-title">
+      <div class="section-divider">
+        <span class="dossier-pill" id="sec-matrix-pill">02</span>
+        <h2 id="sec-matrix-title">Zone Defense Comparison Matrix</h2>
+      </div>
+      <div class="table-wrap" style="margin-top: var(--space-md);">
+        <table>
+          <thead>
+            <tr>
+              <th id="th-sys">System</th>
+              <th id="th-center">Center / Anchor</th>
+              <th id="th-mech">Core Rotation Mechanic</th>
+              <th id="th-pros">Strengths</th>
+              <th id="th-cons">Vulnerabilities</th>
+            </tr>
+          </thead>
+          <tbody id="matrix-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 03: Fundamental Zone Offense Principles -->
+    <section aria-labelledby="sec-off-title">
+      <div class="section-divider">
+        <span class="dossier-pill" id="sec-off-pill">03</span>
+        <h2 id="sec-off-title">Fundamental Principles of Attacking Zone Defenses</h2>
+      </div>
+      <div class="card-grid" id="offense-grid" style="margin-top: var(--space-md);"></div>
+    </section>
+
+    <!-- Coaching Advisory Notes -->
+    <section class="coaching-note-grid" aria-label="Coaching advisories">
+      <div class="aside-box">
+        <div class="aside-box-header">
+          <h3 class="aside-box-title" id="adv-youth-title">Personnel &amp; Youth Coaching Note</h3>
+        </div>
+        <p id="adv-youth-body"></p>
+      </div>
+      <div class="aside-box">
+        <div class="aside-box-header">
+          <h3 class="aside-box-title" id="adv-buzz-title">The 2-1-2 Buzz Variation</h3>
+        </div>
+        <p id="adv-buzz-body"></p>
+      </div>
+    </section>
+
+    <footer class="source-footer">
+      <span id="footer-sources">Grounded in coaching literature: 2-1-2 Zone Defense Complete Coaching Guide (Basketball For Coaches) &amp; Comparative Zone Defense / Offense Report (2-3, 2-1-2, 3-2, 1-3-1).</span>
+    </footer>
+  </div>
+
+</body>
+</html>

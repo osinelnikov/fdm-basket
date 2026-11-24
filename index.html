@@ -12,7 +12,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
-  <script type="module" src="/src/main.ts"></script>
+  <link rel="stylesheet" href="/src/styles.css">
+  <script type="module" src="/src/main.ts" blocking="render"></script>
 </head>
 <body>
 <main>
@@ -82,6 +83,17 @@
         <code id="feed-url"></code>
         <button type="button" class="copy-btn" id="copy-feed" data-i18n="copyLink">Copy link</button>
         <span class="dl-status" id="copy-status" role="status"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="download" aria-labelledby="learn-title">
+    <div class="download-icon" aria-hidden="true">📋</div>
+    <div class="download-text">
+      <b id="learn-title" data-i18n="learnLink">Coaching materials</b>
+      <span data-i18n="learnLinkText">An interactive tactics board for zone defence and attack, with rotations and step-by-step schemes.</span>
+      <div class="cal-actions">
+        <a class="download-btn" id="learn-link" href="/learn/" data-i18n="learnOpen">Open →</a>
       </div>
     </div>
   </section>

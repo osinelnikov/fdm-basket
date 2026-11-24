@@ -14,16 +14,16 @@ export function renderLangSwitch(host: HTMLElement, onPick: (lang: Lang) => void
   }
 }
 
-/** Applies the dictionary to the static page: text, trusted markup, labels, title and meta. */
-export function applyStaticTexts(lang: Lang): void {
+/** Applies the dictionary to the static page: text, trusted markup, labels, title and meta (`meta` overrides the home page's). */
+export function applyStaticTexts(lang: Lang, meta?: { title: string; description: string }): void {
   const t = MESSAGES[lang];
   const get = (key: string | undefined): string | null => {
     const v = key ? (t as unknown as Record<string, unknown>)[key] : undefined;
     return typeof v === 'string' ? v : null;
   };
   document.documentElement.lang = lang;
-  document.title = t.title;
-  document.querySelector('meta[name="description"]')?.setAttribute('content', t.metaDescription);
+  document.title = meta?.title ?? t.title;
+  document.querySelector('meta[name="description"]')?.setAttribute('content', meta?.description ?? t.metaDescription);
   for (const el of document.querySelectorAll<HTMLElement>('[data-i18n]')) {
     const v = get(el.dataset.i18n as StaticKey);
     if (v !== null) el.textContent = v;
