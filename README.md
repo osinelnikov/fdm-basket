@@ -121,9 +121,11 @@ A card opens its material with `?lang=` set to the section's language. Tests in 
 check that every entry has its page and build input and both texts, and that the pages have no inline
 scripts or handlers.
 
-The tactics board (`learn/zone-tactics/`) is in English, Italian and Ukrainian; its texts are in
-`src/learn/zone-board-data.ts`. It takes `?lang=`, then the language saved on the site, then the browser's.
-Choosing Italian or English on the board also sets the site language; Ukrainian is kept in the address only.
+The tactics board (`learn/zone-tactics/`) is in Italian and English; its texts are in
+`src/learn/zone-board-data.ts`. It shows the site header with the IT / EN switch and follows the site
+language: `?lang=`, then the language saved on the site, then the browser's. Choosing a language in the
+header also sets the site language. The language handling is shared with the section page
+(`src/learn/page-lang.ts`), so a new material page can use `startPageLang` the same way.
 
 ## Develop
 

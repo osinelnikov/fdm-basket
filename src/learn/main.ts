@@ -1,11 +1,9 @@
 import '../styles.css';
 import './learn.css';
-import { type Lang, MESSAGES, resolveLang } from '../i18n/index.ts';
-import { applyStaticTexts, renderLangSwitch } from '../ui/i18n-dom.ts';
-import { readLang, writeLang } from '../ui/storage.ts';
+import { type Lang, MESSAGES } from '../i18n/index.ts';
+import { applyStaticTexts } from '../ui/i18n-dom.ts';
 import { MATERIALS, materialHref } from './materials.ts';
-
-let lang: Lang = resolveLang(location.search, readLang(), navigator.languages?.length ? navigator.languages : [navigator.language]);
+import { startPageLang } from './page-lang.ts';
 
 const list = document.querySelector<HTMLElement>('#materials')!;
 const homeLink = document.querySelector<HTMLAnchorElement>('#learn-home')!;
@@ -17,7 +15,7 @@ function el<K extends keyof HTMLElementTagNameMap>(tag: K, className?: string, t
   return node;
 }
 
-function renderCards(): void {
+function renderCards(lang: Lang): void {
   const t = MESSAGES[lang];
   list.replaceChildren(
     ...MATERIALS.map((m) => {
@@ -37,21 +35,10 @@ function renderCards(): void {
   );
 }
 
-function render(): void {
+function render(lang: Lang): void {
   applyStaticTexts(lang, { title: MESSAGES[lang].learnTitle, description: MESSAGES[lang].learnMetaDescription });
   homeLink.href = `/?lang=${lang}`;
-  renderCards();
+  renderCards(lang);
 }
 
-function setLang(next: Lang): void {
-  if (next === lang) return;
-  lang = next;
-  writeLang(lang);
-  const url = new URL(location.href);
-  url.searchParams.set('lang', lang);
-  history.replaceState(null, '', url);
-  render();
-}
-
-renderLangSwitch(document.querySelector<HTMLElement>('#lang-switch')!, setLang);
-render();
+startPageLang(document.querySelector<HTMLElement>('#lang-switch')!, render);

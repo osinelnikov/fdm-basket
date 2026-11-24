@@ -119,6 +119,8 @@ export interface Messages {
   learnOpen: string;
   /** Link from the section back to the fixtures page. */
   learnHome: string;
+  /** Link from a material page back to the section. */
+  learnBack: string;
   /** Block on the home page that leads to the section. */
   learnLink: string;
   learnLinkText: string;

@@ -6,33 +6,29 @@
   <title>Basketball Zone Defense &amp; Attack Tactics Simulator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <meta name="description" content="Interactive half-court simulator for zone rotations, bumping mechanics, high-post coverage, and offensive zone-breaking alignments.">
   <link rel="icon" href="/logos/fdm.png">
   <script type="module" src="/src/learn/zone-board.ts"></script>
 </head>
 <body>
   <div class="page-grid">
-    <nav class="board-back">
-      <a id="back-link" href="/learn/">&larr; <span id="txt-back">Coaching materials</span></a>
-    </nav>
+    <!-- Site header, as on /learn/ -->
+    <header class="hero hero-compact">
+      <div class="hero-top">
+        <div class="eyebrow" data-i18n="eyebrow">UISP · Serie A/2 · Tirreno Nord · Season 2026/27</div>
+        <div class="lang-switch" id="lang-switch" role="group" aria-label="Language" data-i18n-aria="langSwitch"></div>
+      </div>
+      <a class="learn-home" id="learn-back" href="/learn/" data-i18n="learnBack">← Coaching materials</a>
+      <p class="hero-title" data-i18n="learnHeading">Coaching materials</p>
+    </header>
 
     <!-- Dossier Header -->
-    <header>
+    <div>
       <div class="dossier-bar">
         <div class="dossier-bar-left">
           <span class="dossier-pill" id="ui-badge">TACTICAL SIMULATOR</span>
           <span class="dossier-meta" id="ui-meta">ZONE SYSTEMS · 2-1-2 · 2-3 · 3-2 · 1-3-1</span>
-        </div>
-        <div class="lang-switcher seg-track has-thumb" id="grp-lang" role="group" aria-label="Language switcher">
-          <span class="seg-thumb" aria-hidden="true"></span>
-          <span class="lang-switcher-label">
-            <!-- Icons from Lucide (https://lucide.dev), ISC License, Copyright (c) Lucide Contributors -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;" class="lucide lucide-languages"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
-          </span>
-          <button type="button" class="lang-btn" id="lang-en" lang="en" aria-pressed="true" aria-label="English" title="English" data-action="setLanguage" data-value="en">🇬🇧</button>
-          <button type="button" class="lang-btn" id="lang-it" lang="it" aria-pressed="false" aria-label="Italiano" title="Italiano" data-action="setLanguage" data-value="it">🇮🇹</button>
-          <button type="button" class="lang-btn" id="lang-uk" lang="uk" aria-pressed="false" aria-label="Українська" title="Українська" data-action="setLanguage" data-value="uk">🇺🇦</button>
         </div>
       </div>
 
@@ -40,12 +36,13 @@
         <h1 id="ui-title">Basketball Zone Defense &amp; Attack Tactics Board</h1>
         <p class="standfirst" id="ui-subtitle">Interactive half-court simulator for zone rotations, bumping mechanics, high-post coverage, and offensive zone-breaking alignments.</p>
       </div>
-    </header>
+    </div>
 
     <!-- Control Deck -->
     <section class="control-deck" aria-label="Tactical controls">
       <div class="control-group">
         <span class="control-label" id="lbl-defense">
+          <!-- Icons from Lucide (https://lucide.dev), ISC License, Copyright (c) Lucide Contributors -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;" class="lucide lucide-shield"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>
           <span id="txt-lbl-defense">Defensive System</span>
         </span>
@@ -407,7 +404,6 @@
 
     <footer class="source-footer">
       <span id="footer-sources">Grounded in coaching literature: 2-1-2 Zone Defense Complete Coaching Guide (Basketball For Coaches) &amp; Comparative Zone Defense / Offense Report (2-3, 2-1-2, 3-2, 1-3-1).</span>
-      <span class="dossier-meta" id="footer-meta">EN · IT · UK</span>
     </footer>
   </div>
 

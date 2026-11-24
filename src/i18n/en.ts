@@ -118,6 +118,7 @@ export const en: Messages = {
   learnIntro: 'Interactive tools to understand and try out basketball concepts: pick a material and open it in your language.',
   learnOpen: 'Open →',
   learnHome: '← FDM fixtures',
+  learnBack: '← Coaching materials',
   learnLink: 'Coaching materials',
   learnLinkText: 'An interactive tactics board for zone defence and attack, with rotations and step-by-step schemes.',
   learnLangsLabel: 'Available languages',

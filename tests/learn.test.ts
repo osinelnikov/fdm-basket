@@ -1,13 +1,13 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import config from '../vite.config.ts';
-import { isLang, resolveLang } from '../src/i18n/index.ts';
-import { backHref, commitBoardLang, isBoardLang, langToRemember, resolveBoardLang, type BoardLang } from '../src/learn/board-lang.ts';
+import { LANGS, type Lang } from '../src/i18n/index.ts';
 import { MATERIALS } from '../src/learn/materials.ts';
+import { commitLang, startPageLang } from '../src/learn/page-lang.ts';
 import { BALL_SPOTS, DEF_POS, I18N, OFF_POS } from '../src/learn/zone-board-data.ts';
 
-const BOARD_LANGS: readonly BoardLang[] = ['en', 'it', 'uk'];
+const BOARD_LANGS: readonly Lang[] = ['en', 'it'];
 
 // Key paths of a nested dictionary; arrays contribute their length and the keys of every element
 function shape(value: unknown, path = ''): string[] {
@@ -27,6 +27,11 @@ function strings(value: unknown, path = ''): [string, unknown][] {
 }
 
 describe('board dictionary', () => {
+  // The dictionary is assigned from a variable, so the type check would not reject a language the site does not offer
+  it('offers exactly the site languages', () => {
+    expect(Object.keys(I18N).sort()).toEqual([...LANGS].sort());
+  });
+
   it.each(BOARD_LANGS.filter((l) => l !== 'en'))('%s has exactly the key structure of English', (lang) => {
     expect(shape(I18N[lang]).sort()).toEqual(shape(I18N.en).sort());
   });
@@ -38,12 +43,6 @@ describe('board dictionary', () => {
       expect(typeof value, `${lang}.${path}`).toBe('string');
       expect((value as string).trim(), `${lang}.${path}`).not.toBe('');
     }
-  });
-
-  it('labels the way back in every language', () => {
-    expect(I18N.en.backToSection).toBe('Coaching materials');
-    expect(I18N.it.backToSection).toBe('Materiali didattici');
-    expect(I18N.uk.backToSection).toBe('Навчальні матеріали');
   });
 });
 
@@ -69,92 +68,98 @@ describe('board data', () => {
   });
 });
 
-describe('resolveBoardLang', () => {
-  it('takes ?lang= first, including Ukrainian', () => {
-    expect(resolveBoardLang('?lang=uk', 'it', ['en-US'])).toBe('uk');
-  });
-
-  it('ignores an unknown ?lang= and falls back to the saved site language', () => {
-    expect(resolveBoardLang('?lang=xx', 'it', ['uk-UA'])).toBe('it');
-  });
-
-  it('uses the browser language when nothing is saved (storage blocked)', () => {
-    expect(resolveBoardLang('', null, ['uk-UA'])).toBe('uk');
-  });
-
-  it('falls back to English for an unsupported browser language', () => {
-    expect(resolveBoardLang('', null, ['de-DE'])).toBe('en');
-  });
-
-  it('does not accept ?lang=IT, like the site', () => {
-    expect(resolveBoardLang('?lang=IT', null, ['de-DE'])).toBe('en');
-    expect(resolveLang('?lang=IT', null, ['de-DE'])).toBe('en');
-  });
-
-  it('ignores a saved language the site does not offer', () => {
-    expect(resolveBoardLang('', 'uk', ['it-IT'])).toBe('it');
-  });
-
-  it('recognises board languages only', () => {
-    expect(BOARD_LANGS.every(isBoardLang)).toBe(true);
-    expect(isBoardLang('de')).toBe(false);
-    expect(isBoardLang(undefined)).toBe(false);
-  });
-});
-
-describe('language persistence', () => {
-  it('never saves Ukrainian as the site language', () => {
-    expect(langToRemember('uk')).toBeNull();
-  });
-
-  it('saves Italian and English as chosen', () => {
-    expect(langToRemember('it')).toBe('it');
-    expect(langToRemember('en')).toBe('en');
-    expect(isLang(langToRemember('it'))).toBe(true);
-  });
-
-  it('keeps a foreign saved value from steering the site', () => {
-    expect(resolveLang('', 'uk', ['it-IT'])).toBe('it');
-  });
-});
-
-describe('commitBoardLang', () => {
-  function choose(lang: BoardLang, href = 'https://fdm-basket.pages.dev/learn/zone-tactics/?lang=it&x=1#court') {
+describe('commitLang', () => {
+  it.each(['it', 'en'] as const)('saves %s as the site language and puts it in the address, keeping other parameters and the hash', (lang) => {
     const saved: string[] = [];
     const urls: string[] = [];
-    commitBoardLang(lang, { href, replaceUrl: (url) => urls.push(url.href), writeSiteLang: (l) => saved.push(l) });
-    return { saved, urls };
-  }
-
-  it('keeps Ukrainian in the address only', () => {
-    const { saved, urls } = choose('uk');
-    expect(saved).toEqual([]);
-    expect(urls).toEqual(['https://fdm-basket.pages.dev/learn/zone-tactics/?lang=uk&x=1#court']);
-  });
-
-  it.each(['it', 'en'] as const)('saves %s as the site language and puts it in the address', (lang) => {
-    const { saved, urls } = choose(lang, 'https://fdm-basket.pages.dev/learn/zone-tactics/');
+    commitLang(lang, {
+      href: 'https://fdm-basket.pages.dev/learn/zone-tactics/?lang=it&x=1#court',
+      replaceUrl: (url) => urls.push(url.href),
+      writeSiteLang: (l) => saved.push(l),
+    });
     expect(saved).toEqual([lang]);
-    expect(urls).toEqual([`https://fdm-basket.pages.dev/learn/zone-tactics/?lang=${lang}`]);
+    expect(urls).toEqual([`https://fdm-basket.pages.dev/learn/zone-tactics/?lang=${lang}&x=1#court`]);
   });
 
-  // The board starts on page load and cannot be imported here; its only way to the saved language is this function
-  it('is the board’s only way to save the site language', () => {
-    const board = readFileSync(join(import.meta.dirname, '..', 'src/learn/zone-board.ts'), 'utf8');
-    expect(board.match(/writeLang\s*\(/g)).toBeNull();
-    expect(board).not.toMatch(/localStorage/);
-    expect(board.match(/commitBoardLang\(lang,/g)).toHaveLength(1);
+  it('adds ?lang= to an address that has none', () => {
+    const urls: string[] = [];
+    commitLang('en', { href: 'https://fdm-basket.pages.dev/learn/', replaceUrl: (url) => urls.push(url.href), writeSiteLang: () => {} });
+    expect(urls).toEqual(['https://fdm-basket.pages.dev/learn/?lang=en']);
   });
 });
 
-describe('backHref', () => {
-  it('carries the language the site knows', () => {
-    expect(backHref('it')).toBe('/learn/?lang=it');
-    expect(backHref('en')).toBe('/learn/?lang=en');
+describe('startPageLang', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
   });
 
-  it('leaves Ukrainian out of the link', () => {
-    expect(backHref('uk')).toBe('/learn/');
+  // A page opened at `search` with `saved` as the stored site language; the host stands in for the switch,
+  // which only receives its markup and one click listener per language button
+  function open(search: string, saved: string | null) {
+    const clicks = new Map<string, () => void>();
+    const host = {
+      innerHTML: '',
+      querySelectorAll: () => LANGS.map((l) => ({ dataset: { lang: l }, addEventListener: (_type: string, fn: () => void) => clicks.set(l, fn) })),
+    };
+    const writes: string[] = [];
+    const urls: string[] = [];
+    const renders: Lang[] = [];
+    vi.stubGlobal('location', { search, href: `https://fdm-basket.pages.dev/learn/zone-tactics/${search}` });
+    vi.stubGlobal('navigator', { languages: ['de-DE'], language: 'de-DE' });
+    vi.stubGlobal('history', { replaceState: (_state: unknown, _title: string, url: URL) => urls.push(String(url)) });
+    vi.stubGlobal('localStorage', { getItem: () => saved, setItem: (key: string, value: string) => writes.push(`${key}=${value}`) });
+    const lang = startPageLang(host as unknown as HTMLElement, (l) => renders.push(l));
+    return { lang, writes, urls, renders, pick: (l: Lang) => clicks.get(l)!() };
+  }
+
+  it('opens in the language from the address and draws it once, without saving it or rewriting the address', () => {
+    const page = open('?lang=it', 'en');
+    expect(page.lang).toBe('it');
+    expect(page.renders).toEqual(['it']);
+    expect(page.writes).toEqual([]);
+    expect(page.urls).toEqual([]);
+  });
+
+  it('opens an old ?lang=uk link in the saved site language and leaves storage alone', () => {
+    const page = open('?lang=uk', 'it');
+    expect(page.lang).toBe('it');
+    expect(page.writes).toEqual([]);
+    expect(page.urls).toEqual([]);
+  });
+
+  it('saves and puts in the address only a different language chosen on the switch', () => {
+    const page = open('?lang=it', null);
+    page.pick('it');
+    expect(page.writes).toEqual([]);
+    expect(page.urls).toEqual([]);
+    expect(page.renders).toEqual(['it']);
+    page.pick('en');
+    expect(page.writes).toEqual(['fdm-lang=en']);
+    expect(page.urls).toEqual(['https://fdm-basket.pages.dev/learn/zone-tactics/?lang=en']);
+    expect(page.renders).toEqual(['it', 'en']);
+  });
+});
+
+// The pages start on load and cannot be imported here; the shared module is their only way to the saved language
+describe('learn pages language handling', () => {
+  const learnSources = (): string[] => readdirSync(join(import.meta.dirname, '..', 'src/learn')).filter((name) => name.endsWith('.ts'));
+
+  it('finds the learn scripts', () => {
+    expect(learnSources()).toEqual(expect.arrayContaining(['main.ts', 'zone-board.ts', 'page-lang.ts']));
+  });
+
+  it('saves the site language only in page-lang.ts', () => {
+    for (const name of learnSources().filter((n) => n !== 'page-lang.ts')) {
+      const source = readFileSync(join(import.meta.dirname, '..', 'src/learn', name), 'utf8');
+      expect(source.match(/writeLang\s*\(/g), name).toBeNull();
+      expect(source, name).not.toMatch(/localStorage/);
+    }
+  });
+
+  it.each(['main.ts', 'zone-board.ts'])('%s uses the shared language module', (name) => {
+    const source = readFileSync(join(import.meta.dirname, '..', 'src/learn', name), 'utf8');
+    expect(source).toMatch(/from '\.\/page-lang\.ts'/);
+    expect(source.match(/startPageLang\(/g), name).toHaveLength(1);
   });
 });
 

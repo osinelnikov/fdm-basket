@@ -119,6 +119,7 @@ export const it: Messages = {
   learnIntro: 'Strumenti interattivi per capire e provare i concetti del basket: scegli un materiale e aprilo nella tua lingua.',
   learnOpen: 'Apri →',
   learnHome: '← Calendario FDM',
+  learnBack: '← Materiali didattici',
   learnLink: 'Materiali didattici',
   learnLinkText: 'Lavagna tattica interattiva su difesa a zona e attacco, con rotazioni e schemi passo passo.',
   learnLangsLabel: 'Lingue disponibili',

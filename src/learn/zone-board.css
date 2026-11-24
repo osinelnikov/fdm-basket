@@ -70,8 +70,6 @@
       --font-headline: 'Source Serif 4', serif;
       --font-body: 'Plus Jakarta Sans', 'Inter', sans-serif;
       --font-label: 'Geist Mono', 'IBM Plex Mono', monospace;
-      /* Plus Jakarta Sans ships only the cyrillic-ext subset, so Ukrainian body text would mix two typefaces */
-      --font-body-cyrillic: 'Inter', sans-serif;
 
       /* Shape */
       --rounded: 0.25rem;
@@ -119,10 +117,17 @@
       --ease-pass-y: cubic-bezier(0.3, 0.9, 0.4, 1);
     }
 
+    /* The board stays light in a dark scheme: the site's dark rules for :root use these selectors, so match their weight */
+    :root:not([data-theme="light"]),
+    :root[data-theme="dark"] {
+      color-scheme: light;
+    }
+
     /* Base reset */
     *, *::before, *::after { box-sizing: border-box; }
     html, body { overflow-x: clip; margin: 0; padding: 0; }
-    header { position: static !important; }
+    /* The board keeps instant scrolling rather than the site's smooth scrolling */
+    html { scroll-behavior: auto; }
 
     body {
       background: var(--background);
@@ -142,10 +147,6 @@
       outline: 2px solid var(--focus);
       outline-offset: 2px;
       box-shadow: var(--shadow-focus);
-    }
-
-    :root:lang(uk) {
-      --font-body: var(--font-body-cyrillic);
     }
 
     .page-grid {
@@ -196,52 +197,6 @@
       color: var(--on-surface-variant);
       text-transform: uppercase;
       letter-spacing: 0.04em;
-    }
-
-    /* Language Switcher */
-    .lang-switcher {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-xs);
-      background: var(--surface-container);
-      padding: var(--space-xs);
-      border-radius: var(--rounded);
-      border: var(--card-border);
-    }
-
-    .lang-switcher-label {
-      font-family: var(--font-label);
-      font-size: var(--label-size);
-      color: var(--on-surface-variant);
-      padding: 0 var(--space-xs);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .lang-btn {
-      min-height: 36px;
-      min-width: 44px;
-      padding: 0 var(--space-sm);
-      border: 1px solid transparent;
-      border-radius: var(--badge-radius);
-      background: transparent;
-      color: var(--on-surface-variant);
-      font-family: var(--font-label);
-      font-size: var(--label-size);
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
-    }
-
-    .lang-btn:hover {
-      background: var(--surface-container-high);
-      color: var(--on-surface);
-    }
-
-    .lang-btn[aria-pressed="true"] {
-      background: var(--primary);
-      color: var(--on-primary);
     }
 
     .title-block h1 {
@@ -407,29 +362,6 @@
       gap: 2px;
     }
 
-    .seg-track > .lang-btn {
-      position: relative;
-      z-index: 1;
-      border-radius: var(--rounded-control);
-    }
-
-    /* Flag glyphs: colour emoji fonts first, so the flag is not drawn in the monospace label face */
-    .lang-btn {
-      font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', var(--font-label);
-      font-size: 1.125rem;
-      line-height: 1;
-    }
-
-    /* The thumb marks the chosen language; the others are muted until hovered */
-    .lang-btn[aria-pressed="false"] {
-      opacity: 0.6;
-    }
-
-    .lang-btn[aria-pressed="false"]:hover,
-    .lang-btn[aria-pressed="false"]:focus-visible {
-      opacity: 1;
-    }
-
     .seg-thumb {
       position: absolute;
       left: 0;
@@ -447,13 +379,16 @@
 
     .seg-btn:active:not(:disabled),
     .spot-btn:active,
-    .lang-btn:active,
     .action-btn:hover:active {
       transform: scale(0.98);
     }
 
     /* Main Simulator Workspace */
+    /* The site's own rule for main (centred, 1000px wide, padded) does not apply to the board's workspace */
     .simulator-grid {
+      max-width: none;
+      margin: 0;
+      padding: 0;
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
       gap: var(--space-lg);
@@ -988,6 +923,7 @@
     }
 
     .source-footer {
+      line-height: 1.55;
       border-top: var(--card-border);
       padding-top: var(--space-md);
       margin-top: var(--space-md);
@@ -1040,28 +976,4 @@
       .token-group.is-selected .token-selected-ring {
         animation: none;
       }
-    }
-
-    /* Way back to the materials section: a quiet line above the header, in the same label type as the dossier bar */
-    .board-back {
-      margin-bottom: calc(var(--space-sm) * -1);
-    }
-    .board-back a {
-      display: inline-block;
-      padding: var(--space-xs) 0;
-      color: var(--on-surface-variant);
-      font-family: var(--font-label);
-      font-size: var(--label-size);
-      letter-spacing: var(--label-tracking);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color var(--dur-micro) var(--ease-out);
-    }
-    .board-back a:hover {
-      color: var(--on-surface);
-      text-decoration: underline;
-    }
-    .board-back a:focus-visible {
-      border-radius: var(--badge-radius);
-      color: var(--on-surface);
     }

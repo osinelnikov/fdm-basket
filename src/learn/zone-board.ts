@@ -1,6 +1,9 @@
+import '../styles.css';
+import './learn.css';
 import './zone-board.css';
-import { readLang, writeLang } from '../ui/storage.ts';
-import { backHref, commitBoardLang, isBoardLang, resolveBoardLang, type BoardLang } from './board-lang.ts';
+import { MESSAGES, type Lang } from '../i18n/index.ts';
+import { applyStaticTexts } from '../ui/i18n-dom.ts';
+import { startPageLang } from './page-lang.ts';
 import {
   BALL_SPOTS, DEMO_SEQUENCE, DEF_POS, OFF_POS, ZONE_RADII, I18N,
   DEFENSE_IDS, OFFENSE_IDS, OVERLAY_IDS, SPOT_IDS, DEF_PLAYER_IDS, OFF_PLAYER_IDS,
@@ -13,7 +16,7 @@ import {
 // =========================================================================
 
 interface BoardState {
-  lang: BoardLang;
+  lang: Lang;
   defense: DefenseId;
   buzz: boolean;
   offense: OffenseId;
@@ -25,7 +28,7 @@ interface BoardState {
 }
 
 const state: BoardState = {
-  lang: resolveBoardLang(location.search, readLang(), navigator.languages?.length ? navigator.languages : [navigator.language]),
+  lang: 'en',
   defense: '212',
   buzz: false,
   offense: 'overload',
@@ -86,14 +89,13 @@ function ballMovedSinceLastRender(): boolean {
 let lastLanesKey: string | null = null;
 let lastRotKey: string | null = null;
 // Reference cards and matrix text depend only on language; skipping them keeps the demo ticks light
-let lastStaticKey: BoardLang | null = null;
+let lastStaticKey: Lang | null = null;
 
 // Single-choice tracks and the buttons whose pressed state the thumb follows
 const SEG_THUMBS = [
   { track: 'grp-defense', buttons: '[id^="def-"]' },
   { track: 'grp-offense', buttons: '[id^="off-"]' },
-  { track: 'grp-spots', buttons: '.spot-btn' },
-  { track: 'grp-lang', buttons: '.lang-btn' }
+  { track: 'grp-spots', buttons: '.spot-btn' }
 ];
 
 // Thumb is sized from layout, so it also follows wrapping, language changes and late font loading.
@@ -499,12 +501,6 @@ function renderTokensAndLayers() {
 function renderUI() {
   const t = I18N[state.lang];
   const defKey = getDefKey();
-  document.documentElement.lang = state.lang;
-
-  // Way back to the materials section
-  setElText('txt-back', t.backToSection);
-  const backLink = document.getElementById('back-link');
-  if (backLink) backLink.setAttribute('href', backHref(state.lang));
 
   // Header & Controls
   setElText('ui-badge', t.badge);
@@ -559,10 +555,6 @@ function renderUI() {
   setElText('ann-paint', t.annPaint);
 
   // Pressed states
-  ['en', 'it', 'uk'].forEach(l => {
-    const btn = document.getElementById(`lang-${l}`);
-    if (btn) btn.setAttribute('aria-pressed', String(state.lang === l));
-  });
   ['212', '23', '32', '131'].forEach(d => {
     const btn = document.getElementById(`def-${d}`);
     if (btn) btn.setAttribute('aria-pressed', String(state.defense === d));
@@ -690,17 +682,6 @@ function isOneOf<T extends string>(ids: readonly T[], value: string | undefined)
   return value !== undefined && (ids as readonly string[]).includes(value);
 }
 
-function setLanguage(lang?: string): void {
-  if (!isBoardLang(lang)) return;
-  state.lang = lang;
-  renderUI();
-  commitBoardLang(lang, {
-    href: location.href,
-    replaceUrl: (url) => history.replaceState(null, '', url),
-    writeSiteLang: writeLang
-  });
-}
-
 function setDefense(def?: string): void {
   if (!isOneOf(DEFENSE_IDS, def)) return;
   state.defense = def;
@@ -820,7 +801,7 @@ function resetBoard(): void {
 // The site's content security policy forbids inline handlers, so controls carry data-action / data-value
 // attributes and one delegated listener per event type runs the matching action.
 const ACTIONS: Record<string, Action | undefined> = {
-  setLanguage, setDefense, toggleBuzz, setOffense, toggleOverlay,
+  setDefense, toggleBuzz, setOffense, toggleOverlay,
   setBallSpot, selectPlayer, toggleSequencePlay, stepSequence, resetBoard
 };
 
@@ -853,7 +834,13 @@ function bindActions(root: Document): void {
 // =========================================================================
 function initApp(): void {
   bindActions(document);
-  renderUI();
+  // The site's switch lives in the page header; the first render also draws the board
+  startPageLang(document.getElementById('lang-switch')!, (lang) => {
+    state.lang = lang;
+    applyStaticTexts(lang, { title: `${I18N[lang].title} · ${MESSAGES[lang].learnHeading}`, description: I18N[lang].subtitle });
+    document.getElementById('learn-back')?.setAttribute('href', `/learn/?lang=${lang}`);
+    renderUI();
+  });
   // Track widths change with wrapping and web-font swaps, which no state change reports;
   // options are observed too, because a full-width or wrapped track keeps its box while they resize
   if (typeof ResizeObserver === 'function') {

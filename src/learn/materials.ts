@@ -1,13 +1,12 @@
 import type { Lang } from '../i18n/types.ts';
-import type { BoardLang } from './board-lang.ts';
 
 /** A learning material: a page under /learn/ listed on the section's index. */
 export interface Material {
   id: string;
   /** Page address with a leading and a trailing slash. */
   path: string;
-  /** Languages the material itself is available in (may include more than the site's own). */
-  langs: readonly BoardLang[];
+  /** Languages the material itself is available in (some or all of the site's). */
+  langs: readonly Lang[];
   text: Record<Lang, { title: string; summary: string }>;
 }
 
@@ -15,7 +14,7 @@ export const MATERIALS: readonly Material[] = [
   {
     id: 'zone-tactics',
     path: '/learn/zone-tactics/',
-    langs: ['en', 'it', 'uk'],
+    langs: ['en', 'it'],
     text: {
       en: {
         title: 'Zone defence and attack board',
@@ -32,4 +31,4 @@ export const MATERIALS: readonly Material[] = [
 ];
 
 /** Link to a material in the given language. */
-export const materialHref = (m: Material, lang: BoardLang): string => `${m.path}?lang=${lang}`;
+export const materialHref = (m: Material, lang: Lang): string => `${m.path}?lang=${lang}`;
