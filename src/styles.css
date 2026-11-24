@@ -22,6 +22,10 @@
 html{scroll-behavior:smooth}
 body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.45;-webkit-font-smoothing:antialiased}
 main{max-width:1000px;margin:auto;padding:0 18px 80px}
+/* The page's content stays hidden (the background shows) until its script has drawn it in the viewer's language,
+   so the English placeholders of the markup never flash; content whose script never runs still appears after 1.5 s */
+html:not([data-ready]) main,html:not([data-ready]) .page-grid{visibility:hidden;animation:reveal-content 0s 1.5s forwards}
+@keyframes reveal-content{to{visibility:visible}}
 
 /* Hero */
 .hero{position:relative;overflow:hidden;margin:22px 0 26px;padding:36px 34px;border-radius:26px;color:#fff;

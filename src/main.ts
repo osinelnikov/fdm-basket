@@ -76,6 +76,8 @@ renderStandings(standingsTable, standingsSource, context());
 renderMatches(root, context());
 select('all');
 setupCalendarCard(context);
+// The page is drawn in the viewer's language: reveal it (styles.css keeps it hidden until then)
+document.documentElement.dataset.ready = '';
 
 // A shared link such as /#box-310 opens that game's box score; an address that no longer names it closes the dialog.
 function openFromHash(): void {

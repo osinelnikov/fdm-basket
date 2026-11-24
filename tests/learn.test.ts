@@ -108,8 +108,15 @@ describe('startPageLang', () => {
     vi.stubGlobal('navigator', { languages: ['de-DE'], language: 'de-DE' });
     vi.stubGlobal('history', { replaceState: (_state: unknown, _title: string, url: URL) => urls.push(String(url)) });
     vi.stubGlobal('localStorage', { getItem: () => saved, setItem: (key: string, value: string) => writes.push(`${key}=${value}`) });
-    const lang = startPageLang(host as unknown as HTMLElement, (l) => renders.push(l));
-    return { lang, writes, urls, renders, pick: (l: Lang) => clicks.get(l)!() };
+    const root = { dataset: {} as Record<string, string> };
+    vi.stubGlobal('document', { documentElement: root });
+    // Whether the page was already revealed when each render ran
+    const revealedAtRender: boolean[] = [];
+    const lang = startPageLang(host as unknown as HTMLElement, (l) => {
+      renders.push(l);
+      revealedAtRender.push('ready' in root.dataset);
+    });
+    return { lang, writes, urls, renders, revealedAtRender, root, pick: (l: Lang) => clicks.get(l)!() };
   }
 
   it('opens in the language from the address and draws it once, without saving it or rewriting the address', () => {
@@ -118,6 +125,12 @@ describe('startPageLang', () => {
     expect(page.renders).toEqual(['it']);
     expect(page.writes).toEqual([]);
     expect(page.urls).toEqual([]);
+  });
+
+  it('reveals the page only after drawing it in its language', () => {
+    const page = open('?lang=it', null);
+    expect(page.revealedAtRender).toEqual([false]);
+    expect('ready' in page.root.dataset).toBe(true);
   });
 
   it('opens an old ?lang=uk link in the saved site language and leaves storage alone', () => {
@@ -141,6 +154,38 @@ describe('startPageLang', () => {
 });
 
 // The pages start on load and cannot be imported here; the shared module is their only way to the saved language
+// Pages draw their texts from a script: until it has run, styles.css keeps the content hidden, so the English
+// placeholders of the markup never flash in the viewer's language
+describe('first paint', () => {
+  const read = (path: string) => readFileSync(join(import.meta.dirname, '..', path), 'utf8');
+  const PAGES = ['index.html', 'learn/index.html', 'learn/zone-tactics/index.html'];
+
+  it.each(PAGES)('%s asks the browser to wait for its script before the first paint', (page) => {
+    const scripts = [...read(page).matchAll(/<script\b[^>]*>/g)].map((m) => m[0]);
+    expect(scripts).toHaveLength(1);
+    expect(scripts[0]).toMatch(/type="module"/);
+    expect(scripts[0]).toMatch(/blocking="render"/);
+  });
+
+  // Vite rewrites the entry script tag in the build; the site's own plugin puts the attribute back
+  it('keeps blocking="render" on the built entry script of these pages only', () => {
+    const plugin = (config.plugins ?? []).flat().find((p) => p && typeof p === 'object' && 'name' in p && p.name === 'fdm-render-blocking-entry');
+    const hook = (plugin as { transformIndexHtml?: { handler: (html: string, ctx: { filename: string }) => string } } | undefined)?.transformIndexHtml;
+    expect(hook).toBeDefined();
+    const built = '<head><script type="module" crossorigin src="/assets/x.js"></script></head>';
+    for (const page of PAGES) {
+      expect(hook!.handler(built, { filename: join(ROOT, page) }), page).toContain('<script type="module" blocking="render" crossorigin src="/assets/x.js">');
+    }
+    expect(hook!.handler(built, { filename: join(ROOT, 'admin/index.html') })).toBe(built);
+  });
+
+  it('reveals the content once the page script has drawn it', () => {
+    expect(read('src/styles.css')).toMatch(/html:not\(\[data-ready\]\) main,html:not\(\[data-ready\]\) \.page-grid\{visibility:hidden;/);
+    expect(read('src/main.ts').match(/document\.documentElement\.dataset\.ready = ''/g)).toHaveLength(1);
+    expect(read('src/learn/page-lang.ts').match(/document\.documentElement\.dataset\.ready = ''/g)).toHaveLength(1);
+  });
+});
+
 describe('learn pages language handling', () => {
   const learnSources = (): string[] => readdirSync(join(import.meta.dirname, '..', 'src/learn')).filter((name) => name.endsWith('.ts'));
 

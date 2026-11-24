@@ -19,7 +19,7 @@ export function commitLang(lang: Lang, env: LangChoiceEnv): void {
 
 /**
  * Starts the language handling shared by the learning pages: resolves the language the way the site does,
- * builds the switch in `host` and calls `render` once now and again after every change.
+ * builds the switch in `host`, calls `render` once now (then reveals the page) and again after every change.
  * Returns the language the page starts in.
  */
 export function startPageLang(host: HTMLElement, render: (lang: Lang) => void): Lang {
@@ -35,5 +35,7 @@ export function startPageLang(host: HTMLElement, render: (lang: Lang) => void): 
     render(lang);
   });
   render(lang);
+  // The page is drawn in its language: reveal it (styles.css keeps it hidden until then)
+  document.documentElement.dataset.ready = '';
   return lang;
 }
