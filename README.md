@@ -103,6 +103,28 @@ The league table comes from the latest UISP bulletin (Serie A/2 girone "Tirreno 
 Tests also check that wins plus losses equal games, two points per win, and that wins, losses and
 points scored and conceded balance across the group.
 
+## Add a learning material
+
+The section `/learn/` ("Coaching materials" / "Materiali didattici", linked from the home page) lists the
+materials registered in `src/learn/materials.ts`. Each material is a page of its own under `learn/`.
+
+1. Put the page at `learn/<id>/index.html`. Load its code only as a module from the project
+   (`<script type="module" src="/src/learn/….ts">`) and use no inline scripts or `on…=` attributes:
+   the Content Security Policy in `public/_headers` blocks them. Attach handlers with `addEventListener`
+   (the tactics board marks controls with `data-action` and uses one delegated listener per event type).
+2. Add the page to `build.rolldownOptions.input` in `vite.config.ts`.
+3. Add an entry to `MATERIALS` in `src/learn/materials.ts`: `id`, `path` (`/learn/<id>/`), the languages
+   the material itself is available in, and the card title and summary in Italian and English.
+4. Run `npm run build` and push.
+
+A card opens its material with `?lang=` set to the section's language. Tests in `tests/learn.test.ts`
+check that every entry has its page and build input and both texts, and that the pages have no inline
+scripts or handlers.
+
+The tactics board (`learn/zone-tactics/`) is in English, Italian and Ukrainian; its texts are in
+`src/learn/zone-board-data.ts`. It takes `?lang=`, then the language saved on the site, then the browser's.
+Choosing Italian or English on the board also sets the site language; Ukrainian is kept in the address only.
+
 ## Develop
 
 ```bash
@@ -165,3 +187,4 @@ deployment (secrets apply to new deployments), check the admin page, then revoke
   Forte dei Marmi, Amatori Basket Valdera, Casa Culturale San Miniato, ASD Perignano and Polisportiva
   La Perla supplied to us.
 - Map data © OpenStreetMap contributors.
+- Tactics board icons: Lucide (ISC license); the board's own sources are listed in its footer.

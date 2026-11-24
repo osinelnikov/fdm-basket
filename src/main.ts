@@ -39,6 +39,10 @@ function select(filter: Filter, fitMap = true): void {
   venueMap.show(filter, fitMap);
 }
 
+const learnLink = document.querySelector<HTMLAnchorElement>('#learn-link')!;
+// The section opens in the language being read, even when it was chosen by ?lang= and never saved
+const syncLearnLink = (): void => learnLink.setAttribute('href', `/learn/?lang=${state.lang}`);
+
 function setLang(lang: Lang): void {
   if (lang === state.lang) return;
   state.lang = lang;
@@ -46,6 +50,7 @@ function setLang(lang: Lang): void {
   const url = new URL(location.href);
   url.searchParams.set('lang', lang);
   history.replaceState(null, '', url);
+  syncLearnLink();
   withSmoothTransition(() => {
     applyStaticTexts(lang);
     resetCalendarStatus();
@@ -67,6 +72,7 @@ document.querySelector('#collapse-all')!.addEventListener('click', () => setAllM
 
 renderLangSwitch(document.querySelector<HTMLElement>('#lang-switch')!, setLang);
 applyStaticTexts(state.lang);
+syncLearnLink();
 renderStandings(standingsTable, standingsSource, context());
 renderMatches(root, context());
 select('all');

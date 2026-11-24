@@ -92,6 +92,13 @@ export default defineConfig({
   build: {
     target: 'es2022',
     // The public site and the owner's admin page are separate entries, so no admin code reaches the site.
-    rolldownOptions: { input: { main: fromRoot('./index.html'), admin: fromRoot('./admin/index.html') } },
+    rolldownOptions: {
+      input: {
+        main: fromRoot('./index.html'),
+        admin: fromRoot('./admin/index.html'),
+        learn: fromRoot('./learn/index.html'),
+        zoneTactics: fromRoot('./learn/zone-tactics/index.html'),
+      },
+    },
   },
 });

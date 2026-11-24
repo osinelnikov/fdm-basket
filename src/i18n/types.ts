@@ -110,6 +110,20 @@ export interface Messages {
   copied: string;
   copyFallback: string;
   footerHtml: string;
+  /** Title and meta description of the coaching materials section (/learn/). */
+  learnTitle: string;
+  learnMetaDescription: string;
+  learnHeading: string;
+  learnIntro: string;
+  /** Call to action on a material card and on the home page link. */
+  learnOpen: string;
+  /** Link from the section back to the fixtures page. */
+  learnHome: string;
+  /** Block on the home page that leads to the section. */
+  learnLink: string;
+  learnLinkText: string;
+  /** Accessible label of the language tags on a material card. */
+  learnLangsLabel: string;
   crestAltLogo: (team: string) => string;
   crestAltArms: (team: string, town: string) => string;
   gcalTitle: (home: string, away: string) => string;
